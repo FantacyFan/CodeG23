@@ -2,4 +2,9 @@ extends layout
 
 block content
 	h1 Profile Page
-	p Coming soon
+	for one in user
+		h2 #{one.fullname}
+		h4 Email: #{one.email}
+		h4 Customer Rate: #{one.customer_rate}
+		h4 Owner Rate: #{one.owner_rate}
+		p #{one.bio}
