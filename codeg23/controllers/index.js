@@ -6,4 +6,25 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+/* Format for router */
+/* router.use('/your_controller',require('./your_controller_filename')) */
+
+/* Profile controller */
+router.use('/profile', require('./profile'));
+
+/* Order controller */
+router.use('/order', require('./order'));
+
+/* Menus controller */
+router.use('/menus', require('./menus'));
+
+/* Menu controller */
+router.use('/menu', require('./menu'));
+
+/* Login controller */
+router.use('/login', require('./login'));
+
+/* Register controller */
+router.use('/register', require('./register'));
+
 module.exports = router;
