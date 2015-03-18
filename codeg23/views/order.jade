@@ -2,4 +2,10 @@ extends layout
 
 block content
 	h1 Order Page
-	p Coming soon
+	h2 Title: #{menu.title}
+	h4 Detail: #{menu.detail}
+	h4 Date: #{order.timestamp}
+	form
+		textarea(rows='3', cols='50', name='message', placeholder='Please input your comment')
+		br
+		input(type='submit')
