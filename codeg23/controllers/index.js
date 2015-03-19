@@ -9,9 +9,6 @@ router.get('/', function(req, res, next) {
 /* Format for router */
 /* router.use('/your_controller',require('./your_controller_filename')) */
 
-/* Home Page */
-router.use('/home', require('./home'));
-
 /* Profile controller */
 router.use('/profile', require('./profile'));
 
@@ -29,8 +26,5 @@ router.use('/login', require('./login'));
 
 /* Register controller */
 router.use('/register', require('./register'));
-
-/* Signout controller */
-router.use('/signout', require('./signout'));
 
 module.exports = router;
