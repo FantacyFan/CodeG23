@@ -7,9 +7,11 @@ var userSchema = mongoose.Schema({
 	fullname: String,
 	email: String,
 	address: String,
+	phone: String,
 	bio: String,
-	customer_rate: Number,
-	owner_rate: Number
+	customer_rate: String,
+	owner_rate: String,
+	img_path: String
 });
 
 // create the model for users and expose it to our app
