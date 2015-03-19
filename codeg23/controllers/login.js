@@ -1,10 +1,20 @@
 var express = require('express');
 var router = express.Router();
 
-/* Get profile page */
+/* GET login page. */
 router.get('/', function(req, res) {
-	res.render('login',{
+	// Display the Login page with any flash message, if any
+	res.render('index', { 
+		message: req.flash('message') 
+	});
+});
 
+/* Handle Login POST */
+router.post('/', function(req, res) {
+	res.render('login',{
+		successRedirect: '/home',
+		failureRedirect: '/',
+		failureFlash : true
 	})
 });
 
