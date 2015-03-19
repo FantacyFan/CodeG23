@@ -3,8 +3,9 @@ extends layout
 block content
 	h1 Profile Page
 	for one in user
-		h2 #{one.fullname}
+		h2 Fullname #{one.fullname}
 		h4 Email: #{one.email}
+		h4 Address: #{one.address}
 		h4 Customer Rate: #{one.customer_rate}
 		h4 Owner Rate: #{one.owner_rate}
 		h4 Bio:
