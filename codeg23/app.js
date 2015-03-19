@@ -9,7 +9,8 @@ var routes = require('./controllers/index');
 var users = require('./controllers/users');
 
 var app = express();
-
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 //Connect database
 mongoose.connect('localhost:27017/codeg23');
 
@@ -24,6 +25,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+io.on('connection', function(socket){
+  socket.on('message', function(msg){
+    io.emit('message',msg);
+  })
+});
+http.listen(3000, function(){
+  console.log('listening on *:3000');
+});
 
 app.use('/', routes);
 app.use('/users', users);
