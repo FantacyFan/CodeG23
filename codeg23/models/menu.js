@@ -5,9 +5,18 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 
 // define the schema for our order model
 var menuSchema = mongoose.Schema({
-	title : String,
-	detail : String
+	user_id : String,
+	menu_id: String,
+	title: String,
+	type: String,
+	quantity: String,
+	detail: String,
+	price: Number,
+	order_time: Date,
+	location: String,
+	other: String
 });
 
 // create the model for menu and expose it to our app
 module.exports = mongoose.model('Menu', menuSchema);
+

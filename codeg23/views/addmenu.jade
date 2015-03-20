@@ -1,0 +1,69 @@
+extends layout
+
+
+block content
+    form.form-horizontal(action="/menu/add" method="post")
+        // Form Name
+        legend Add Menu
+        // Text input
+        .control-group
+          label.control-label(for='title') Title
+          |   
+          .controls
+            input#title.input-xlarge(name='title', type='text', placeholder='title')
+        // Textarea
+        .control-group
+          label.control-label(for='detail') Description
+          |   
+          .controls
+            textarea#detail(name='detail') add some description..
+        // Select Basic
+        .control-group
+          label.control-label(for='type') Type
+          |   
+          .controls
+            select#type.input-xlarge(name='type')
+              option Chinese
+              |       
+              option Japan
+              |       
+              option American
+              |       
+              option India
+              |       
+              option Mexcian
+        // Text input
+        .control-group
+          label.control-label(for='location') Location
+          |   
+          .controls
+            input#location.input-xlarge(name='location', type='text', placeholder='location')
+        // Select Basic
+        .control-group
+          label.control-label(for='quantity') Quantity
+          |   
+          .controls
+            select#quantity.input-xlarge(name='quantity')
+              option 1
+              |       
+              option 2
+              |       
+              option 3
+              |       
+              option 4
+              |       
+              option 5
+        // Text input
+        .control-group
+          label.control-label(for='price') Price
+          |   
+          .controls
+            input#price.input-xlarge(name='price', type='text', placeholder='price (number only)')
+        // Button (Double)
+        .control-group
+          label.control-label(for='')
+          |   
+          .controls
+            button.btn.btn-default(type='reset') Cancel
+            |     
+            button.btn.btn-success(type='submit') Add

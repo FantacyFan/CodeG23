@@ -1,5 +1,17 @@
 extends layout
 
+
 block content
-	h1 Menu Page
-	p Coming soon
+
+  for m in menu
+    h1 Title: #{m.title}
+    br
+    h2 Description: #{m.detail}
+    br
+    h2 Type: #{m.type}
+    br
+    h2 Quantity: #{m.quantity}
+    br
+    h2 Location: #{m.location}
+    br
+    h2 Time: #{m.order_time}

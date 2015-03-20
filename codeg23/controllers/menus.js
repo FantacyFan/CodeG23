@@ -1,11 +1,15 @@
 var express = require('express');
 var router = express.Router();
-
+var MenuSchema = require('../models/menu')
 /* Get profile page */
 router.get('/', function(req, res) {
-	res.render('menus',{
-
-	})
+	MenuSchema.find({}, function(err,menus){
+		if(err) throw err;
+		console.log(menus);
+		res.render('menus',{
+			'menus': menus
+		});
+	});
 });
 
 module.exports = router;

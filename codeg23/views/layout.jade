@@ -4,14 +4,20 @@ html
 		title= title
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css')
+		link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css')
+
+		script(src='http://code.jquery.com/jquery-1.11.1.js')
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+		script(src='http://code.jquery.com/jquery-1.11.1.js')
 		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js')
 		script(src='https://cdn.socket.io/socket.io-1.2.0.js')
-		script(src='http://code.jquery.com/jquery-1.11.1.js')
+
+
 body
 	a(href='/') Login    
 	a(href='/register') Register    	
 	a(href='/menus') Menus    	
-	a(href='/profile') Profile    	
-	a(href='/menu') Menu    	
+	a(href='/profile') Profile    	  	
 	a(href='/order') Order    	   	
 	block content
+
