@@ -10,9 +10,9 @@ var ObjectId = require('mongoose').Types.ObjectId;
 /* Get profile page */
 router.get('/:id', function(req, res) {
 	// var record = new OrderSchema({
-	// 	owner_id : new ObjectId("550892752aad4c5006efdae4"),
-	// 	customer_id : new ObjectId("5508bf29ae8609da07cbb058"),
-	// 	menu_id : new ObjectId("5508c327104b6ae607d1f456"),
+	// 	owner_id : new ObjectId("550b4a832e468b54676ea7fc"),
+	// 	customer_id : new ObjectId("550b47198cf6f6a56463380f"),
+	// 	menu_id : new ObjectId("550b66994449831b096679ee"),
 	// 	timestamp : "2013-05-26T05:00:00.000Z",
 	// 	status : "Pending"
 	// });
@@ -22,12 +22,24 @@ router.get('/:id', function(req, res) {
 	// 		res.status(500).json({status:'failure'})
 	// 	}
 	// });
+	// var record = new MenuSchema({
+	// 	title : "Nothing",
+	// 	detail : "Important"
+	// });
+	// record.save(function(err){
+	// 	if(err){
+	// 		console.log(err);
+	// 		res.status(500).json({status:'failure'})
+	// 	}
+	// });
+
 	var order_id = req.params.id;
 	OrderSchema.findOne({_id:order_id},function(err,order){
 		var menu_id = order.menu_id;
 		MenuSchema.findOne({_id:menu_id},function(err, menu){
 			MessageSchema.find({order_id:order_id},function(err, messages){
 				res.render('order',{
+					user : req.user,
 					messages : messages,
 					order : order,
 					menu  : menu
@@ -58,6 +70,7 @@ router.post('/:id',function(req,res){
 		MenuSchema.findOne({_id:menu_id},function(err, menu){
 			MessageSchema.find({order_id:order_id},function(err, messages){
 				res.render('order',{
+					user : req.user,
 					messages : messages,
 					order : order,
 					menu  : menu

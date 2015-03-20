@@ -9,6 +9,7 @@ var routes = require('./controllers/index');
 var users = require('./controllers/users');
 var passport = require('passport');
 var session      = require('express-session');
+var orderMessage = require('./controllers/order-messages');
 
 var app = express();
 var http = require('http').Server(app);
@@ -30,14 +31,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-// io.on('connection', function(socket){
-//   socket.on('message', function(msg){
-//     io.emit('message',msg);
-//   })
-// });
-// http.listen(3000, function(){
-//   console.log('listening on *:3000');
-// });
+
+//Socket Io Controller for messages
+orderMessage(io);
+http.listen(3000, function(){
+  console.log('listening on *:3000');
+});
 
 // Configuring Passport
 var passport = require('passport');
