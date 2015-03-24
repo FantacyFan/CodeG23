@@ -1,17 +1,16 @@
 extends layout
 
-
 block content
-
-  for m in menu
-    h1 Title: #{m.title}
+    h1 Title: #{menu.title}
     br
-    h2 Description: #{m.detail}
+    h2 Description: #{menu.detail}
     br
-    h2 Type: #{m.type}
+    h2 Type: #{menu.type}
     br
-    h2 Quantity: #{m.quantity}
+    h2 Quantity: #{menu.quantity}
     br
-    h2 Location: #{m.location}
+    h2 Location: #{menu.location}
     br
-    h2 Time: #{m.order_time}
+    h2 Time: #{menu.order_time}
+    a(href="/conversation/"+conversation._id)
+        button Contact

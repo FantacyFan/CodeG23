@@ -1,12 +1,32 @@
 extends layout
 
 block content
-	h1 Profile Page
-	for one in user
-		h2 Fullname #{one.fullname}
-		h4 Email: #{one.email}
-		h4 Address: #{one.address}
-		h4 Customer Rate: #{one.customer_rate}
-		h4 Owner Rate: #{one.owner_rate}
+	.profile-detail
+		h1 Profile Page
+		h2 Fullname #{user.fullname}
+		h4 Email: #{user.email}
+		h4 Address: #{user.address}
+		h4 Customer Rate: #{user.customer_rate}
+		h4 Owner Rate: #{user.owner_rate}
 		h4 Bio:
-		p #{one.bio}
+		p #{user.bio}
+	.owner-console
+		.my-posts
+			h2 My Posts
+			for one in posts
+				a(href="/menu/"+one._id) #{one._id}
+		.my-order-sold
+			h2 Sold Order
+			for one in ordersold
+				a(href="/order/"+one._id) #{one._id}
+	.customer-console
+		.my-requests
+			h2 My Requests
+			for one in requests
+				a(href="/request/"+one._id) #{one._id}
+		.my-order-bought
+			h2 Bought Order
+			for one in orderbought
+				a(href="/order/"+one._id) #{one._id}
+				br
+

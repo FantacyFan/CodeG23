@@ -6,21 +6,3 @@ block content
 	h2 Title: #{menu.title}
 	h4 Detail: #{menu.detail}
 	h4 Date: #{order.timestamp}
-	input(id='m', placeholder='Please input your message')
-	br
-	button(id='send', onclick='sendMsg(this)', name=order._id, value=user._id) Send
-	ul#msglist
-		for message in messages
-			li #{message.content}
-	script.
-		var socket = io();
-		var orderid = document.getElementById("send").name;
-		var userid = document.getElementById("send").value;
-		function sendMsg(obj){
-			socket.emit('order-message', orderid+'_'+userid+'_'+$('#m').val());
-			$('#m').val('');
-			return false;
-		};
-		socket.on('order-message-'+orderid, function(msg){
-			$('#msglist').append($('<li>').text(msg));
-		});

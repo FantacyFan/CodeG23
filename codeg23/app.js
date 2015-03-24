@@ -9,7 +9,7 @@ var routes = require('./controllers/index');
 var users = require('./controllers/users');
 var passport = require('passport');
 var session      = require('express-session');
-var orderMessage = require('./controllers/order-messages');
+var conversationSocket = require('./controllers/conversation-socket');
 
 var app = express();
 var http = require('http').Server(app);
@@ -33,7 +33,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Socket Io Controller for messages
-orderMessage(io);
+conversationSocket(io);
 http.listen(3000, function(){
   console.log('listening on *:3000');
 });

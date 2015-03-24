@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var UserSchema = require('../models/user');
-var MenuSchema = require('../models/menu')
+var MenuSchema = require('../models/menu');
+var RequestSchema = require('../models/request');
+var OrderSchema = require('../models/order');
 
 /* Get profile page */
 router.get('/:id', function(req, res) {
@@ -22,12 +24,24 @@ router.get('/:id', function(req, res) {
 	// 	console.log(123);
 	// });
 	var idString = req.params.id;
-	UserSchema.find({_id:idString},function(err,user){
-		console.log(user);
-		if(err) throw err;
-		res.render('profile',{
-			user : user
-		})	
+	UserSchema.findOne({_id:idString},function(err,user){
+		OrderSchema.find({onwer_id:user._id}, function(err, ordersold){
+			OrderSchema.find({customer_id:user._id}, function(err, orderbought){
+				MenuSchema.find({},function(err,posts){
+					RequestSchema.find({},function(err,requests){
+						console.log(user);
+						if(err) throw err;
+						res.render('profile',{
+							user : user,
+							ordersold : ordersold,
+							orderbought : orderbought,
+							posts : posts,
+							requests : requests
+						})	
+					})
+				})
+			});
+		});
 	})
 });
 

@@ -7,7 +7,7 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 var orderSchema = mongoose.Schema({
 	user_id : String,
 	timestamp : Date,
-	order_id : String,
+	conversation_id : String,
 	content : String
 });
 

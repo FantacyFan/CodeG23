@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var OrderSchema = require('../models/order');
 var MenuSchema = require('../models/menu');
-var MessageSchema = require('../models/message');
 var moment = require('moment');
 var ObjectId = require('mongoose').Types.ObjectId;
 
@@ -37,14 +36,11 @@ router.get('/:id', function(req, res) {
 	OrderSchema.findOne({_id:order_id},function(err,order){
 		var menu_id = order.menu_id;
 		MenuSchema.findOne({_id:menu_id},function(err, menu){
-			MessageSchema.find({order_id:order_id},function(err, messages){
-				res.render('order',{
-					user : req.user,
-					messages : messages,
-					order : order,
-					menu  : menu
-				});
-			})
+			res.render('order',{
+				user : req.user,
+				order : order,
+				menu  : menu
+			});
 		});	
 	});
 });

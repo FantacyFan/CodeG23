@@ -7,6 +7,7 @@ router.get('/', function(req, res) {
 		if(err) throw err;
 		console.log(menus);
 		res.render('menus',{
+			'user' : req.user,
 			'menus': menus
 		});
 	});

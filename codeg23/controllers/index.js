@@ -113,6 +113,9 @@ module.exports = function(passport){
 	/* Menu controller */
 	router.use('/menu', require('./menu'));
 
+	/* Conversation controller */
+	router.use('/conversation', require('./conversation'));
+
 
 	return router;
 }
