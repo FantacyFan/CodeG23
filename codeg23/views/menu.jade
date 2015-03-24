@@ -12,5 +12,13 @@ block content
     h2 Location: #{menu.location}
     br
     h2 Time: #{menu.order_time}
-    a(href="/conversation/"+conversation._id)
-        button Contact
+    if(user._id != menu.user_id)
+        form(method="post")
+            input(type="submit" name="action" value="Contact" id="contact_button")
+            if(request!=null)
+                p You said: #{request.text}
+                input(type="submit" name="action" value="Already Applied" disabled)
+            else
+                br
+                input(type="text" name="text")
+                input(type="submit" name="action" value="Apply")

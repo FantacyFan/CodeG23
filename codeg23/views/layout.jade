@@ -15,10 +15,10 @@ html
 body
 	a(href='/') Login    
 	a(href='/register') Register    	
-	a(href='/menus') Menus    	
-	a(href='/profile') Profile    	  	
+	a(href='/menus') Menus 
+	if(user!=null)    	
+		a(href='/profile/'+user._id) #{user.username}    	  	
 	a(href='/order') Order
-	br
-	a(href='/profile/'+user._id) #{user.username}  	   	
+	br 	   	
 	block content
 

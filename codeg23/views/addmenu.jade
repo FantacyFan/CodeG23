@@ -1,8 +1,7 @@
 extends layout
 
-
 block content
-    form.form-horizontal(action="/menu/add" method="post")
+    form.form-horizontal(action="/menus/add", method="post")
         // Form Name
         legend Add Menu
         // Text input
@@ -66,4 +65,4 @@ block content
           .controls
             button.btn.btn-default(type='reset') Cancel
             |     
-            button.btn.btn-success(type='submit') Add
+            button.btn.btn-success(type='submit', name='action', value="Add") Add

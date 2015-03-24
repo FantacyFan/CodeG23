@@ -15,15 +15,18 @@ block content
 			h2 My Posts
 			for one in posts
 				a(href="/menu/"+one._id) #{one._id}
+				br
 		.my-order-sold
 			h2 Sold Order
 			for one in ordersold
 				a(href="/order/"+one._id) #{one._id}
+				br
 	.customer-console
 		.my-requests
 			h2 My Requests
 			for one in requests
-				a(href="/request/"+one._id) #{one._id}
+				a(href="/menu/"+one.menu_id) #{one._id}
+				br
 		.my-order-bought
 			h2 Bought Order
 			for one in orderbought

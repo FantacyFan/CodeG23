@@ -25,23 +25,32 @@ router.get('/:id', function(req, res) {
 	// });
 	var idString = req.params.id;
 	UserSchema.findOne({_id:idString},function(err,user){
-		OrderSchema.find({onwer_id:user._id}, function(err, ordersold){
-			OrderSchema.find({customer_id:user._id}, function(err, orderbought){
-				MenuSchema.find({},function(err,posts){
-					RequestSchema.find({},function(err,requests){
-						console.log(user);
-						if(err) throw err;
-						res.render('profile',{
-							user : user,
-							ordersold : ordersold,
-							orderbought : orderbought,
-							posts : posts,
-							requests : requests
-						})	
-					})
-				})
+		if(user==null){
+			var err = new Error('Not Found');
+    		err.status = 404;
+			res.render({
+				user : req.user,
+				error : err
 			});
-		});
+		} else {
+			OrderSchema.find({onwer_id:user._id}, function(err, ordersold){
+				OrderSchema.find({customer_id:user._id}, function(err, orderbought){
+					MenuSchema.find({user_id:user._id},function(err,posts){
+						RequestSchema.find({},function(err,requests){
+							console.log(user);
+							if(err) throw err;
+							res.render('profile',{
+								user : user,
+								ordersold : ordersold,
+								orderbought : orderbought,
+								posts : posts,
+								requests : requests
+							})	
+						})
+					})
+				});
+			});
+		}
 	})
 });
 
