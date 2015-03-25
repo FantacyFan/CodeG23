@@ -94,6 +94,8 @@ router.get('/overview/:id', function(req, res) {
 				error : err
 			});
 		} else {
+			console.log("found");
+			console.log(user);
 			res.render('profile',{
 				target_user : user,
 				user : req.user,

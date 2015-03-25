@@ -22,7 +22,7 @@ router.get('/add',function(req, res){
 
 router.post('/add', function(req, res){
 	var action = req.body.action;
-	console.log("add post");
+	//console.log("add post");
 	switch(action){
 		case "Add":
 			console.log("Add Menu");

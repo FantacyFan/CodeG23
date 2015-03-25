@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+  	<% include  ../views/head %>
+</head>
+<body>
+	<% include ../views/nav %>
+	<div class="profile-detail">
+		<h1>Profile Page</h1>
+		<h2>Fullname <%= target_user.fullname %></h2>
+		<h4>Email: <%= target_user.email %></h4>
+		<h4>Address: <%= target_user.address %></h4>
+		<h4>Customer Rate: <%= target_user.customer_rate %></h4>
+		<h4>Owner Rate: <%= target_user.owner_rate %></h4>
+		<h4>Bio:</h4>
+		<p><%= target_user.bio %></p>
+	</div>
+	<% if(target_user._id > user._id || target_user._id < user._id){%>
+	<% } else {%>
+	<div class="owner-console">
+	    <div class="my-posts"><a href="/profile/posts">Posts</a></div>
+	    <div class="my-order-sold"><a href="/profile/sold">Sold</a></div>
+	</div>
+	<div class="customer-console">
+	    <div class="my-requests"><a href="/profile/requests">Requests</a></div>
+	    <div class="my-order-bought"><a href="/profile/bought">Bought</a></div>
+	</div>
+	<% } %>
+</body>

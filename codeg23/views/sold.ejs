@@ -1,0 +1,13 @@
+<html lang="en">
+<head>
+  	<% include  ../views/head %>
+</head>
+<body>
+	<% include ../views/nav %>
+	<h2>Sold</h2>
+	<ul>
+		<% sold.forEach(function(s){%>
+		<li><%= s._id %></li>
+		<% }) %>
+  	</ul>
+</body>

@@ -19,6 +19,10 @@ router.get('/:id', function(req, res) {
 		} else {
 			RequestSchema.findOne({owner_id:menu.user_id, customer_id:req.user._id, menu_id:menu._id}, function(err,request){
 				//console.log("Menu page user info: "+req.user);
+				//console.log(request);
+				if(request==null){
+					request = undefined;
+				}
 				res.render('menu',{
 					'request' : request,
 					'user' : req.user,

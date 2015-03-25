@@ -1,0 +1,19 @@
+<html lang="en">
+<head>
+  	<% include  ../views/head %>
+</head>
+<body>
+	<% include ../views/nav %>
+	<h2>Requests</h2>
+	<ul>
+		<% requests.forEach(function(r) {%>
+	  	<li>
+	    	<p><%= r._id %></p>
+	    	<form method="post">
+	      		<input type="hidden" name="reqid" value="<%= r._id %>"/>
+	      		<input type="submit" value="Delete"/>
+	    	</form>
+	  	</li>
+	  	<% }) %>
+	</ul>
+</body>

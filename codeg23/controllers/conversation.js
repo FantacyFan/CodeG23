@@ -9,6 +9,7 @@ router.get('/:id', function(req, res) {
 	ConversationSchema.findOne({_id:conversation_id}, function(err, conversation){
 		MessageSchema.find({conversation_id:conversation_id},function(err, messages){
 			MenuSchema.findOne({_id:conversation.menu_id}, function(err, menu){
+				console.log(messages);
 				res.render('conversation',{
 					user : req.user,
 					menu : menu,

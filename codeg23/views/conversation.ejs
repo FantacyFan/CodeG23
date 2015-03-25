@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+  	<% include  ../views/head %>
+</head>
+<body>
+	<% include ../views/nav %>
+	<div class="menu-overview">
+	  	<h4>Menu: <%= menu.title %></h4>
+	  	<h4>Type: <%= menu.type %></h4>
+	</div>
+	<input id="m" placeholder="Please input your message"/><br/>
+	<button id="send" onclick="sendMsg(this)" name="<%= conversation._id %>" value="<%= user._id %>">Send</button>
+	<ul id="msglist">
+		<% messages.forEach(function(message){ %>
+	  	<li><%= message.content %></li>
+		<% }) %>
+	</ul>
+	<script>
+	  	var socket = io();
+	  	var conversation_id = document.getElementById("send").name;
+	  	var user_id = document.getElementById("send").value;
+	  	function sendMsg(obj){
+	  		socket.emit('conversation', conversation_id+'_'+user_id+'_'+$('#m').val());
+	  		$('#m').val('');
+	  		return false;
+	  	};
+	  	socket.on('conversation-'+conversation_id, function(msg){
+	  		$('#msglist').append($('<li>').text(msg));
+	  	});
+	</script>
+</body>
+

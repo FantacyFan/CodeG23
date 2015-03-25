@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+  <% include  ../views/head %>
+</head>
+<body class="container">
+	<% include ../views/nav %>
+	<div class="container">  
+	  <p>
+	    <h2>Menus</h2>
+	    <button type="button" onclick="location.href='/menus/add'" class="btn btn-primary">Add Menu</button>
+	  </p>              
+	  <table class="table">
+	    <thead>
+	      <tr>
+	        <th>Title</th>        
+	        <th>Location</th>        
+	        <th>Type</th>
+	        <th>Price</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	    	<% menus.forEach(function(menu){%>
+	      	<tr class="success">
+		        <td><a href="/menu/<%= menu._id %>"><%= menu.title %></a><td>
+		        <td><%= menu.location %></td>
+		        <td><%= menu.type %></td>
+		        <td><%= menu.price %></td>
+	      	</tr>
+	      	<% }) %>
+	    </tbody>
+	  </table>
+	</div>
+</body>
