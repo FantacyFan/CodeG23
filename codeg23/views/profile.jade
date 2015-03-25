@@ -3,33 +3,22 @@ extends layout
 block content
 	.profile-detail
 		h1 Profile Page
-		h2 Fullname #{user.fullname}
-		h4 Email: #{user.email}
-		h4 Address: #{user.address}
-		h4 Customer Rate: #{user.customer_rate}
-		h4 Owner Rate: #{user.owner_rate}
+		h2 Fullname #{target_user.fullname}
+		h4 Email: #{target_user.email}
+		h4 Address: #{target_user.address}
+		h4 Customer Rate: #{target_user.customer_rate}
+		h4 Owner Rate: #{target_user.owner_rate}
 		h4 Bio:
 		p #{user.bio}
-	.owner-console
-		.my-posts
-			h2 My Posts
-			for one in posts
-				a(href="/menu/"+one._id) #{one._id}
-				br
-		.my-order-sold
-			h2 Sold Order
-			for one in ordersold
-				a(href="/order/"+one._id) #{one._id}
-				br
-	.customer-console
-		.my-requests
-			h2 My Requests
-			for one in requests
-				a(href="/menu/"+one.menu_id) #{one._id}
-				br
-		.my-order-bought
-			h2 Bought Order
-			for one in orderbought
-				a(href="/order/"+one._id) #{one._id}
-				br
+	if(!(target_user._id>user._id || target_user._id<user._id))
+		.owner-console
+			.my-posts
+				a(href="/profile/posts") Posts
+			.my-order-sold
+				a(href="/profile/sold") Sold
+		.customer-console
+			.my-requests
+				a(href="/profile/requests") Requests
+			.my-order-bought
+				a(href="/profile/bought") Bought
 

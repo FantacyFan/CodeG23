@@ -5,8 +5,68 @@ var MenuSchema = require('../models/menu');
 var RequestSchema = require('../models/request');
 var OrderSchema = require('../models/order');
 
+/* Requests page */
+router.get('/requests', function(req, res){
+	RequestSchema.find({customer_id:req.user._id},function(err,requests){
+		res.render("requests", {
+			requests : requests,
+			user : req.user
+		})
+	})
+})
+
+/* Requests page */
+router.post('/requests', function(req, res){
+	var reqId = req.body.reqid;
+	console.log(reqId);
+	RequestSchema.remove({_id:reqId}, function(err){
+		if(err){
+			console.log(err);
+		}
+		res.redirect('/profile/requests');
+	})
+})
+
+/* Requests page */
+router.get('/posts', function(req, res){
+	MenuSchema.find({user_id:req.user._id},function(err,posts){
+		res.render("posts", {
+			posts : posts,
+			user : req.user
+		})
+	})
+})
+
+/* Requests page */
+router.post('/posts', function(req, res){
+	var menuId = req.body.menuid;
+	console.log(menuId);
+	res.redirect('/profile/posts')
+})
+
+/* Requests page */
+router.get('/sold', function(req, res){
+	OrderSchema.find({onwer_id:req.user._id}, function(err, ordersold){
+		res.render("sold", {
+			sold : ordersold,
+			user : req.user
+		})
+	})
+})
+
+
+/* Requests page */
+router.get('/bought', function(req, res){
+	OrderSchema.find({customer_id:req.user._id}, function(err, orderbought){
+		res.render("bought", {
+			bought : orderbought,
+			user : req.user
+		})
+	})
+})
+
 /* Get profile page */
-router.get('/:id', function(req, res) {
+router.get('/overview/:id', function(req, res) {
 	// var record = new UserSchema({
 	// 	fullname: "Long",
 	// 	email: "lm675@cornell.edu",
@@ -24,6 +84,7 @@ router.get('/:id', function(req, res) {
 	// 	console.log(123);
 	// });
 	var idString = req.params.id;
+	console.log(idString);
 	UserSchema.findOne({_id:idString},function(err,user){
 		if(user==null){
 			var err = new Error('Not Found');
@@ -33,23 +94,11 @@ router.get('/:id', function(req, res) {
 				error : err
 			});
 		} else {
-			OrderSchema.find({onwer_id:user._id}, function(err, ordersold){
-				OrderSchema.find({customer_id:user._id}, function(err, orderbought){
-					MenuSchema.find({user_id:user._id},function(err,posts){
-						RequestSchema.find({},function(err,requests){
-							console.log(user);
-							if(err) throw err;
-							res.render('profile',{
-								user : user,
-								ordersold : ordersold,
-								orderbought : orderbought,
-								posts : posts,
-								requests : requests
-							})	
-						})
-					})
-				});
-			});
+			res.render('profile',{
+				target_user : user,
+				user : req.user,
+			})	
+
 		}
 	})
 });

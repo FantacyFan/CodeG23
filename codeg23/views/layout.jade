@@ -17,7 +17,7 @@ body
 	a(href='/register') Register    	
 	a(href='/menus') Menus 
 	if(user!=null)    	
-		a(href='/profile/'+user._id) #{user.username}    	  	
+		a(href='/profile/overview/'+user._id) #{user.username}    	  	
 	a(href='/order') Order
 	br 	   	
 	block content
