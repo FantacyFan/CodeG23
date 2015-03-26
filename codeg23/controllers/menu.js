@@ -5,8 +5,27 @@ var ConversationSchema = require('../models/conversation');
 var RequestSchema = require('../models/request');
 var moment = require('moment');
 
-/* Get profile page */
-router.get('/:id', function(req, res) {
+/* Get the menu edit page */
+router.get('/edit/:id',function(req, res){
+	MenuSchema.findOne({_id: req.params.id}, function(err,menu){
+		if(menu==null){
+			var err = new Error('Not Found');
+    		err.status = 404;
+			res.render({
+				user : req.user,
+				error : err
+			});
+		} else {
+			res.render('editmenu',{
+				'user' : req.user,
+				'menu': menu
+			});
+		}
+	});
+});
+
+/* Get menu detail page */
+router.get('/detail/:id', function(req, res) {
 	//get  menus
 	MenuSchema.findOne({_id: req.params.id}, function(err,menu){
 		if(menu==null){
@@ -33,8 +52,8 @@ router.get('/:id', function(req, res) {
 	});
 });
 
-/* Handle actions from menu page */
-router.post("/:id", function(req, res){
+/* Handle post actions from menu page */
+router.post("/detail/:id", function(req, res){
 	var _menuId = req.params.id;
 	var action = req.body.action;
 	console.log("Action is:"+action);

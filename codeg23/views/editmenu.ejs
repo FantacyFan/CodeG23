@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+  	<% include  ../views/head %>
+</head>
+<body>
+	<% include ../views/nav %>
+	<h1>Edit Menu</h1>
+	<form>
+		<label for="menuTitle">Menu Title: </label>
+		<input id="menuTitle" name="title" value="<%= menu.title %>"/>
+		<label for="menuDetail">Menu Detail: </label>
+		<input type="textarea" id="menuDetail" name="detail" value="<%= menu.detail %>"/>
+		<label for="menuLocation">Menu Location: </label>
+		<input id="menuLocation" name="location" value="<%= menu.location %>"/>
+		<label for="menuPrice">Menu Price: </label>
+		<input id="menuPrice" name="price" value="<%= menu.price %>"/>
+		<label for="menuQuantity">Menu Quantity: </label>
+		<select id="menuQuantity" name="quantity" value="<%= menu.quantity %>" onload="getDefaultOption()">
+	        <option id="quantity1">1</option>    
+	        <option id="quantity2">2</option>      
+	        <option id="quantity3">3</option>      
+	        <option id="quantity4">4</option>      
+	        <option id="quantity5">5</option>
+      	</select>
+      	<input type="submit" value="Submit">
+	</form>
+	<button onclick="location.href='/menu/detail/<%= menu._id %>'">Cancel</button>
+	<script>
+		function getDefaultOption(){
+			var defaultValue = $("#menuQuantity").attr("value");
+			$("#quantity"+defaultValue).prop("selected",true);
+		}
+	</script>
+</body>

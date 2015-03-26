@@ -66,7 +66,7 @@ router.get('/bought', function(req, res){
 })
 
 /* Get profile page */
-router.get('/overview/:id', function(req, res) {
+router.get('/detail/:id', function(req, res) {
 	// var record = new UserSchema({
 	// 	fullname: "Long",
 	// 	email: "lm675@cornell.edu",

@@ -22,5 +22,7 @@
 	    <input type="submit" name="action" value="Apply"/>
 	    <% } %>
   	</form>
+  	<% } else {%>
+  	<button onclick="location.href='/menu/edit/<%= menu._id %>'">Edit Menu</button>
   	<% } %>
 </body>

@@ -1,7 +1,7 @@
 <div class="nav-bar">
 	<a href="/menus">Menus</a>
 	<% if(typeof user != 'undefined') {%>
-	<a href="/profile/overview/<%= user._id %>"><%= user.username%></a>
+	<a href="/profile/detail/<%= user._id %>"><%= user.username%></a>
 	<a href="/logout">Logout</a>
 	<% } else { %>
 	<a href="/">Login</a>
