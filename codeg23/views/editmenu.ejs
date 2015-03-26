@@ -2,10 +2,10 @@
 <head>
   	<% include  ../views/head %>
 </head>
-<body>
+<body onload="getDefaultOption()">
 	<% include ../views/nav %>
 	<h1>Edit Menu</h1>
-	<form>
+	<form method="post">
 		<label for="menuTitle">Menu Title: </label>
 		<input id="menuTitle" name="title" value="<%= menu.title %>"/>
 		<label for="menuDetail">Menu Detail: </label>
@@ -15,7 +15,7 @@
 		<label for="menuPrice">Menu Price: </label>
 		<input id="menuPrice" name="price" value="<%= menu.price %>"/>
 		<label for="menuQuantity">Menu Quantity: </label>
-		<select id="menuQuantity" name="quantity" value="<%= menu.quantity %>" onload="getDefaultOption()">
+		<select id="menuQuantity" name="quantity" value="<%= menu.quantity %>">
 	        <option id="quantity1">1</option>    
 	        <option id="quantity2">2</option>      
 	        <option id="quantity3">3</option>      

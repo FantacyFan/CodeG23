@@ -24,6 +24,18 @@ router.get('/edit/:id',function(req, res){
 	});
 });
 
+/* Handle edit page post */
+router.post('/edit/:id', function(req, res){
+	var title = req.body.title;
+	var detail = req.body.detail;
+	var location = req.body.location;
+	var quantity = req.body.quantity;
+	var price = req.body.price;
+	MenuSchema.update({_id: req.params.id},{title:title,detail:detail,location:location,quantity:quantity,price:price},function(err){
+		res.redirect('/menu/detail/'+req.params.id);
+	});
+})
+
 /* Get menu detail page */
 router.get('/detail/:id', function(req, res) {
 	//get  menus
