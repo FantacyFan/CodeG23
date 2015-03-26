@@ -16,6 +16,7 @@
 	</div>
 	<% if(target_user._id > user._id || target_user._id < user._id){%>
 	<% } else {%>
+	<button onclick="location.href='/profile/edit'">Edit Profile</button>
 	<div class="owner-console">
 	    <div class="my-posts"><a href="/profile/posts">Posts</a></div>
 	    <div class="my-order-sold"><a href="/profile/sold">Sold</a></div>

@@ -1,0 +1,16 @@
+<html lang="en">
+<head>
+  	<% include  ../views/head %>
+</head>
+<body onload="getDefaultOption()">
+	<% include ../views/nav %>
+	<h1>Edit Profile</h1>
+	<form method="post">
+		<label for="profileAddress">Address: </label>
+		<input id="profileAddress" name="address" value="<%= user.address %>"/>
+		<label for="profileBio">Bio: </label>
+		<input id="profileBio" type="textarea" name="bio" value="<%= user.bio %>"/>
+      	<input type="submit" value="Submit">
+	</form>
+	<button onclick="location.href='/profile/detail/<%= user._id %>'">Cancel</button>
+</body>

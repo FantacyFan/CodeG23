@@ -54,6 +54,22 @@ router.get('/sold', function(req, res){
 	})
 })
 
+/* Get the menu edit page */
+router.get('/edit',function(req, res){
+	res.render('editprofile',{
+		'user' : req.user
+	});
+});
+
+/* Handle edit page post */
+router.post('/edit', function(req, res){
+	var bio = req.body.bio;
+	var address = req.body.address;
+	UserSchema.update({_id: req.user._id},{bio:bio,address:address},function(err){
+		res.redirect('/profile/detail/'+req.user._id);
+	});
+})
+
 
 /* Requests page */
 router.get('/bought', function(req, res){
