@@ -5,10 +5,64 @@ var ConversationSchema = require('../models/conversation');
 var RequestSchema = require('../models/request');
 var moment = require('moment');
 
+/* Add Menu */
+router.get('/add',function(req, res){
+	res.render('addmenu',{
+		'user' : req.user
+	})
+})
+
+router.post('/add', function(req, res){
+	var action = req.body.action;
+	//console.log("add post");
+	switch(action){
+		case "Add":
+			console.log("Add Menu");
+			var _title 				= req.body.title;
+			var _detail 			= req.body.detail;
+			var _type 				= req.body.type; 
+			var _location 			= req.body.location;
+			var _quantity			= req.body.quantity; 
+			var _price 				= req.body.price;
+			var _now				= moment();
+			//create a new menu
+			var _menu = MenuSchema({
+				user_id: req.user._id,
+				title: _title,
+				type: _type,
+				quantity: _quantity,
+				detail: _detail,
+				price: _price,
+				order_time: _now,
+				location: _location,
+				other: 'none'
+			});
+			//save the new menu
+			_menu.save(function(err){
+				if(err) throw err;
+				//get all menus
+				MenuSchema.find({}, function(err,menus){
+					if(err) throw err;
+					console.log(menus);
+					res.render('menus',{
+						'user' : req.user,
+						'menus': menus
+					});
+				});
+			});
+			res.redirect('/menus');
+			break;
+		default:
+			console.log("default");
+			res.redirect('/menus');
+			break;
+	}
+})
 /* Get the menu edit page */
 router.get('/edit/:id',function(req, res){
 	MenuSchema.findOne({_id: req.params.id}, function(err,menu){
-		if(menu==null){
+		// authenticate request first
+		if(menu==null || menu.user_id!=req.user._id){
 			var err = new Error('Not Found');
     		err.status = 404;
 			res.render({
@@ -26,13 +80,24 @@ router.get('/edit/:id',function(req, res){
 
 /* Handle edit page post */
 router.post('/edit/:id', function(req, res){
-	var title = req.body.title;
-	var detail = req.body.detail;
-	var location = req.body.location;
-	var quantity = req.body.quantity;
-	var price = req.body.price;
-	MenuSchema.update({_id: req.params.id},{title:title,detail:detail,location:location,quantity:quantity,price:price},function(err){
-		res.redirect('/menu/detail/'+req.params.id);
+	MenuSchema.findOne({_id: req.params.id}, function(err,menu){
+		if(menu.user_id!=req.user._id){
+			var err = new Error('Not Found');
+    		err.status = 404;
+			res.render({
+				user : req.user,
+				error : err
+			});
+		} else {
+			var title = req.body.title;
+			var detail = req.body.detail;
+			var location = req.body.location;
+			var quantity = req.body.quantity;
+			var price = req.body.price;
+			MenuSchema.update({_id: req.params.id},{title:title,detail:detail,location:location,quantity:quantity,price:price},function(err){
+				res.redirect('/menu/detail/'+req.params.id);
+			});
+		}
 	});
 })
 

@@ -69,10 +69,10 @@ module.exports = function(passport){
 	router.use('/menus', require('./menus'));
 
 	/* Menu detail controller */
-	router.use('/menu', require('./menu'));
+	router.use('/menu', isAuthenticated, require('./menu'));
 
 	/* Conversation controller */
-	router.use('/conversation', require('./conversation'));
+	router.use('/conversation', isAuthenticated, require('./conversation'));
 
 
 	return router;
