@@ -185,17 +185,17 @@ router.post("/detail/:id", function(req, res){
 								console.log(err);
 								res.status(500).json({status:'failure'})
 							}
-							res.redirect("/menu/"+_menuId);
+							res.redirect("/menu/detail/"+_menuId);
 						});
 					/* If the user has applied before, just redirect to menu page */
 					} else {
-						res.redirect("/menu/"+_menuId);
+						res.redirect("/menu/detail/"+_menuId);
 					}
 				});
 			});
 			break;
 		default:
-			res.redirect("/menu/"+_menuId);
+			res.redirect("/menu/detail/"+_menuId);
 			break;
 	}
 })
