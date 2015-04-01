@@ -1,3 +1,7 @@
+body{
+	overflow-x: hidden;
+}
+
 /*start of navigation bar*/
 .nav-bar{
 	border-bottom: 1px solid #ddd;
@@ -69,7 +73,6 @@ label.control-label span {
 
 /*google map*/
 #map-canvas {
-    width: 100%;
     height: 800px;
     background-color: #CCC;
     margin-top: 0px;
@@ -116,3 +119,4 @@ label.control-label span {
 	padding: 5px;
 }
 /*end list of menu*/
+
