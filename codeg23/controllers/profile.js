@@ -4,6 +4,20 @@ var UserSchema = require('../models/user');
 var MenuSchema = require('../models/menu');
 var RequestSchema = require('../models/request');
 var OrderSchema = require('../models/order');
+var ReviewSchema = require('../models/review');
+
+
+/* Review Page */
+router.get('/reviews', function(req, res){
+	ReviewSchema.find({reviewer_id:req.user._id}, function(err,reviewGiven){
+		ReviewSchema.find({receiver_id:req.user._id}, function(err,reviewReceived){
+			res.render("reviews", {
+				reviewGiven:reviewGiven,
+				reviewReceived:reviewReceived 
+			})
+		})
+	})
+})
 
 /* Requests page */
 router.get('/requests', function(req, res){

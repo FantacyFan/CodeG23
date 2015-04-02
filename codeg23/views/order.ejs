@@ -9,4 +9,32 @@
 	<h2>Title: <%= menu.title %></h2>
 	<h4>Detail: <%= menu.detail %></h4>
 	<h4>Date: <%= order.timestamp %></h4>
+	<% if(review != undefined) {%>
+		<div>
+			<h2>Your review:</h2></br>
+			<h4><%= review.text %></h4></br>
+			<h4><%= review.timestamp%></h4>
+		</div>
+	<% } else { %>
+		<form method='post' action='/review/add'>
+			<input type='hidden' name='menuId' value="<%= menu._id %>"/>
+			<input type='hidden' name='orderId' value="<%= order._id %>"/>
+			<% if(user._id != menu.user_id) { %>
+			<input type='hidden' name='receiverId' value="<%= order.owner_id %>"/>
+			<% } else {%>
+			<input type='hidden' name='receiverId' value="<%= order.customer_id %>"/>
+			<% } %>
+			<label for='reviewText'>Write Your Review</label>
+			<input type='text' name='text' id='reviewText'/>
+			<label for='reviewRate'>Rate Your Order</label>
+			<select type='text' name='rate' id='reviewRate'>
+				<option value='1'>1</option>
+				<option value='2'>2</option>
+				<option value='3'>3</option>
+				<option value='4'>4</option>
+				<option value='5'>5</option>
+			</select>
+			<input type='submit' value='Submit'/>
+		</form>
+	<% } %>
 </body>

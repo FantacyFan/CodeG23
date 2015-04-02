@@ -74,6 +74,10 @@ module.exports = function(passport){
 	/* Conversation controller */
 	router.use('/conversation', isAuthenticated, require('./conversation'));
 
+	/* Review controller */
+	router.use('/review', isAuthenticated, require('./review'));
+
+
 
 	return router;
 }

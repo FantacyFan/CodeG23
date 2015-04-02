@@ -5,9 +5,9 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 
 // define the schema for our order model
 var orderSchema = mongoose.Schema({
-	owner_id : ObjectId,
-	customer_id : ObjectId,
-	menu_id : ObjectId,
+	owner_id : String,
+	customer_id : String,
+	menu_id : String,
 	timestamp : Date,
 	status : String
 });
