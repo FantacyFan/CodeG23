@@ -120,3 +120,37 @@ label.control-label span {
 }
 /*end list of menu*/
 
+
+/*search form*/
+#search-form{
+	float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px;
+}
+
+#search-form .form-group{
+	float: left;
+	display: inline-block;
+}
+
+#search-form .datePicker{
+	float: left;
+	display: inline-block;
+}
+
+#search-form .guestNumber{
+	float: left;
+	display: inline-block;
+}
+
+#search-form .foodType{
+	float: left;
+	display: inline-block;
+	padding-right: 20px;
+}
+
+#front-page{
+	border-bottom: 1px solid #ddd;
+}

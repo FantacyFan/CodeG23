@@ -21,20 +21,20 @@ module.exports = function(passport){
 	/* router.use('/your_controller',require('./your_controller_filename')) */
 
 	/* GET Home Page */
-	router.get('/index', isAuthenticated, function(req, res){
+	router.get('/', function(req, res){
 		res.render('index', { user: req.user });
 	});
 
 	/* Login controller */
 	/* GET login page. */
-	router.get('/', function(req, res) {
+	router.get('/login', function(req, res) {
     	// Display the Login page with any flash message, if any
 		res.render('login', { message: req.flash('message') });
 	});
 
 	/* Handle Login POST */
 	router.post('/login', passport.authenticate('login', {
-		successRedirect: '/index',
+		successRedirect: '/',
 		failureRedirect: '/',
 		failureFlash : true  
 	}));
@@ -47,7 +47,7 @@ module.exports = function(passport){
 
 	/* Handle Registration POST */
 	router.post('/register', passport.authenticate('register', {
-		successRedirect: '/index',
+		successRedirect: '/',
 		failureRedirect: '/register',
 		failureFlash : true  
 	}));

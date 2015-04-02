@@ -10,10 +10,13 @@
 			<li role="presentation"><a href="/profile/detail/<%= user._id %>"><%= user.username%></a></li>
 
 			<li role="presentation"><a href="/logout">Logout</a></li>
-			<% } else { %>
-		 	<li role="presentation"><a href="/">Login</a></li>
-			<li role="presentation"><a href="/register">Register</a></li>
-			<% } %>
 		</div>
+		<% } else { %>
+		<div class="floatright">
+		 	<li role="presentation"><a href="/login">Login</a></li>
+			<li role="presentation"><a href="/register">Register</a></li>
+		</div>
+		<% } %>
+		
 	</ul>
 </div>
