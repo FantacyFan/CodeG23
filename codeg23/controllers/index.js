@@ -1,5 +1,6 @@
 var express = require('express');
 // var app = express();
+var url = require('url');
 var router = express.Router();
 
 ///
@@ -22,8 +23,14 @@ module.exports = function(passport){
 
 	/* GET Home Page */
 	router.get('/', function(req, res){
+		console.log(req.headers);
+		console.log(req.headers.range);
+		console.log(url.parse(req.url).pathname);
 		res.render('index', { user: req.user });
 	});
+
+	/* GET Home Page Video */
+	router.use('/video', require('./video'));
 
 	/* Login controller */
 	/* GET login page. */

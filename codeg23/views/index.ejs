@@ -7,8 +7,17 @@
 	
 	<div class="row" id="front-page">
 		<div id="bg_container">
-		    <iframe id="bg" src="//www.youtube.com/embed/ZHJiMrUaxm0?autoplay=1&amp;controls=0&amp;loop=1&amp;showinfo=0&amp;modestbranding=1&amp;disablekb=1&amp;enablejsapi=1&amp;playlist=PLAYLIST_ID_HERE" frameborder="0"></iframe>
+			<video controls id="bg" autoplay loop muted>
+	            <source src="video/homepage.mp4" type="video/mp4"/>
+	            <source src="video/homepage.webm" type="video/webm"/>
+	            <source src="video/homepage.ogg" type="video/ogg"/>
+	            <!-- fallback -->
+	            Your browser does not support the <code>video</code> element.
+        	</video>
 		</div>
+<!-- 		<div id="bg_container">
+		    <iframe id="bg" src="//www.youtube.com/embed/ZHJiMrUaxm0?autoplay=1&amp;controls=0&amp;loop=1&amp;showinfo=0&amp;modestbranding=1&amp;disablekb=1&amp;enablejsapi=1&amp;playlist=PLAYLIST_ID_HERE" frameborder="0"></iframe>
+		</div> -->
 	    <div class="col-sm-9 col-centered" id="search-form"> 
 		    <div class="search-form">  	
 	    		<form class="navbar-form navbar-left" role="search">
