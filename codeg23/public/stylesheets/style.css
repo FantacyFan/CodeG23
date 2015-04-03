@@ -218,6 +218,25 @@ label.control-label span {
 }
 
 
+/*add menu*/
+.add-menu{
+	width:100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.addmenu-form-horizontal{
+	padding: 20px 300px;
+	width: 100%;
+}
+
+.addmenu-controls input{
+	width: 300px;
+}
+
+
+
+
 
 
 
