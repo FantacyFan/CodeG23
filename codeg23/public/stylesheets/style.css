@@ -193,5 +193,36 @@ label.control-label span {
     text-align: center;
 }
 
+/*sidebar in profile*/
+#sidebar {
+  height: 250px;
+  padding-top: 20px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+#sidebar .nav {
+  width: 95%;
+}
+#sidebar li {
+  border:0 #f2f2f2 solid;
+  border-bottom-width:1px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/*profile detail*/
+#head-photo{
+	height: 100px;
+	width: 100px;
+	display: inline-block;
+}
+
+
+
+
+
+
+
+
 
 
