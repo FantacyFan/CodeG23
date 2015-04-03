@@ -21,9 +21,9 @@ router.post('/',function(req, res) {
 	//var tomorrow = moment(today).add(1,'days');
 	console.log(university);
 	console.log(today.isValid());
-	if((!typeof univeristy === undefined)&&today.isValid()){
+	if(!(typeof university === undefined || university==="")&&today.isValid()){
 		console.log("All");
-		MenuSchema.find({univeristy:univeristy, host_time:today.toDate()}, function(err,menus){
+		MenuSchema.find({university:university, host_time:today.toDate()}, function(err,menus){
 			if(err) throw err;
 			//console.log(menus);
 			res.render('menus',{
@@ -31,9 +31,9 @@ router.post('/',function(req, res) {
 				'menus': menus
 			});
 		});
-	} else if(!typeof univeristy === undefined){
+	} else if(!((typeof university === undefined)||(university===""))){
 		console.log("Uni");
-		MenuSchema.find({univeristy:univeristy}, function(err,menus){
+		MenuSchema.find({university:university}, function(err,menus){
 			if(err) throw err;
 			console.log(menus);
 			res.render('menus',{
