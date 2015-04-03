@@ -6,8 +6,10 @@
 	<% include ../views/nav %>
 	
 	<div class="row" id="front-page">
-	    
-	    <div class="col-sm-8 col-centered" id="search-form"> 
+		<div id="bg_container">
+		    <iframe id="bg" src="//www.youtube.com/embed/ZHJiMrUaxm0?autoplay=1&amp;controls=0&amp;loop=1&amp;showinfo=0&amp;modestbranding=1&amp;disablekb=1&amp;enablejsapi=1&amp;playlist=PLAYLIST_ID_HERE" frameborder="0"></iframe>
+		</div>
+	    <div class="col-sm-9 col-centered" id="search-form"> 
 		    <div class="search-form">  	
 	    		<form class="navbar-form navbar-left" role="search">
 			        <div class="form-group">
@@ -68,11 +70,27 @@
 						  </ul>
 						</div>
 				    </div>
-			        <button type="submit" class="btn btn-default">Search</button>
+
+		        	<button type="submit" class="btn btn-default" id="search_button">Search</button>
+			    	
 			    </form>
 		    </div>
 		</div>
 	</div>
+
+		<div id="second-page">
+			This is the second page
+		</div>
+
+		<div id="third-page">
+			This is the third page
+		</div>
+
+		<div id="footer">
+			This is a footer
+		</div>
+
+	
 
 	<script>
 		$("#date-picker").datepicker();

@@ -1,6 +1,12 @@
 body{
 	overflow-x: hidden;
+	margin:0px;
 }
+
+#bg_container{ height:500px; overflow:hidden; z-index: 0;}
+
+#bg{ width:100%; height:550px; }
+
 
 /*start of navigation bar*/
 .nav-bar{
@@ -52,7 +58,7 @@ label.control-label span {
 }
 
 .input-group{
-	width: 20%;
+	width: 40%;
 }
 
 #date-picker{
@@ -66,8 +72,12 @@ label.control-label span {
 
 /*button style*/
 .btn{
-	width:120px;
+	width:150px;
 	padding: 5px 6px;
+}
+
+#btn-fbsignup{
+	width:180px;
 }
 /*end of button style*/
 
@@ -128,6 +138,7 @@ label.control-label span {
     margin-left: auto;
     margin-right: auto;
     padding: 0px;
+    z-index: 100;
 }
 
 #search-form .form-group{
@@ -151,6 +162,36 @@ label.control-label span {
 	padding-right: 20px;
 }
 
+.navbar-form{
+	margin-top: 28px !important;
+}
+
 #front-page{
 	border-bottom: 1px solid #ddd;
+	height:600px;
 }
+
+
+#second-page{
+	border-bottom: 1px solid #ddd;
+	height:610px;
+}
+
+#third-page{
+	border-bottom: 1px solid #ddd;
+	height:610px;
+}
+
+#footer{
+	clear: both;
+    position: relative;
+    z-index: 10;
+    height: 10em;
+    margin-top: -3em;
+    background-color: black;
+    color:white;
+    text-align: center;
+}
+
+
+

@@ -48,9 +48,12 @@ module.exports = function(passport){
 	/* Handle Registration POST */
 	router.post('/register', passport.authenticate('register', {
 		successRedirect: '/',
-		failureRedirect: '/register',
+		failureRedirect: '/',
 		failureFlash : true  
 	}));
+	// router.post('/register', function(){
+	// 	console.log("Enter");
+	// });
 
 	/* Handle Logout */
 	router.get('/logout', function(req, res) {

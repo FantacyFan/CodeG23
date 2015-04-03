@@ -79,6 +79,7 @@ module.exports = function(passport) {
                 // find a user in Mongo with provided username
                 User.findOne({ 'username' :  username }, function(err, user) {
                     // In case of any error, return using the done method
+                    console.log("Start to check username");
                     if (err){
                         console.log('Error in SignUp: '+err);
                         return done(err);
@@ -91,7 +92,7 @@ module.exports = function(passport) {
                         // if there is no user with that email
                         // create the user
                         var newUser = new User();
-
+                        console.log("User not exist");
                         // set the user's local credentials
                         newUser.username = username;
                         newUser.password = createHash(password);
@@ -113,7 +114,9 @@ module.exports = function(passport) {
             };
             // Delay the execution of findOrCreateUser and execute the method
             // in the next tick of the event loop
+            console.log("enter process");
             process.nextTick(findOrCreateUser);
+            console.log("Finish process");
         })
     );
 
