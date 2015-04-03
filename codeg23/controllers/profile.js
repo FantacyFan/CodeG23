@@ -114,7 +114,7 @@ router.get('/detail/:id', function(req, res) {
 	// 	console.log(123);
 	// });
 	var idString = req.params.id;
-	console.log(idString);
+	//console.log(idString);
 	UserSchema.findOne({_id:idString},function(err,user){
 		if(user==null){
 			var err = new Error('Not Found');
@@ -124,8 +124,8 @@ router.get('/detail/:id', function(req, res) {
 				error : err
 			});
 		} else {
-			console.log("found");
-			console.log(user);
+			//console.log("found");
+			//console.log(user);
 			res.render('profile',{
 				target_user : user,
 				user : req.user,

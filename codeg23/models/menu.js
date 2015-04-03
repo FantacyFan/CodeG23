@@ -12,8 +12,10 @@ var menuSchema = mongoose.Schema({
 	quantity: String,
 	detail: String,
 	price: Number,
-	order_time: Date,
+	create_time: Date,
+	host_time: Date,
 	location: String,
+	university: String,
 	other: String
 });
 

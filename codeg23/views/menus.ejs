@@ -39,52 +39,52 @@
 							</div>
 
 						    <!-- This is a dropdown menu for selecting how many guest will come -->
-						    <div class="col-md-3">
-						    <div class="guestNumber">
-						    	<div class="dropdown">
-								  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-								    Guest
-								    <span class="caret"></span>
-								  </button>
-								  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1 Guest</a></li>
-								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2 Guest</a></li>
-								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">3 Guest</a></li>
-								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">4 Guest</a></li>
-								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">5 Guest</a></li>
-								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">6 Guest</a></li>
-								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">7 Guest</a></li>
-								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">8 Guest</a></li>
-								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">8+ Guest</a></li>
-								  </ul>
-								</div>
-						    </div>
+<!-- 						<div class="col-md-3">
+							    <div class="guestNumber">
+							    	<div class="dropdown">
+									  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+									    Guest
+									    <span class="caret"></span>
+									  </button>
+									  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1 Guest</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2 Guest</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">3 Guest</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">4 Guest</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">5 Guest</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">6 Guest</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">7 Guest</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">8 Guest</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">8+ Guest</a></li>
+									  </ul>
+									</div>
+							    </div>
 							</div>
-
+ -->
 						    <!-- This is a dropdown menu for selecting food type -->
-						    <div class="col-md-3">
-						    <div class="foodType">
-						    	<div class="dropdown">
-								  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-								    Food Type
-								    <span class="caret"></span>
-								  </button>
-								  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" >
-								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">American</a></li>
-								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Chinese</a></li>
-								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Indian</a></li>
-								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Korean</a></li>
-								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Thai</a></li>
-								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Italian</a></li>
-								  </ul>
-								</div>
-						    </div>
+<!-- 						<div class="col-md-3">
+							    <div class="foodType">
+							    	<div class="dropdown">
+									  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+									    Food Type
+									    <span class="caret"></span>
+									  </button>
+									  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" >
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">American</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Chinese</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Indian</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Korean</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Thai</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Italian</a></li>
+									  </ul>
+									</div>
+							    </div>
 							</div>
 						</form>
-					    
+ -->					    
 					    <div class="col-md-12">
 					    <div class="addMenu">
-					    	<button type="button" onclick="location.href='/menu/add'" class="btn btn-primary">Add Menu</button>
+					    	<a href="/menu/add"><button type="button" onclick="location.href='/menu/add'" class="btn btn-primary">Add Menu</button></a>
 					    </div>
 						</div>
 
@@ -109,6 +109,12 @@
 						</li>
 						<li>
 							Price: <%= menu.price %> /person
+						</li>
+						<li>
+							Time: <%= menu.host_time %>
+						</li>
+						<li>
+							University: <%= menu.university %>
 						</li>
 					</ul>
 					</div>

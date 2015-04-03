@@ -23,9 +23,9 @@ module.exports = function(passport){
 
 	/* GET Home Page */
 	router.get('/', function(req, res){
-		console.log(req.headers);
-		console.log(req.headers.range);
-		console.log(url.parse(req.url).pathname);
+		//console.log(req.headers);
+		//console.log(req.headers.range);
+		//console.log(url.parse(req.url).pathname);
 		res.render('index', { user: req.user });
 	});
 

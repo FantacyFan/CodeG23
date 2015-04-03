@@ -24,7 +24,9 @@ router.post('/add', function(req, res){
 			var _location 			= req.body.location;
 			var _quantity			= req.body.quantity; 
 			var _price 				= req.body.price;
-			var _now				= moment();
+			var _university			= req.body.university;
+			var _now				= moment().format();
+			var _date				= moment(req.body.date).format();
 			//create a new menu
 			var _menu = MenuSchema({
 				user_id: req.user._id,
@@ -33,8 +35,10 @@ router.post('/add', function(req, res){
 				quantity: _quantity,
 				detail: _detail,
 				price: _price,
-				order_time: _now,
+				create_time: _now,
 				location: _location,
+				host_time: _date,
+				university: _university,
 				other: 'none'
 			});
 			//save the new menu
@@ -94,7 +98,15 @@ router.post('/edit/:id', function(req, res){
 			var location = req.body.location;
 			var quantity = req.body.quantity;
 			var price = req.body.price;
-			MenuSchema.update({_id: req.params.id},{title:title,detail:detail,location:location,quantity:quantity,price:price},function(err){
+			var university = req.body.university;
+			MenuSchema.update({_id: req.params.id},{
+				title:title,
+				detail:detail,
+				location:location,
+				quantity:quantity,
+				price:price,
+				university:university
+			},function(err){
 				res.redirect('/menu/detail/'+req.params.id);
 			});
 		}

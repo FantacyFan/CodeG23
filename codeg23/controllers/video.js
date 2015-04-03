@@ -30,9 +30,6 @@ fs.readFile(path.resolve(__dirname,"../public/videos/homepage.webm"), function (
 /* GET users listing. */
 router.get('/:videoname', function(req, res, next) {
 	var videoname = req.params.videoname;
-	console.log(req.headers);
-	console.log(req.headers.range);
-	console.log(videoname);
 	var total;
     if(videoname == "homepage.mp4"){
         total = homepage_mp4.length;
