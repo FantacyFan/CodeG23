@@ -2,6 +2,8 @@
 
 // load all the things we need
 var LocalStrategy   = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
+var config = require('../controllers//config');
 
 // load up the user model
 var User            = require('../models/user');
@@ -29,6 +31,37 @@ module.exports = function(passport) {
         });
     });
 
+
+    passport.use(new FacebookStrategy({
+        clientID: config.facebook_api_key,
+        clientSecret:config.facebook_api_secret ,
+        callbackURL: config.callback_url 
+    }, function(accessToken, refreshToken, profile, done){
+        console.log(profile);
+        User.findOne({'facebook_id':profile.id}, function(err, user){
+            if(user==null){
+               var newUser = new User();
+                console.log("Facebook user not exist");
+                // set the user's local credentials
+                newUser.firstname = profile._json.first_name;
+                newUser.lastname = profile._json.last_name;
+                newUser.gender = profile.gender;
+                newUser.facebook_id = profile.id;
+                // save the user
+                newUser.save(function(err) {
+                    if (err){
+                        console.log('Error in Saving user: '+err);  
+                        throw err;  
+                    }
+                    console.log('User Registration succesful');    
+                    return done(null, newUser);
+                });
+            } else {
+                done(null, user)
+            }
+        })
+    }))
+
     // =========================================================================
     // LOCAL SIGNUP ============================================================
     // =========================================================================
@@ -36,18 +69,21 @@ module.exports = function(passport) {
     // by default, if there was no name, it would just be called 'local'
 
     passport.use('login', new LocalStrategy({
-            passReqToCallback : true
-        },
-        function(req, username, password, done) { 
+        // by default, local strategy uses username and password, we will override with email
+        usernameField : 'email',
+        passwordField : 'password',
+        passReqToCallback : true // allows us to pass back the entire request to the callback
+    },
+    function(req, email, password, done) {
             // check in mongo if a user with username exists or not
-            User.findOne({ 'username' :  username }, 
+            User.findOne({ 'email' :  email }, 
                 function(err, user) {
                     // In case of any error, return using the done method
                     if (err)
                         return done(err);
                     // Username does not exist, log the error and redirect back
                     if (!user){
-                        console.log('User Not Found with username '+username);
+                        console.log('User Not Found with Email '+email);
                         return done(null, false, req.flash('message', 'User Not found.'));                 
                     }
                     // User exists but wrong password, log the error 
@@ -71,22 +107,25 @@ module.exports = function(passport) {
 
 
     passport.use('register', new LocalStrategy({
-            passReqToCallback : true // allows us to pass back the entire request to the callback
-        },
-        function(req, username, password, done) {
+        // by default, local strategy uses username and password, we will override with email
+        usernameField : 'email',
+        passwordField : 'password',
+        passReqToCallback : true // allows us to pass back the entire request to the callback
+    },
+    function(req, email, password, done) { // callback with email and password from our form
 
             findOrCreateUser = function(){
                 // find a user in Mongo with provided username
-                User.findOne({ 'username' :  username }, function(err, user) {
+                User.findOne({ 'email' :  email }, function(err, user) {
                     // In case of any error, return using the done method
-                    console.log("Start to check username");
+                    console.log("Start to check email");
                     if (err){
                         console.log('Error in SignUp: '+err);
                         return done(err);
                     }
                     // already exists
                     if (user) {
-                        console.log('User already exists with username: '+username);
+                        console.log('User already exists with email: '+email);
                         return done(null, false, req.flash('message','User Already Exists'));
                     } else {
                         // if there is no user with that email
@@ -94,12 +133,10 @@ module.exports = function(passport) {
                         var newUser = new User();
                         console.log("User not exist");
                         // set the user's local credentials
-                        newUser.username = username;
+                        newUser.email = email;
                         newUser.password = createHash(password);
-                        newUser.email = req.param('email');
-                        newUser.fullname = req.param('fullname');
-                        newUser.address = req.param('address');
-
+                        newUser.firstname = req.param('firstname');
+                        newUser.lastname = req.param('lastname');
                         // save the user
                         newUser.save(function(err) {
                             if (err){

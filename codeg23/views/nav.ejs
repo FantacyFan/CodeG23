@@ -10,7 +10,7 @@
 		</div>
 		<% if(typeof user != 'undefined') {%>
 		<div class="floatright">
-			<li role="presentation"><a href="/profile/detail/<%= user._id %>"><%= user.username%></a></li>
+			<li role="presentation"><a href="/profile/detail/<%= user._id %>"><%= user.firstname%></a></li>
 
 			<li role="presentation"><a href="/logout">Logout</a></li>
 		</div>
@@ -41,11 +41,11 @@
 			            <form id="loginform" class="form-horizontal" action="/login" method="post" role="form">                                   
 				            <div style="margin-bottom: 25px" class="input-group">
 				                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-				                <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email" style="width:200px;">                                        
+				                <input id="login-username" type="text" class="form-control" name="email" value="" placeholder="Email" style="width:200px;">                                        
 				            </div>                
 				            <div style="margin-bottom: 25px" class="input-group">
 				                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-				                <input id="login-password" type="password" class="form-control" name="password" placeholder="password" style="width:200px;">
+				                <input id="login-password" type="password" class="form-control" name="password" placeholder="Password" style="width:200px;">
 				            </div>                                                                   
 				            <div class="input-group">
 				                <div class="checkbox">
@@ -58,7 +58,7 @@
 				                <!-- Button -->
 				                <div class="col-sm-12 controls">
 				                    <button id="btn-login"   type="submit" class="btn btn-success">Login</button>
-				                    <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>
+				                    <a id="btn-fblogin" href="/auth/facebook" class="btn btn-primary">Login with Facebook</a>
 				                </div>
 				            </div>                                   
 			            </form>     
@@ -96,13 +96,11 @@
                                     <p>Error:</p>
                                     <span></span>
                                 </div>
-                                    
-                                
-                                  
+
                                 <div class="form-group">
-                                    <label for="username" class="col-md-3 control-label">Username</label>
+                                    <label for="email" class="col-md-3 control-label">Email</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="username" placeholder="Username" style="width:60%;">
+                                        <input type="text" class="form-control" name="email" placeholder="Email Address" style="width:60%;">
                                     </div>
                                 </div>
 
@@ -114,16 +112,23 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="email" class="col-md-3 control-label">Email</label>
+                                    <label for="email" class="col-md-3 control-label">Confirm</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="email" placeholder="Email Address" style="width:60%;">
+                                        <input type="text" class="form-control" name="confirpw" placeholder="Confirm Password" style="width:60%;">
                                     </div>
                                 </div>
                                     
                                 <div class="form-group">
-                                    <label for="firstname" class="col-md-3 control-label">Full Name</label>
+                                    <label for="firstname" class="col-md-3 control-label">First Name</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="fullname" placeholder="Full Name" style="width:60%;">
+                                        <input type="text" class="form-control" name="firstname" placeholder="Full Name" style="width:60%;">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="firstname" class="col-md-3 control-label">Last Name</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="lastname" placeholder="Full Name" style="width:60%;">
                                     </div>
                                 </div>
                                 

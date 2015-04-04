@@ -8,6 +8,8 @@ var userSchema = mongoose.Schema({
 	username: String,
 	password: String,
 	fullname: String,
+	firstname: String,
+	lastname: String,
 	email: String,
 	address: String,
 	bio: String,
@@ -15,7 +17,9 @@ var userSchema = mongoose.Schema({
 	owner_rate: Number,
 	edu_verified: String,
 	edu_email: String,
-	edu_key: String
+	edu_key: String,
+	gender: String,
+	facebook_id: String
 });
 
 // create the model for users and expose it to our app

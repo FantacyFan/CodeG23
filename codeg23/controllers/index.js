@@ -21,6 +21,14 @@ module.exports = function(passport){
 	/* Format for router */
 	/* router.use('/your_controller',require('./your_controller_filename')) */
 
+	router.get('/auth/facebook', passport.authenticate('facebook'));
+
+	router.get('/auth/facebook/callback',
+		passport.authenticate('facebook',{
+			successRedirect: '/',
+			failureRedirect: '/'
+		}));
+
 	/* GET Home Page */
 	router.get('/', function(req, res){
 		//console.log(req.headers);
