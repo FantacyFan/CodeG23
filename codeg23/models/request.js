@@ -8,7 +8,7 @@ var requestSchema = mongoose.Schema({
 	customer_id : String,
 	menu_id : String,
 	timestamp : Date,
-	text : String,
+	text : String
 });
 
 // create the model for menu and expose it to our app
