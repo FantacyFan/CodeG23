@@ -3,9 +3,18 @@ body{
 	margin:0px;
 }
 
-#bg_container{ height:500px; overflow:hidden; z-index: 0;}
+#bg_container{ height:400px; overflow:hidden; z-index: 0;}
 
-#bg{ width:100%; height:550px; }
+
+video#bg {
+position: absolute; 
+right: 0; 
+bottom: 0;
+top: -60;
+min-width: 100%; min-height: 100%;
+width: auto; height: auto; z-index: -100;
+background-size: cover;
+}
 
 
 /*start of navigation bar*/
