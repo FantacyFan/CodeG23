@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+  <% include  ../views/head %>
+</head>
+<body class="container">
+	<% include ../views/nav %>
+	<div class="container">  
+	  <p>
+	    <h2>Notifications</h2>
+	    <button type="button" onclick="location.href='/menu/add'" class="btn btn-primary">Add Menu</button>
+	  </p>              
+	  <table class="table">
+	    <thead>
+	      <tr>
+	        <th>Content</th>        
+	        <th>Date</th>        
+	        <th>Type</th>
+	        <th>Status</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	    	<% notis.forEach(function(noti){%>
+	      	<tr class="success">
+		        <td><%= noti.content %></td>
+		        <td><%= noti.timestamp %></td>
+		        <td><%= noti.type %></td>
+		        <td><%= noti.status %></td>
+	      	</tr>
+	      	<% }) %>
+	    </tbody>
+	  </table>
+	</div>
+</body>

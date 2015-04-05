@@ -1,88 +1,24 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'node',
-1 verbose cli   '/usr/local/bin/npm',
-1 verbose cli   'install',
-1 verbose cli   'passport-facbook',
-1 verbose cli   '-save' ]
-2 info using npm@1.4.28
-3 info using node@v0.10.36
-4 verbose readDependencies using package.json deps
-5 verbose cache add [ 'passport-facbook', null ]
-6 verbose cache add name=undefined spec="passport-facbook" args=["passport-facbook",null]
-7 verbose parsed url { protocol: null,
-7 verbose parsed url   slashes: null,
-7 verbose parsed url   auth: null,
-7 verbose parsed url   host: null,
-7 verbose parsed url   port: null,
-7 verbose parsed url   hostname: null,
-7 verbose parsed url   hash: null,
-7 verbose parsed url   search: null,
-7 verbose parsed url   query: null,
-7 verbose parsed url   pathname: 'passport-facbook',
-7 verbose parsed url   path: 'passport-facbook',
-7 verbose parsed url   href: 'passport-facbook' }
-8 silly lockFile 79889135-passport-facbook passport-facbook
-9 verbose lock passport-facbook /Users/Ethan/.npm/79889135-passport-facbook.lock
-10 silly lockFile 79889135-passport-facbook passport-facbook
-11 silly lockFile 79889135-passport-facbook passport-facbook
-12 verbose addNamed [ 'passport-facbook', '' ]
-13 verbose addNamed [ null, '*' ]
-14 silly lockFile 9d6b9a58-passport-facbook passport-facbook@
-15 verbose lock passport-facbook@ /Users/Ethan/.npm/9d6b9a58-passport-facbook.lock
-16 silly addNameRange { name: 'passport-facbook', range: '*', hasData: false }
-17 verbose request where is /passport-facbook
-18 verbose request registry https://registry.npmjs.org/
-19 verbose request id 6d991dcdb3ed42a7
-20 verbose url raw /passport-facbook
-21 verbose url resolving [ 'https://registry.npmjs.org/', './passport-facbook' ]
-22 verbose url resolved https://registry.npmjs.org/passport-facbook
-23 verbose request where is https://registry.npmjs.org/passport-facbook
-24 info trying registry request attempt 1 at 15:05:44
-25 http GET https://registry.npmjs.org/passport-facbook
-26 http 404 https://registry.npmjs.org/passport-facbook
-27 verbose headers { date: 'Sat, 04 Apr 2015 19:05:45 GMT',
-27 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-27 verbose headers   'content-type': 'application/json',
-27 verbose headers   'cache-control': 'max-age=0',
-27 verbose headers   'content-length': '51',
-27 verbose headers   'accept-ranges': 'bytes',
-27 verbose headers   via: '1.1 varnish',
-27 verbose headers   age: '0',
-27 verbose headers   'x-served-by': 'cache-atl6220-ATL',
-27 verbose headers   'x-cache': 'MISS',
-27 verbose headers   'x-cache-hits': '0',
-27 verbose headers   'x-timer': 'S1428174345.715132,VS0,VE81',
-27 verbose headers   'keep-alive': 'timeout=10, max=50',
-27 verbose headers   connection: 'Keep-Alive' }
-28 silly registry.get cb [ 404,
-28 silly registry.get   { date: 'Sat, 04 Apr 2015 19:05:45 GMT',
-28 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-28 silly registry.get     'content-type': 'application/json',
-28 silly registry.get     'cache-control': 'max-age=0',
-28 silly registry.get     'content-length': '51',
-28 silly registry.get     'accept-ranges': 'bytes',
-28 silly registry.get     via: '1.1 varnish',
-28 silly registry.get     age: '0',
-28 silly registry.get     'x-served-by': 'cache-atl6220-ATL',
-28 silly registry.get     'x-cache': 'MISS',
-28 silly registry.get     'x-cache-hits': '0',
-28 silly registry.get     'x-timer': 'S1428174345.715132,VS0,VE81',
-28 silly registry.get     'keep-alive': 'timeout=10, max=50',
-28 silly registry.get     connection: 'Keep-Alive' } ]
-29 silly lockFile 9d6b9a58-passport-facbook passport-facbook@
-30 silly lockFile 9d6b9a58-passport-facbook passport-facbook@
-31 error 404 404 Not Found: passport-facbook
-31 error 404
-31 error 404 'passport-facbook' is not in the npm registry.
-31 error 404 You should bug the author to publish it
-31 error 404 It was specified as a dependency of 'codeg23'
-31 error 404
-31 error 404 Note that you can also install from a
-31 error 404 tarball, folder, or http url, or git url.
-32 error System Darwin 14.0.0
-33 error command "node" "/usr/local/bin/npm" "install" "passport-facbook" "-save"
-34 error cwd /Users/Ethan/Documents/GitHub/CodeG23/codeg23
-35 error node -v v0.10.36
-36 error npm -v 1.4.28
-37 error code E404
-38 verbose exit [ 1, true ]
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'run', 'app' ]
+2 info using npm@2.5.1
+3 info using node@v0.12.0
+4 verbose stack Error: missing script: app
+4 verbose stack     at run (/usr/local/lib/node_modules/npm/lib/run-script.js:138:19)
+4 verbose stack     at /usr/local/lib/node_modules/npm/lib/run-script.js:81:5
+4 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:51:40
+4 verbose stack     at final (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:349:17)
+4 verbose stack     at then (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:126:33)
+4 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:316:48
+4 verbose stack     at evalmachine.<anonymous>:265:20
+4 verbose stack     at OpenReq.Req.done (/usr/local/lib/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:141:5)
+4 verbose stack     at OpenReq.done (/usr/local/lib/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:61:22)
+4 verbose stack     at FSReqWrap.oncomplete (evalmachine.<anonymous>:99:15)
+5 verbose cwd /Users/Trees/Desktop/workspace/CodeG23/codeg23
+6 error Darwin 12.3.0
+7 error argv "node" "/usr/local/bin/npm" "run" "app"
+8 error node v0.12.0
+9 error npm  v2.5.1
+10 error missing script: app
+11 error If you need help, you may report this error at:
+11 error     <http://github.com/npm/npm/issues>
+12 verbose exit [ 1, true ]

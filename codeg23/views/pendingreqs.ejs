@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+  	<% include  ../views/head %>
+</head>
+<body>
+	<% include ../views/nav %>
+	<h2>Pending Requests</h2>
+	<ul>
+		<% reqInfos.forEach(function(r) {%>
+	  	<li>
+
+	    	<%= r.text %>, <a href=""><%= r.customer_id %></a><br/>
+
+	    	<% if(r.status == 'pending') {%>
+
+	    	<form action="/request/approve" method="post">
+	      		<input type="hidden" name="owner_id" value="<%= r.owner_id %>"/>
+	      		<input type="hidden" name="customer_id" value="<%= r.customer_id %>"/>
+	      		<input type="hidden" name="menu_id" value="<%= r.menu_id %>"/>
+	      		<input type="hidden" name="request_id" value="<%= r._id %>"/>
+	      		<input type="submit" value="Approve"/>
+ 			</form>
+
+ 			<form action="/request/decline" method="post">
+	      		<input type="hidden" name="owner_id" value="<%= r.owner_id %>"/>
+	      		<input type="hidden" name="customer_id" value="<%= r.customer_id %>"/>
+	      		<input type="hidden" name="menu_id" value="<%= r.menu_id %>"/>
+	      		<input type="hidden" name="request_id" value="<%= r._id %>"/>
+	      		<input type="submit" value="decline"/>
+ 			</form>
+
+ 			<% } else {%>
+  				<% if(r.status == 'approved') {%>
+  					approved!
+  				<% } else {%>
+  					declined!
+  				<% } %>
+  			<% } %>
+		      	<button type="button" onclick="location.href='link'" class="btn btn-primary">Chat</button>
+	       
+	  	</li><br/>
+	  	<% }) %>
+	</ul>
+</body>
+
+

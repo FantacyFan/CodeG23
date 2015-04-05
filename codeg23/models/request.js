@@ -8,6 +8,7 @@ var requestSchema = mongoose.Schema({
 	customer_id : String,
 	menu_id : String,
 	timestamp : Date,
+	status: String,
 	text : String
 });
 
