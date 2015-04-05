@@ -7,7 +7,7 @@ var NotificationSchema = require('../models/notification');
 var moment = require('moment');
 
 
-// /*  pendingreqs.ejs */
+/*  pendingreqs.ejs */
 // router.get('/pending/:id', function(req, res) {
 // 	RequestSchema.find({menu_id:req.params.id},function(err,requests){
 // 		//for each request, create reqInfo json, return

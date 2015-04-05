@@ -12,9 +12,14 @@ var menuSchema = mongoose.Schema({
 	quantity: String,
 	detail: String,
 	price: Number,
-	order_time: Date,
-	location: String,
-	other: String
+	create_time: Date,
+	host_time: Date,
+	address: String,
+	city: String,
+	university: String,
+	other: String,
+	lat: String,
+	lng: String
 });
 
 // create the model for menu and expose it to our app

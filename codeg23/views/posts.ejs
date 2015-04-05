@@ -4,6 +4,7 @@
 </head>
 <body>
 	<% include ../views/nav %>
+
 	<h2>Posts</h2>
 	<ul>
 		<% posts.forEach(function(p) {%>
@@ -17,4 +18,32 @@
 	  	</li>
 	  	<% }) %>
 	</ul>
+
+	<div class="row row-offcanvas row-offcanvas-left" style="margin-left:35px !important; width:45%;">
+		<h2>Posts</h2>
+		<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+	        <ul class="nav">
+	          <li><div class="my-posts"><a href="/profile/posts">Posts</a></div></li>
+	          <li><div class="my-order-sold"><a href="/profile/sold">Sold</a></div></li>
+	          <li><div class="my-requests"><a href="/profile/requests">Requests</a></div></li>   
+	          <li><div class="my-order-bought"><a href="/profile/bought">Bought</a></div></li> 
+	          <li><div class="my-reviews"><a href="/profile/reviews">Reviews</a></div></li>
+	          <li><div class="my-verify"><a href="/profile/verify">Verify</a></div></li>    
+	        </ul>
+	    </div>
+		<ul style="padding-left:200px;">
+			<% posts.forEach(function(p) {%>
+		  	<li>
+		    	<p><%= p._id %></p>
+		    	<form method="post">
+		      		<input type="hidden" name="menuid" value=<%= p._id %>/>
+		      		<p>Menu Title:  </p>
+		      		<p>Time:  </p>
+		      		<input type="submit" value="Delete"/>
+		    	</form>
+		  	</li>
+		  	<% }) %>
+		</ul>
+	</div>
+
 </body>

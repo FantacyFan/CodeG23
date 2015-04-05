@@ -4,6 +4,81 @@ var UserSchema = require('../models/user');
 var MenuSchema = require('../models/menu');
 var RequestSchema = require('../models/request');
 var OrderSchema = require('../models/order');
+var ReviewSchema = require('../models/review');
+var nodemailer = require('nodemailer');
+var transporter = nodemailer.createTransport({
+	service:'yahoo',
+	auth: {
+		user:'cornell.gatesg23@yahoo.com',
+		pass:'2015codeg23'
+	}
+});
+var transporter2 = nodemailer.createTransport({
+	service:'gmail',
+	auth: {
+		user:'yl2493@cornell.edu',
+		pass:''
+	}
+});
+
+
+router.get('/verify', function(req, res){
+	res.render('verify',{
+		user: req.user
+	})
+})
+
+router.post('/verify', function(req, res){
+	var eduemail = req.body.eduemail;
+	if(eduemail.match(/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*edu/i)){
+		var S4 = function() { 
+        	return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+	    }
+		var delim = "-";
+	    var key = (S4() + S4() + delim + S4() + delim + S4() + delim + S4() + delim + S4() + S4() + S4());
+		transporter.sendMail({
+			from: 'cornell.gatesg23@yahoo.com',
+			to: eduemail,
+			subject: 'Verification',
+			text: 'Hi '+req.user.fullname+', we are a team from Cornell Information Science. Please click this link to finish the verification: http://localhost:3000/profile/verify/'+key
+		});
+		UserSchema.update({_id: req.user._id},{
+			edu_verified:"Pending",
+		 	edu_email:eduemail,
+		 	edu_key:key
+		},function(err){
+			res.redirect('/profile/verify');
+		});
+	} else {
+		res.render('verify',{
+			user: req.user,
+			message: {
+				content : "Please provide a valid edu email address"
+			}
+		})
+	}
+})
+
+router.get('/verify/:key', function(req, res){
+	var key = req.params.key;
+	UserSchema.update({edu_key:key},{
+		edu_verified : "Verified"
+	},function(err){
+		res.redirect('/profile/verify');
+	});
+})
+
+/* Review Page */
+router.get('/reviews', function(req, res){
+	ReviewSchema.find({reviewer_id:req.user._id}, function(err,reviewGiven){
+		ReviewSchema.find({receiver_id:req.user._id}, function(err,reviewReceived){
+			res.render("reviews", {
+				reviewGiven:reviewGiven,
+				reviewReceived:reviewReceived 
+			})
+		})
+	})
+})
 
 
 /* Requests page */
@@ -79,7 +154,7 @@ router.get('/detail/:id', function(req, res) {
 	// 	console.log(123);
 	// });
 	var idString = req.params.id;
-	console.log(idString);
+	//console.log(idString);
 	UserSchema.findOne({_id:idString},function(err,user){
 		if(user==null){
 			var err = new Error('Not Found');
@@ -89,8 +164,8 @@ router.get('/detail/:id', function(req, res) {
 				error : err
 			});
 		} else {
-			console.log("found");
-			console.log(user);
+			//console.log("found");
+			//console.log(user);
 			res.render('profile',{
 				target_user : user,
 				user : req.user,

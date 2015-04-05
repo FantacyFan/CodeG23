@@ -2,32 +2,147 @@
 <head>
   <% include  ../views/head %>
 </head>
-<body class="container">
+<body>
 	<% include ../views/nav %>
-	<div class="container">  
-	  <p>
-	    <h2>Menus</h2>
-	    <button type="button" onclick="location.href='/menu/add'" class="btn btn-primary">Add Menu</button>
-	  </p>              
-	  <table class="table">
-	    <thead>
-	      <tr>
-	        <th>Title</th>        
-	        <th>Location</th>        
-	        <th>Type</th>
-	        <th>Price</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	    	<% menus.forEach(function(menu){%>
-	      	<tr class="success">
-		        <td><a href="/menu/detail/<%= menu._id %>"><%= menu.title %></a><td>
-		        <td><%= menu.location %></td>
-		        <td><%= menu.type %></td>
-		        <td><%= menu.price %></td>
-	      	</tr>
-	      	<% }) %>
-	    </tbody>
-	  </table>
+
+	<div class="row">
+		<div class="col-sm-12">
+
+			    <div class="col-xs-8 col-sm-6">
+				    <div class="preFilter">
+				    	<form class="navbar-form navbar-left" role="search" action="/menus" method="post">
+					    	<div class="col-md-12">
+						    	<div class="location">
+						    		
+								        <div class="form-group">
+								        	<input type="text" class="form-control" id="university-search" name="university" placeholder="University">
+								        </div>
+								        <button type="submit" class="btn btn-default">Search</button>
+								    
+						    	</div>
+					    	</div>
+						    <!-- This is a datepicker for selecting dates -->
+						    <div class="col-md-6">
+						    <div class="datePicker">  
+								<div class="form-horizontal">
+									<div class="control-group">
+								        <div class="controls">
+								            <div class="input-group">
+								                <input id="date-picker" type="text" name="date" class="date-picker form-control" placeholder="Date"/>
+								                <label for="date-picker" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span>
+								                </label>
+								            </div>
+								        </div>
+									</div>
+								</div>
+						    </div>
+							</div>
+
+						    <!-- This is a dropdown menu for selecting how many guest will come -->
+<!-- 						<div class="col-md-3">
+							    <div class="guestNumber">
+							    	<div class="dropdown">
+									  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+									    Guest
+									    <span class="caret"></span>
+									  </button>
+									  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1 Guest</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2 Guest</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">3 Guest</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">4 Guest</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">5 Guest</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">6 Guest</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">7 Guest</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">8 Guest</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">8+ Guest</a></li>
+									  </ul>
+									</div>
+							    </div>
+							</div>
+ -->
+						    <!-- This is a dropdown menu for selecting food type -->
+<!-- 						<div class="col-md-3">
+							    <div class="foodType">
+							    	<div class="dropdown">
+									  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+									    Food Type
+									    <span class="caret"></span>
+									  </button>
+									  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" >
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">American</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Chinese</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Indian</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Korean</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Thai</a></li>
+									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Italian</a></li>
+									  </ul>
+									</div>
+							    </div>
+							</div>
+						</form>
+ -->					    
+					    <div class="col-md-12">
+					    <div class="addMenu">
+					    	<a href="/menu/add"><button type="button" onclick="location.href='/menu/add'" class="btn btn-primary">Add Menu</button></a>
+					    </div>
+						</div>
+
+				    </div>
+				    <!-- end of preFilter -->				  
+
+				<!-- This is a div for the menu list -->
+				
+				<div class="menuList">
+				    <% menus.forEach(function(menu){%>
+					<div id="<%= menu._id %>" class="list" lat="<%= menu.lat %>" lng="<%= menu.lng%>">
+					<img src="#" alt="img" id="menuImg">
+					<ul>
+						<li>
+							<a href="/menu/detail/<%= menu._id %>"><%= menu.title %></a>
+						</li>
+						<li>
+							Location: <%= menu.location %>
+						</li>
+						<li>
+							Food Type: <%= menu.type %>
+						</li>
+						<li>
+							Price: <%= menu.price %> /person
+						</li>
+						<li>
+							Time: <%= menu.host_time %>
+						</li>
+						<li>
+							University: <%= menu.university %>
+						</li>
+					</ul>
+					</div>
+					<% }) %>
+				</div>
+				<!-- end of menu list -->
+				</div>
+
+			<div class="col-xs-4 col-sm-6" style="padding:0px;">
+				<!-- This is a div for google map -->
+			    <% if(typeof geo == 'undefined'){%>
+			    <div id="map-canvas" lat="undefined" lng="undefined">
+			    <% } else { %>
+			    <div id="map-canvas" lat="<%= geo[0].latitude %>" lng="<%= geo[0].longitude %>">
+			    <% } %>
+		    	</div>
+				<!-- end of google map -->
+			</div>			
+		</div>
 	</div>
+
+
+
+
+	<script src="/scripts/menus-map.js"></script>
+
+	<script>
+		$("#date-picker").datepicker();
+	</script>
+
 </body>

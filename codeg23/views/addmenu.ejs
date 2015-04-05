@@ -3,73 +3,125 @@
   <% include  ../views/head %>
 </head>
 <body>
-  <% include ../views/nav %>
-  <form action="/menu/add" method="post" class="form-horizontal">
-  <!-- Form Name-->
-  <legend>Add Menu</legend>
-  <!-- Text input-->
-  <div class="control-group">
-    <label for="title" class="control-label">Title</label>  
-    <div class="controls">
-      <input id="title" name="title" type="text" placeholder="title" class="input-xlarge"/>
+    <% include ../views/nav %>
+    <div class="add-menu">
+      <div class="row">
+        <div class="col-sm-9 col-centered" id="add-menu" style="margin-left:150px;"> 
+          <form action="/menu/add" method="post" class="addmenu-form-horizontal">
+          <!-- Form Name-->
+          <legend>Add Menu</legend>
+
+          <!-- Text input-->
+          <div class="control-group">
+            <label for="title" class="control-label">Make Your Menu</label>  
+            <div class="addmenu-controls">
+              <input id="title" name="title" type="text" class="input-xlarge" placeholder="title here"/>
+            </div>
+          </div>
+
+          <!-- Select Basic-->
+          <div class="control-group">
+            <label for="type" class="control-label">Type</label>  
+            <div class="addmenu-controls">
+              <select id="type" name="type" class="input-xlarge">
+                <option>Chinese</option>      
+                <option>Japan</option>      
+                <option>American</option>      
+                <option>India</option>      
+                <option>Mexcian</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- This is a datepicker for selecting dates -->
+          <div class="control-group">
+            <label for="location" class="control-label">Date</label> 
+            <div class="datePicker">  
+              <div class="form-horizontal">
+                <div class="control-group">
+                      <div class="controls">
+                          <div class="input-group">
+                              <input id="date-picker" type="text" name="date" class="date-picker form-control" placeholder="Date"/>
+                              <label for="date-picker" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span>
+                              </label>
+                          </div>
+                      </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="control-group">
+            <label for="university" class="control-label">University</label>  
+            <div class="addmenu-controls">
+              <input id="university" name="university" type="text" placeholder="University(Full Name)" class="input-xlarge"/>
+            </div>
+          </div>
+
+          <!-- Select Basic-->
+          <div class="control-group">
+            <label for="quantity" class="control-label">Quantity of People</label>  
+            <div class="addmenu-controls">
+              <select id="quantity" name="quantity" class="input-xlarge">
+                <option>1</option>      
+                <option>2</option>      
+                <option>3</option>      
+                <option>4</option>      
+                <option>5</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="control-group">
+            <label for="price" class="control-label">Price</label>  
+            <div class="controls">
+              <input id="price" name="price" type="text" placeholder="price (number only)" class="input-xlarge"/>
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="control-group">
+            <label for="location" class="control-label">Address</label>  
+            <div class="controls">
+              <input id="location" name="address" type="text" placeholder="address" class="input-xlarge"/>
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="control-group">
+            <label for="location" class="control-label">City</label>  
+            <div class="controls">
+              <input id="location" name="city" type="text" placeholder="city" class="input-xlarge"/>
+            </div>
+          </div>
+
+
+          <!-- Textarea-->
+          <div class="control-group">
+            <label for="detail" class="control-label">Details</label>  
+            <div class="controls">
+              <textarea id="detail" name="detail" placeholder="add some description..." style="width:300px; height:100px;"></textarea>
+            </div>
+          </div>
+
+          <!-- Button (Double)-->
+          <div class="control-group">
+            <label for="" class="control-label"></label>  
+            <div class="controls">
+              <button type="reset" onclick="window.location.href='/menus'" class="btn btn-default">Cancel</button>    
+              <button type="submit" name="action" value="Add" class="btn btn-success">Add</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-  <!-- Textarea-->
-  <div class="control-group">
-    <label for="detail" class="control-label">Description</label>  
-    <div class="controls">
-      <textarea id="detail" name="detail">add some description..</textarea>
-    </div>
-  </div>
-  <!-- Select Basic-->
-  <div class="control-group">
-    <label for="type" class="control-label">Type</label>  
-    <div class="controls">
-      <select id="type" name="type" class="input-xlarge">
-        <option>Chinese</option>      
-        <option>Japan</option>      
-        <option>American</option>      
-        <option>India</option>      
-        <option>Mexcian</option>
-      </select>
-    </div>
-  </div>
-  <!-- Text input-->
-  <div class="control-group">
-    <label for="location" class="control-label">Location</label>  
-    <div class="controls">
-      <input id="location" name="location" type="text" placeholder="location" class="input-xlarge"/>
-    </div>
-  </div>
-  <!-- Select Basic-->
-  <div class="control-group">
-    <label for="quantity" class="control-label">Quantity</label>  
-    <div class="controls">
-      <select id="quantity" name="quantity" class="input-xlarge">
-        <option>1</option>      
-        <option>2</option>      
-        <option>3</option>      
-        <option>4</option>      
-        <option>5</option>
-      </select>
-    </div>
-  </div>
-  <!-- Text input-->
-  <div class="control-group">
-    <label for="price" class="control-label">Price</label>  
-    <div class="controls">
-      <input id="price" name="price" type="text" placeholder="price (number only)" class="input-xlarge"/>
-    </div>
-  </div>
-  <!-- Button (Double)-->
-  <div class="control-group">
-    <label for="" class="control-label"></label>  
-    <div class="controls">
-      <button type="reset" onclick="window.location.href='/menus'" class="btn btn-default">Cancel</button>    
-      <button type="submit" name="action" value="Add" class="btn btn-success">Add</button>
-    </div>
-  </div>
-</form>
+
+  <script>
+      $("#date-picker").datepicker();
+  </script>
 </body>
 
 

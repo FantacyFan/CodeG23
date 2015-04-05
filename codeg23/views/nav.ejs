@@ -1,11 +1,168 @@
+
 <div class="nav-bar">
-	<a href="/menus">Menus</a>
-	<% if(typeof user != 'undefined') {%>
-	<a href="/profile/detail/<%= user._id %>"><%= user.username%></a>
-	<a href="/logout">Logout</a>
-	<a href="/notification">Notification(0)</a>
-	<% } else { %>
-	<a href="/">Login</a>
-	<a href="/register">Register</a>
-	<% } %>
+	<ul class="nav nav-pills">
+		<div class="floatleft">
+			<li role="presentation" class="active"><a href="/">Home</a></li>
+		</div>
+		<div class="floatleft">
+			<li role="presentation" class="active"><a href="/menus">Menus</a></li>
+		</div>
+		<div class="floatleft">
+			<li role="presentation" class="active"><a href="/notification">Notification(0)</a></li>
+		</div>
+		<% if(typeof user != 'undefined') {%>
+		<div class="floatright">
+			<li role="presentation"><a href="/profile/detail/<%= user._id %>"><%= user.firstname%></a></li>
+
+			<li role="presentation"><a href="/logout">Logout</a></li>
+		</div>
+		<% } else { %>
+		<div class="floatright">
+		 	<li role="presentation"><a href="" data-toggle="modal" data-target="#myModal_login">Login</a></li>
+
+			<li role="presentation"><a href="" data-toggle="modal" data-target="#myModal_signup">Register</a></li>
+		</div>
+		<% } %>
+		
+	</ul>
 </div>
+
+
+        <!-- Modal -->
+		<div class="modal fade" id="myModal_login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  			<div class="modal-dialog">
+    			<div class="modal-content">
+      				<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        				<h4 class="modal-title" id="myModalLabel">Sign In</h4>
+	                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a>
+	                        </div>
+     				</div>
+	      			<div class="modal-body" style="padding-left:120px; padding-top:25px;">
+			    		<div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>      
+			            <form id="loginform" class="form-horizontal" action="/login" method="post" role="form">                                   
+				            <div style="margin-bottom: 25px" class="input-group">
+				                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+				                <input id="login-username" type="text" class="form-control" name="email" value="" placeholder="Email" style="width:200px;">                                        
+				            </div>                
+				            <div style="margin-bottom: 25px" class="input-group">
+				                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+				                <input id="login-password" type="password" class="form-control" name="password" placeholder="Password" style="width:200px;">
+				            </div>                                                                   
+				            <div class="input-group">
+				                <div class="checkbox">
+					                <label>
+					                    <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
+				                    </label>
+				                </div>
+				            </div>
+				            <div style="margin-top:10px" class="form-group">
+				                <!-- Button -->
+				                <div class="col-sm-12 controls">
+				                    <button id="btn-login"   type="submit" class="btn btn-success">Login</button>
+				                    <a id="btn-fblogin" href="/auth/facebook" class="btn btn-primary">Login with Facebook</a>
+				                </div>
+				            </div>                                   
+			            </form>     
+	                </div>   
+	                <div class="modal-footer">
+	      				<div class="form-group">
+	                        <div class="col-md-12 control">
+	                            <div style="padding-top:15px; font-size:85%" >
+	                                Don't have an account! 
+	                                <a href="" onClick="$('#myModal_login').hide(); $('#myModal_signup').show()">
+	                                Sign Up Here
+	                                </a>
+	                            </div>
+	                        </div>
+	                    </div> 
+				    </div> 
+      			</div>
+    		</div>
+  		</div>
+	</div>
+
+	<!-- Modal -->
+		<div class="modal fade" id="myModal_signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  			<div class="modal-dialog">
+    			<div class="modal-content">
+      				<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        				<h4 class="modal-title" id="myModalLabel">Sign up</h4>
+     				</div>
+	      			<div class="modal-body">
+			    		<div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>      
+			           <form id="signupform" class="form-horizontal" action="/register" method="POST" role="form">
+                                
+                                <div id="signupalert" style="display:none" class="alert alert-danger">
+                                    <p>Error:</p>
+                                    <span></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email" class="col-md-3 control-label">Email</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="email" placeholder="Email Address" style="width:60%;">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password" class="col-md-3 control-label">Password</label>
+                                    <div class="col-md-9">
+                                        <input type="password" class="form-control" name="password" placeholder="Password" style="width:60%;">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email" class="col-md-3 control-label">Confirm</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="confirpw" placeholder="Confirm Password" style="width:60%;">
+                                    </div>
+                                </div>
+                                    
+                                <div class="form-group">
+                                    <label for="firstname" class="col-md-3 control-label">First Name</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="firstname" placeholder="Full Name" style="width:60%;">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="firstname" class="col-md-3 control-label">Last Name</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="lastname" placeholder="Full Name" style="width:60%;">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <!-- Button -->                                        
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
+                                        <span style="margin-left:8px;">or</span>  
+                                    </div>
+                                </div>
+                                
+                                <div style="padding-top:20px"  class="form-group">
+                                    
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <button id="btn-fbsignup" type="button" class="btn btn-primary"><i class="icon-facebook"></i>   Sign Up with Facebook</button>
+                                    </div>                                           
+                                        
+                                </div>                                                                              
+                            </form>    
+	                </div>   
+	                <div class="modal-footer">
+	      				<div class="form-group">
+	                        <div class="col-md-12 control">
+	                            <div style="padding-top:15px; font-size:85%" >
+	                                Don't have an account! 
+	                                <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+	                                Sign Up Here
+	                                </a>
+	                            </div>
+	                        </div>
+	                    </div> 
+				    </div> 
+      			</div>
+    		</div>
+  		</div>

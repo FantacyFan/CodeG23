@@ -1,5 +1,6 @@
 var express = require('express');
 // var app = express();
+var url = require('url');
 var router = express.Router();
 
 var isAuthenticated = function (req, res, next) {
@@ -16,21 +17,35 @@ module.exports = function(passport){
 	/* Format for router */
 	/* router.use('/your_controller',require('./your_controller_filename')) */
 
+	router.get('/auth/facebook', passport.authenticate('facebook'));
+
+	router.get('/auth/facebook/callback',
+		passport.authenticate('facebook',{
+			successRedirect: '/',
+			failureRedirect: '/'
+		}));
+
 	/* GET Home Page */
-	router.get('/index', isAuthenticated, function(req, res){
+	router.get('/', function(req, res){
+		//console.log(req.headers);
+		//console.log(req.headers.range);
+		//console.log(url.parse(req.url).pathname);
 		res.render('index', { user: req.user });
 	});
 
+	/* GET Home Page Video */
+	router.use('/video', require('./video'));
+
 	/* Login controller */
 	/* GET login page. */
-	router.get('/', function(req, res) {
+	router.get('/login', function(req, res) {
     	// Display the Login page with any flash message, if any
 		res.render('login', { message: req.flash('message') });
 	});
 
 	/* Handle Login POST */
 	router.post('/login', passport.authenticate('login', {
-		successRedirect: '/index',
+		successRedirect: '/',
 		failureRedirect: '/',
 		failureFlash : true  
 	}));
@@ -43,10 +58,13 @@ module.exports = function(passport){
 
 	/* Handle Registration POST */
 	router.post('/register', passport.authenticate('register', {
-		successRedirect: '/index',
-		failureRedirect: '/register',
+		successRedirect: '/',
+		failureRedirect: '/',
 		failureFlash : true  
 	}));
+	// router.post('/register', function(){
+	// 	console.log("Enter");
+	// });
 
 	/* Handle Logout */
 	router.get('/logout', function(req, res) {
@@ -75,6 +93,9 @@ module.exports = function(passport){
 
 	/* Request controller */
 	router.use('/request', isAuthenticated, require('./request'));
+
+	/* Review controller */
+	router.use('/review', isAuthenticated, require('./review'));
 
 	return router;
 }
