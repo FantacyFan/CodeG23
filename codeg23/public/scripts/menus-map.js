@@ -1,9 +1,35 @@
 var markers = {};
 var color = 0;
 
+function setGeo(position){
+
+}
+
 function initialize() {
     var mapCanvas = document.getElementById('map-canvas');
-    var myLatlng = new google.maps.LatLng(42.448817, -76.476114);
+    var position = {};
+    position["coords"] = {};
+    var thisLat = 42.448817;
+    var thisLng = -76.476114;
+    if(mapCanvas.getAttribute("lat")=="undefined"){
+        position["coords"]["latitude"] = thisLat;
+        position["coords"]["longitude"] = thisLng;
+        createMap(position);
+        if(navigator.geolocation){
+            currLocaction = navigator.geolocation.getCurrentPosition(createMap);
+        }
+    } else {
+        thisLat = mapCanvas.getAttribute("lat");   
+        thisLng = mapCanvas.getAttribute("lng");
+        position["coords"]["latitude"] = thisLat;
+        position["coords"]["longitude"] = thisLng;
+        createMap(position);
+    }
+}
+
+function createMap(position){
+    var mapCanvas = document.getElementById('map-canvas');
+    var myLatlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     var mapOptions = {
       center: myLatlng,
       zoom: 12,
@@ -12,12 +38,12 @@ function initialize() {
     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
     var menuList = document.getElementsByClassName("list");
     for(i = 0; i < menuList.length; i++) {
-    	markers[menuList[i].id] = new google.maps.Marker({
-    		position : new google.maps.LatLng(menuList[i].getAttribute("lat"),menuList[i].getAttribute("lng")),
-    		map: map,
-    		title: menuList[i].id
-    	})
-    	markers[menuList[i].id].setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
+        markers[menuList[i].id] = new google.maps.Marker({
+            position : new google.maps.LatLng(menuList[i].getAttribute("lat"),menuList[i].getAttribute("lng")),
+            map: map,
+            title: menuList[i].id
+        })
+        markers[menuList[i].id].setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
     }
 }
 
