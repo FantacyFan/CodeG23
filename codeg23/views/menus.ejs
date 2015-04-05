@@ -95,7 +95,7 @@
 				
 				<div class="menuList">
 				    <% menus.forEach(function(menu){%>
-					<div id="<%= menu._id %>" class="list">
+					<div id="<%= menu._id %>" class="list" lat="<%= menu.lat %>" lng="<%= menu.lng%>">
 					<img src="#" alt="img" id="menuImg">
 					<ul>
 						<li>
@@ -135,25 +135,10 @@
 
 
 
-
+	<script src="/scripts/menus-map.js"></script>
 
 	<script>
 		$("#date-picker").datepicker();
-		function initialize() {
-		    var mapCanvas = document.getElementById('map-canvas');
-		    var mapOptions = {
-		      center: new google.maps.LatLng(42.448817, -76.476114),
-		      zoom: 10,
-		      mapTypeId: google.maps.MapTypeId.ROADMAP
-		    }
-		    var map = new google.maps.Map(mapCanvas, mapOptions);
-		}
-		google.maps.event.addDomListener(window, 'load', initialize);
-
-
-
-		
-
-
 	</script>
+
 </body>
