@@ -1,4 +1,5 @@
 // app/models/order.js
+// app/models/order.js
 // load the things we need
 var mongoose = require('mongoose');
 var ObjectId = mongoose.Schema.Types.ObjectId;
@@ -8,8 +9,8 @@ var orderSchema = mongoose.Schema({
 	owner_id : ObjectId,
 	customer_id : ObjectId,
 	menu_id : ObjectId,
-	timestamp : Date,
-	status : String
+	request_id : ObjectId,
+	timestamp : Date
 });
 
 // create the model for users and expose it to our app

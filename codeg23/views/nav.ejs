@@ -3,6 +3,7 @@
 	<% if(typeof user != 'undefined') {%>
 	<a href="/profile/detail/<%= user._id %>"><%= user.username%></a>
 	<a href="/logout">Logout</a>
+	<a href="/notification">Notification(0)</a>
 	<% } else { %>
 	<a href="/">Login</a>
 	<a href="/register">Register</a>

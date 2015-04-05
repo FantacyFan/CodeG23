@@ -5,27 +5,6 @@ var MenuSchema = require('../models/menu');
 var RequestSchema = require('../models/request');
 var OrderSchema = require('../models/order');
 
-/* Requests page */
-router.get('/requests', function(req, res){
-	RequestSchema.find({customer_id:req.user._id},function(err,requests){
-		res.render("requests", {
-			requests : requests,
-			user : req.user
-		})
-	})
-})
-
-/* Requests page */
-router.post('/requests', function(req, res){
-	var reqId = req.body.reqid;
-	console.log(reqId);
-	RequestSchema.remove({_id:reqId}, function(err){
-		if(err){
-			console.log(err);
-		}
-		res.redirect('/profile/requests');
-	})
-})
 
 /* Requests page */
 router.get('/posts', function(req, res){

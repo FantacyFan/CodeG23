@@ -178,6 +178,7 @@ router.post("/detail/:id", function(req, res){
 							customer_id : req.user._id,
 							menu_id : _menuId,
 							timestamp : now,
+							status : 'pending',
 							text : text,
 						});
 						record.save(function(err){

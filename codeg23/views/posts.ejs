@@ -8,10 +8,11 @@
 	<ul>
 		<% posts.forEach(function(p) {%>
 	  	<li>
-	    	<p><%= p._id %></p>
+	    	<a href="/menu/detail/<%= p._id %>"><%= p.title %></a>
 	    	<form method="post">
 	      		<input type="hidden" name="menuid" value=<%= p._id %>/>
 	      		<input type="submit" value="Delete"/>
+	      		<button type="button" onclick="location.href='/request/pending/<%= p._id %>'">View Requests</button>
 	    	</form>
 	  	</li>
 	  	<% }) %>

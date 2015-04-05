@@ -1,26 +1,24 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'node', '/usr/local/bin/npm', 'start' ]
-2 info using npm@1.4.28
-3 info using node@v0.10.36
-4 verbose run-script [ 'prestart', 'start', 'poststart' ]
-5 info prestart codeg23@0.0.0
-6 info start codeg23@0.0.0
-7 verbose unsafe-perm in lifecycle true
-8 info codeg23@0.0.0 Failed to exec start script
-9 error codeg23@0.0.0 start: `node ./bin/www`
-9 error Exit status 1
-10 error Failed at the codeg23@0.0.0 start script.
-10 error This is most likely a problem with the codeg23 package,
-10 error not with npm itself.
-10 error Tell the author that this fails on your system:
-10 error     node ./bin/www
-10 error You can get their info via:
-10 error     npm owner ls codeg23
-10 error There is likely additional logging output above.
-11 error System Darwin 14.0.0
-12 error command "node" "/usr/local/bin/npm" "start"
-13 error cwd /Users/Ethan/Documents/GitHub/CodeG23/codeg23
-14 error node -v v0.10.36
-15 error npm -v 1.4.28
-16 error code ELIFECYCLE
-17 verbose exit [ 1, true ]
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'run', 'app' ]
+2 info using npm@2.5.1
+3 info using node@v0.12.0
+4 verbose stack Error: missing script: app
+4 verbose stack     at run (/usr/local/lib/node_modules/npm/lib/run-script.js:138:19)
+4 verbose stack     at /usr/local/lib/node_modules/npm/lib/run-script.js:81:5
+4 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:51:40
+4 verbose stack     at final (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:349:17)
+4 verbose stack     at then (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:126:33)
+4 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:316:48
+4 verbose stack     at evalmachine.<anonymous>:265:20
+4 verbose stack     at OpenReq.Req.done (/usr/local/lib/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:141:5)
+4 verbose stack     at OpenReq.done (/usr/local/lib/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:61:22)
+4 verbose stack     at FSReqWrap.oncomplete (evalmachine.<anonymous>:99:15)
+5 verbose cwd /Users/Trees/Desktop/workspace/CodeG23/codeg23
+6 error Darwin 12.3.0
+7 error argv "node" "/usr/local/bin/npm" "run" "app"
+8 error node v0.12.0
+9 error npm  v2.5.1
+10 error missing script: app
+11 error If you need help, you may report this error at:
+11 error     <http://github.com/npm/npm/issues>
+12 verbose exit [ 1, true ]

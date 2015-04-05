@@ -2,10 +2,6 @@ var express = require('express');
 // var app = express();
 var router = express.Router();
 
-///
-var MenuSchema = require('../models/menu')
-///
-
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler 
 	// Passport adds this method to request object. A middleware is allowed to add properties to
@@ -74,6 +70,11 @@ module.exports = function(passport){
 	/* Conversation controller */
 	router.use('/conversation', isAuthenticated, require('./conversation'));
 
+	/* Notification controller */
+	router.use('/notification', isAuthenticated, require('./notification'));
+
+	/* Request controller */
+	router.use('/request', isAuthenticated, require('./request'));
 
 	return router;
 }
