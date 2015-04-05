@@ -6,48 +6,15 @@
 	<% include ../views/nav %>
 	
 	<% if(target_user._id > user._id || target_user._id < user._id){%>
-	<% } else {%>
-	<!-- <button onclick="location.href='/profile/edit'">Edit Profile</button>
-	<div class="owner-console">
-	    <div class="my-posts"><a href="/profile/posts">Posts</a></div>
-	    <div class="my-order-sold"><a href="/profile/sold">Sold</a></div>
-	</div>
-	<div class="customer-console">
-	    <div class="my-requests"><a href="/request/history">Requests</a></div>
-	    <div class="my-order-bought"><a href="/profile/bought">Bought</a></div>
-	</div>
-	<div class="reviews-console">
-		<div class="my-reviews"><a href="/profile/reviews">Reviews</a></div>
-	</div> -->
-
-<div class="page-container">    
-    <div class="container">
-	    <div class="row row-offcanvas row-offcanvas-left" style="margin-left:-45px !important; width:45%;">
-	        
-	        <!-- sidebar -->
-	        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-	            <ul class="nav">
-	              <li class="active"><button onclick="location.href='/profile/edit'">Edit Profile</button></li>
-	              <li><div class="my-posts"><a href="/profile/posts">Posts</a></div></li>
-	              <li><div class="my-order-sold"><a href="/profile/sold">Sold</a></div></li>
-	              <li><div class="my-requests"><a href="/profile/requests">Requests</a></div></li>   
-	              <!-- 
-	              <li><a href="#" data-toggle="collapse" data-target="#sub1">Link 4 (submenu)</a>
-	                <ul class="nav collapse" id="sub1">
-	                  <li><a href="#">Sub Link 1</a></li>
-	                  <li><a href="#">Sub Link 2</a></li>
-	                  <li><a href="#">Sub Link 3</a></li>
-	                </ul>
-	              </li> -->
-
-	              <li><div class="my-order-bought"><a href="/profile/bought">Bought</a></div></li> 
-	              <li><div class="my-reviews"><a href="/profile/reviews">Reviews</a></div></li>
-	              <li><div class="my-verify"><a href="/profile/verify">Verify</a></div></li>    
-	            </ul>
-	        </div>
-	  	
+	<% } else {%>	
+		<div class="ui grid">        
+	        <!-- vertical menu -->
+	        <div class="two collumn">
+	  			<% include ../views/profile-vertical-menu %>
+	  		</div>
 	        <!-- main area -->
-	        <div class="col-xs-12 col-sm-9">
+	        <div class="ten collumn">
+
 		        <div class="profile-detail">
 					<h1>Profile Page</h1>
 					<div class="user-detail">
@@ -60,19 +27,14 @@
 						</div>
 					</div>
 
-					
-
 					<h4>Customer Rate: <%= target_user.customer_rate %></h4>
 					<h4>Owner Rate: <%= target_user.owner_rate %></h4>
 					<h4>Bio:</h4>
 					<p><%= target_user.bio %></p>
-				</div>        
+				</div> 
+       
 	        </div><!-- /.col-xs-12 main -->
-	    </div><!--/.row-->
-  	</div><!--/.container-->
-</div><!--/.page-container-->
-
-
+	    </div><!-- ui grid -->
 	<% } %>
 </body>
 
