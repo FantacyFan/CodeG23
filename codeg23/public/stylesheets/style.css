@@ -50,15 +50,7 @@ background-size: cover;
 }
 /*end of navigation bar*/
 
-/*style of university search form*/
-#university-search{
-	width: 180px;
-}
 
-.navbar-form{
-	padding: 0px !important;
-}
-/*end of university search form*/
 
 /*style for datepicker*/
 .date-form { 
@@ -77,17 +69,10 @@ label.control-label span {
 	width:180px;
 }
 
-.control-group{
-	margin-bottom:8px;
-}
+
 /*end of datepicker*/
 
 /*button style*/
-.btn{
-	width:150px;
-	padding: 5px 6px;
-}
-
 #btn-fbsignup{
 	width:180px;
 }
@@ -151,27 +136,6 @@ label.control-label span {
     margin-right: auto;
     padding: 0px;
     z-index: 100;
-}
-
-#search-form .form-group{
-	float: left;
-	display: inline-block;
-}
-
-#search-form .datePicker{
-	float: left;
-	display: inline-block;
-}
-
-#search-form .guestNumber{
-	float: left;
-	display: inline-block;
-}
-
-#search-form .foodType{
-	float: left;
-	display: inline-block;
-	padding-right: 20px;
 }
 
 .navbar-form{
