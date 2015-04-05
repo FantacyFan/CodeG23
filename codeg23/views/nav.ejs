@@ -2,15 +2,16 @@
 <div class="nav-bar">
 	<ul class="nav nav-pills">
 		<div class="floatleft">
-			<li role="presentation" class="active"><a href="/">Home</a></li>
+			<li role="presentation" class="active"><a href="/">CodeG23</a></li>
 		</div>
+
+		<% if(typeof user != 'undefined') {%>
 		<div class="floatleft">
 			<li role="presentation" class="active"><a href="/menus">Menus</a></li>
 		</div>
 		<div class="floatleft">
 			<li role="presentation" class="active"><a href="/notification">Notification(0)</a></li>
 		</div>
-		<% if(typeof user != 'undefined') {%>
 		<div class="floatright">
 			<li role="presentation"><a href="/profile/detail/<%= user._id %>"><%= user.firstname%></a></li>
 
@@ -18,9 +19,13 @@
 		</div>
 		<% } else { %>
 		<div class="floatright">
-		 	<li role="presentation"><a href="" data-toggle="modal" data-target="#myModal_login">Login</a></li>
-
-			<li role="presentation"><a href="" data-toggle="modal" data-target="#myModal_signup">Register</a></li>
+			<li role="presentation"><a href="" data-toggle="modal" data-target="#myModal_signup">Sign Up</a></li>
+		 	<li role="presentation"><a href="" data-toggle="modal" data-target="#myModal_login">Log In</a></li>
+		 	<li role="presentation">
+		 		<div class="addMenu">
+					<a href="/menu/add"><button type="button" onclick="location.href='/menu/add'" class="btn btn-primary">Add Menu</button></a>
+			    </div>
+		    </li>
 		</div>
 		<% } %>
 		
