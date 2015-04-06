@@ -250,10 +250,6 @@ label.control-label span {
 	padding: 1rem;
 }
 
-.ui.attached.block.header {
-	background-color: #6BCAE2;
-}
-
 .ui.massive.label {
 	background-color: #FFFFFF;
 	color: rgb(0,0,0);
@@ -261,6 +257,15 @@ label.control-label span {
 
 .ui.stackable.page.grid.main {
 	padding-top: 5rem;
+}
+
+.ui.selection.dropdown.gender {
+	min-width: 15px;
+}
+
+.ui.black.basic.button.profile {
+	float: right;
+	margin-top: -.4em;
 }
 /* End of css for profile pages */
 

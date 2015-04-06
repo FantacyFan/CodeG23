@@ -3,9 +3,6 @@
     <a class="item" href="/profile/detail/<%= user._id%>" id="info">
       <h3 class="ui header">Personal Info</h3>
     </a>
-    <a class="item" href="/profile/edit" id="edit">
-      <h3 class="ui header">Edit Profile</h3>
-    </a>
     <a class="item" href="/profile/posts" id="host">
       <h3 class="ui header">Event Hosting</h3>
     </a>
@@ -39,9 +36,7 @@
       } else if(url.indexOf("posts") != -1) {
         item = document.getElementById("host");
         //alert("host");
-      } else if(url.indexOf("edit") != -1) {
-        item = document.getElementById("edit");
-      }
+      } 
       item.setAttribute("class", "active teal item");    
   }
 </script>
