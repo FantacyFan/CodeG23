@@ -217,8 +217,14 @@ label.control-label span {
 }
 
 .ui.attached.block.header {
-	background-color: #93E2D5;
+	background-color: #6BCAE2;
 }
+
+.ui.massive.label {
+	background-color: #FFFFFF;
+	color: rgb(0,0,0);
+}
+
 
 
 

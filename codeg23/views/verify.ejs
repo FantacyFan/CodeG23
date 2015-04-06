@@ -14,21 +14,23 @@
 		<!-- verification details -->
 		<div class="twelve wide column">
 			<div class="section">
-				<h2>Verification</h2>
-				<div>
+				<h3 class="ui block top attached header"><i class="mail icon"></i>Edu Email Verification</h3>
+				<div class="ui bottom attached secondary segment">
 					<% if(user.edu_verified=="Verified") {%>
-						<h4>Congratulation! You verified your edu email successfully!</h4>
+						<h3 class="ui header">Congratulation! You verified your edu email successfully!</h3>
 					<%} else {%>
 					<form method="post">
 						<% if(typeof message !== 'undefined'){ %>
 						<label><%= message.content %></label><br/>
 						<% } %>
 						<% if(user.edu_verified=="Pending"){ %>
-						<label>The activation email has been sent to <%= user.edu_email %></label><br/>
+						<h3 class="ui header">The activation email has been sent to <%= user.edu_email %></h3><br/>
 						<% } %>
-						<label for="eduemail">Edu Email Verification</label>
-						<input id="eduemail" name="eduemail"/>
-						<input type="submit" value="Verify"/>
+						<p>Please enter your .edu email address:</p>
+						<div class="ui input">
+							<input id="eduemail" name="eduemail" placeholder="example@univ.edu"/>
+						</div>
+						<button class="ui button" type="submit">Verify Me!</button>
 					</form>
 					<% } %>
 				</div>

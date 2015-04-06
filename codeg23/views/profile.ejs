@@ -17,59 +17,57 @@
 		        <div class="section">
 						<h3 class="ui block top attached header">Personal Information</h3>
 						<div class="ui bottom attached secondary segment">
-							<form class="ui form">
-								<div class="two fields">
-									<div class="field">
+							<div class="ui stackable grid">
+								<div class="row">
+									<div class="eight wide column">
 										<img src="/image/sample-portrait.jpg" alt="photo">
 									</div>
-									<div class="field">
-										<div class="two fields">
-											<div class="field">
-												<div class="ui massive label">Name</div>
+									<div class="eight wide column">
+										<div class="ui grid">
+											<div class="row">
+												<div class="six wide column">
+													<div class="ui massive label ">Name</div>
+												</div>
+												<div class="ten wide column">
+													<div class="ui massive label"><%= user.firstname %> <%= user.lastname %></div>
+												</div>
 											</div>
-											<div class="field">
-												<h3 class="ui header"><%= user.firstname %> <%= user.lastname %></h3>
+											<div class="row">
+												<div class="six wide column">
+													<div class="ui massive label">Email</div>
+												</div>
+												<div class="ten wide column">
+													<div class="ui massive label"><%= user.email %></div>
+												</div>
 											</div>
-										</div>
-										<div class="two fields">
-											<div class="field">
-												<div class="ui massive label">Email</div>
+											<div class="row">
+												<div class="six wide column">
+													<div class="ui massive label">Address</div>
+												</div>
+												<div class="ten wide column">
+													<div class="ui massive label"><%= user.address %></div>
+												</div>
 											</div>
-											<div class="field">
-												<h3 class="ui header"><%= user.email %></h3>
+											<div class="row">
+												<div class="six wide column">
+													<div class="ui massive label">City</div>
+												</div>
+												<div class="ten wide column">
+													<div class="ui massive label"><%= user.city %></div>
+												</div>
 											</div>
-										</div>
-										<div class="two fields">
-											<div class="field">
-												<div class="ui massive label">Address</div>
+											<div class="row">
+												<div class="six wide column">
+													<div class="ui massive label">Gender</div>
+												</div>
+												<div class="ten wide column">
+													<div class="ui massive label"><%= user.gender %></div>
+												</div>
 											</div>
-											<div class="field">
-												<h3 class="ui header"><%= user.address %></h3>
-											</div>
-										</div>
-										<div class="two fields">
-											<div class="field">
-												<div class="ui massive label">City</div>
-											</div>
-											<div class="field">
-												<h3 class="ui header"><%= user.city %></h3>
-											</div>
-										</div>
-										<div class="two fields">
-											<div class="field">
-												<div class="ui massive label">Gender</div>
-											</div>
-											<div class="field">
-												<h3 class="ui header"><%= user.gender %></h3>
-											</div>
-										</div>
-										<div class="field">
-											<div class="ui massive label">Bio</div>
-											<h3 class="ui header"><%= user.bio %></h3>
 										</div>
 									</div>
 								</div>
-							</form>
+							</div>
 						</div>
 
 						<h3 class="ui block top attached header">Verification Information</h3>
