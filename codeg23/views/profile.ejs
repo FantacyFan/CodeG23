@@ -5,272 +5,269 @@
 <body>
 	<% include ../views/nav %>
 	
-	<% if(target_user._id > user._id || target_user._id < user._id){%>
-	<% } else {%>	
-		<div class="ui stackable page grid main">        
-	        <!-- vertical menu -->
-	        <div class="four wide column">
-	  			<% include ../views/profile-vertical-menu %>
-	  		</div>
-	        <!-- main area -->
-	        <div class="twelve wide column">
-		        <div class="section">
-						<h3 class="ui block top attached header"><div><i class="user icon"></i>Demographic<button class="ui black basic button profile">Save</button></div></h3>
-						<div class="ui bottom attached secondary segment">
-							<div class="ui stackable grid">
-								<div class="row">
-									<div class="eight wide column">
-										<div class="ui grid">
-											<div class="row">
+	<div class="ui stackable page grid main">        
+        <!-- vertical menu -->
+        <div class="four wide column">
+  			<% include ../views/profile-vertical-menu %>
+  		</div>
+        <!-- main area -->
+        <div class="twelve wide column">
+	        <div class="section">
+	        	<form class="ui form" action="/profile/edit" method="post">
+					<h3 class="ui block top attached header"><div><i class="user icon"></i>Demographic<button class="ui black basic button profile" type="submit">Save</button></div></h3>
+					<div class="ui bottom attached secondary segment">
+						<div class="ui stackable grid">
+							<div class="row">
+								<div class="eight wide column">
+									<div class="ui grid">
+										<div class="row">
+										<div class="center aligned column">
+											<img src="/image/sample-portrait.jpg" alt="photo">
+										</div>
+										</div>
+										<div class="row">
 											<div class="center aligned column">
-												<img src="/image/sample-portrait.jpg" alt="photo">
-											</div>
-											</div>
-											<div class="row">
-												<div class="center aligned column">
-													<button class="ui labeled icon button">
-														<i class="cloud upload icon"></i>
-														Upload New Portrait
-													</button>
-												</div>
+												<button class="ui labeled icon button">
+													<i class="cloud upload icon"></i>
+													Upload New Portrait
+												</button>
 											</div>
 										</div>
 									</div>
-									<div class="eight wide column">
-										<form class="ui form">
-											<div class="two fields">
-												<div class="field">
-													<label for="firstname" class="ui huge label">First Name</label>
-													<input type="text" name="firstname" class="ui input" value="<%= user.firstname %>"/>
-												</div>
-												<div class="field">
-													<label for="lastname" class="ui huge label">Last Name</label>
-													<input type="text" name="lastname" class="ui input" value="<%= user.lastname %>"/>
-												</div>
-											</div>
-											<div class="field">
-												<div class="field">
-													<label for="month" class="ui huge label">Birthdate</label>
-													<div class="ui selection dropdown" tabindex="0">
-														<input type="hidden" name="month" id="month">
-
-														<div class="default text">Month</div>
-														<i class="dropdown icon"></i>
-
-														<div class="menu" tabindex="-1">
-															<% for(var i = 1; i <= 12; i++){ %>
-															<div class="item" data-value="<%= i %>"><%= i %></div>
-															<% } %>
-														</div>
-										            </div>
-										        
-										    
-													<div class="ui selection dropdown" tabindex="0">
-														<input type="hidden" name="day" id="day">
-
-														<div class="default text">Day</div>
-														<i class="dropdown icon"></i>
-														<div class="menu" tabindex="-1">
-															<% for(var i = 1; i <= 31; i++){ %>
-															<div class="item" data-value="<%= i %>"><%= i %></div>
-															<% } %>
-														</div>
-													</div>
-
-													<div class="ui selection dropdown" tabindex="0">
-														<input type="hidden" name="year" id="year">
-
-														<div class="default text">Year</div>
-														<i class="dropdown icon"></i>
-														<div class="menu" tabindex="-1">
-															<% for(var i = 2015; i > 1900; i--){ %>
-															<div class="item" data-value="<%= i %>"><%= i %></div>
-															<% } %>
-														</div>
-													</div>
-																									        
-											</div>
-											<div class="two fields">
-												<div class="field">
-													<label for="gender" class="ui huge label">Gender</label>
-													<div class="ui selection dropdown gender" tabindex="0">
-														<input type="hidden" name="gender" id="gender"/>
-														<div class="default text">Gender</div>
-														<i class="dropdown icon"></i>
-														<div class="menu" tabindex="-1">
-															<div class="item" data-value="male">Male</div>
-															<div class="item" data-value="female">Female</div>
-														</div>
-										            </div>
-												</div>
-												<div class="field">
-													<label for="nationality" class="ui huge label">Nationality</label>
-													<input type="text" name="nationality" class="ui input" id="nationality"/>
-												</div>
-											</div>
-											<div class="field">
-												<div class="field">
-													<label for="languages" class="ui huge label">Languages</label>
-													<input type="text" name="languages" class="ui input" id="languages"/>
-												</div>
-											</div>
-										</form>
-									</div>
 								</div>
+								<div class="eight wide column">
+<!-- 									<form class="ui form" action="/profile/edit" method="post" id="demographicForm"> -->
+										<div class="two fields">
+											<div class="field">
+												<label for="firstname" class="ui huge label">First Name</label>
+												<input type="text" name="firstname" class="ui input" value="<%= user.firstname %>"/>
+											</div>
+											<div class="field">
+												<label for="lastname" class="ui huge label">Last Name</label>
+												<input type="text" name="lastname" class="ui input" value="<%= user.lastname %>"/>
+											</div>
+										</div>
+										<div class="field">
+											<div class="field">
+												<label for="month" class="ui huge label">Birthdate</label>
+												<div class="ui selection dropdown" tabindex="0">
+													<input type="hidden" name="month" id="month" value="<%= user.birth_month %>">
+
+													<div class="default text">Month</div>
+													<i class="dropdown icon"></i>
+
+													<div class="menu" tabindex="-1">
+														<% for(var i = 1; i <= 12; i++){ %>
+														<div class="item" data-value="<%= i %>"><%= i %></div>
+														<% } %>
+													</div>
+									            </div>
+									        
+									    
+												<div class="ui selection dropdown" tabindex="0">
+													<input type="hidden" name="day" id="day" value="<%= user.birth_day %>">
+
+													<div class="default text">Day</div>
+													<i class="dropdown icon"></i>
+													<div class="menu" tabindex="-1">
+														<% for(var i = 1; i <= 31; i++){ %>
+														<div class="item" data-value="<%= i %>"><%= i %></div>
+														<% } %>
+													</div>
+												</div>
+
+												<div class="ui selection dropdown" tabindex="0">
+													<input type="hidden" name="year" id="year" value="<%= user.birth_year %>">
+
+													<div class="default text">Year</div>
+													<i class="dropdown icon"></i>
+													<div class="menu" tabindex="-1">
+														<% for(var i = 2015; i > 1900; i--){ %>
+														<div class="item" data-value="<%= i %>"><%= i %></div>
+														<% } %>
+													</div>
+												</div>
+																								        
+										</div>
+										<div class="two fields">
+											<div class="field">
+												<label for="gender" class="ui huge label">Gender</label>
+												<div class="ui selection dropdown gender" tabindex="0">
+													<input type="hidden" name="gender" id="gender" value="<%= user.gender %>"/>
+													<div class="default text">Gender</div>
+													<i class="dropdown icon"></i>
+													<div class="menu" tabindex="-1">
+														<div class="item" data-value="male">male</div>
+														<div class="item" data-value="female">female</div>
+													</div>
+									            </div>
+											</div>
+											<div class="field">
+												<label for="nationality" class="ui huge label">Nationality</label>
+												<input type="text" name="nationality" class="ui input" id="nationality" value="<%= user.nationality %>"/>
+											</div>
+										</div>
+										<div class="field">
+											<div class="field">
+												<label for="languages" class="ui huge label">Languages</label>
+												<input type="text" name="languages" class="ui input" id="languages" value="<%= user.languages %>"/>
+											</div>
+										</div>
+									<!-- </form>
+ -->								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+					<h3 class="ui block top attached header"><div><i class="book icon"></i>Contact<button class="ui black basic button profile" type="submit" name="contactBtn">Save</button></div></h3>
+					<div class="ui bottom attached secondary segment">
+						<div class="ui stackable grid">
+							<div class="row">
+								<div class="column">
+<!-- 									<form class="ui form" action="/profile/edit" method="post" id="contactForm"> -->
+										<div class="two fields">
+											<div class="field">
+												<div class="field">
+													<label for="phone" class="ui huge label">Phone</label>
+													<input type="text" name="phone" class="ui input" value="<%= user.phone %>"/>
+												</div>
+											</div>
+											<div class="field">
+												<div class="field">
+													<label for="phone" class="ui huge label">Email</label>
+													<input type="text" name="phone" class="ui input" value="<%= user.email %>" disabled/>
+												</div>
+											</div>
+										</div>
+										<div class="field">
+											<div class="field">
+													<label for="address" class="ui huge label">Address</label>
+													<input type="text" name="address" class="ui input" value="<%= user.address %>"/>
+											</div>
+										</div>
+										<div class="three fields">
+											<div class="field">
+												<div class="field">
+													<label for="city" class="ui huge label">City</label>
+													<input type="text" name="city" class="ui input" value="<%= user.city %>"/>
+												</div>
+											</div>
+											<div class="field">
+												<div class="field">
+													<label for="state" class="ui huge label">State</label>
+													<input type="text" name="state" class="ui input" value="<%= user.state %>"/>
+												</div>
+											</div>
+											<div class="field">
+												<div class="field">
+													<label for="country" class="ui huge label">Country</label>
+													<input type="text" name="country" class="ui input" value="<%= user.country %>"/>
+												</div>
+											</div>
+										</div>
+										<div class="two fields">
+											<div class="field">
+												<div class="field">
+													<label for="wechat" class="ui huge label">WeChat</label>
+													<input type="text" name="wechat" class="ui input" value="<%= user.wechat %>"/>
+												</div>
+											</div>
+											<div class="field">
+												<div class="field">
+													<label for="linkedin" class="ui huge label">LinkedIn</label>
+													<input type="text" name="linkedin" class="ui input" value="<%= user.linkedin %>"/>
+												</div>
+											</div>
+										</div>
+									<!-- </form>
+ -->								</div>
 							</div>
 						</div>
 					</div>
 
-						<h3 class="ui block top attached header"><div><i class="book icon"></i>Contact<button class="ui black basic button profile">Save</button></div></h3>
-						<div class="ui bottom attached secondary segment">
-							<div class="ui stackable grid">
-								<div class="row">
-									<div class="column">
-										<form class="ui form">
-											<div class="two fields">
-												<div class="field">
-													<div class="field">
-														<label for="phone" class="ui huge label">Phone</label>
-														<input type="text" name="phone" class="ui input"/>
-													</div>
-												</div>
-												<div class="field">
-													<div class="field">
-														<label for="phone" class="ui huge label">Email</label>
-														<input type="text" name="phone" class="ui input" value="<%= user.email %>" disabled/>
-													</div>
-												</div>
-											</div>
+					<h3 class="ui block top attached header"><div><i class="student icon"></i>Work and Education<button class="ui black basic button profile" type="submit" name="educationBtn">Save</button></div></h3>
+					<div class="ui bottom attached secondary segment">
+						<div class="ui stackable grid">
+							<div class="wide column">
+<!-- 								<form class="ui form" action="/profile/edit" method="post" id="educationForm"> -->
+									<div class="two fields">
+										<div class="field">
 											<div class="field">
-												<div class="field">
-														<label for="address" class="ui huge label">Address</label>
-														<input type="text" name="address" class="ui input" value="<%= user.address %>"/>
-												</div>
-											</div>
-											<div class="three fields">
-												<div class="field">
-													<div class="field">
-														<label for="city" class="ui huge label">City</label>
-														<input type="text" name="city" class="ui input" value="<%= user.city %>"/>
-													</div>
-												</div>
-												<div class="field">
-													<div class="field">
-														<label for="state" class="ui huge label">State</label>
-														<input type="text" name="state" class="ui input" value="<%= user.state %>"/>
-													</div>
-												</div>
-												<div class="field">
-													<div class="field">
-														<label for="country" class="ui huge label">Country</label>
-														<input type="text" name="country" class="ui input" value="<%= user.country %>"/>
-													</div>
-												</div>
-											</div>
-											<div class="two fields">
-												<div class="field">
-													<div class="field">
-														<label for="wechat" class="ui huge label">WeChat</label>
-														<input type="text" name="wechat" class="ui input" value="<%= user.wechat %>"/>
-													</div>
-												</div>
-												<div class="field">
-													<div class="field">
-														<label for="linkedin" class="ui huge label">LinkedIn</label>
-														<input type="text" name="linkedin" class="ui input" value="<%= user.linkedin %>"/>
-													</div>
-												</div>
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<h3 class="ui block top attached header"><div><i class="student icon"></i>Work and Education<button class="ui black basic button profile">Save</button></div></h3>
-						<div class="ui bottom attached secondary segment">
-							<div class="ui stackable grid">
-								<div class="wide column">
-									<form class="ui form">
-										<div class="two fields">
-											<div class="field">
-												<div class="field">
-													<label for="company" class="ui huge label">Company</label>
-													<input type="text" name="company" class="ui input" value="<%= user.company %>"/>
-												</div>
-											</div>
-											<div class="field">
-												<div class="field">
-													<label for="school" class="ui huge label">School</label>
-													<input type="text" name="school" class="ui input" value="<%= user.school %>"/>
-												</div>
+												<label for="company" class="ui huge label">Company</label>
+												<input type="text" name="company" class="ui input" value="<%= user.company %>"/>
 											</div>
 										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-
-						<h3 class="ui block top attached header"><div><i class="heart icon"></i>Interests and Bio<button class="ui black basic button profile">Save</button></div></h3>
-						<div class="ui bottom attached secondary segment">
-							<div class="ui stackable grid">
-									<div class="wide column">
-										<form class="ui form">
+										<div class="field">
 											<div class="field">
-												<div class="field">
-													<label for="interest" class="ui huge label">Interest</label>
-													<input type="text" name="interest" class="ui input" value="<%= user.interest %>"/>
-												</div>
+												<label for="school" class="ui huge label">School</label>
+												<input type="text" name="school" class="ui input" value="<%= user.school %>"/>
 											</div>
-											<div class="field">
-												<div class="field">
-													<label for="bio" class="ui huge label">Describe Yourself</label>
-													<textarea name="bio"><%= user.bio %></textarea>
-												</div>
-											</div>
-										</form>
+										</div>
 									</div>
+<!-- 								</form> -->
 							</div>
 						</div>
+					</div>
 
-
-						<h3 class="ui block top attached header"><div><i class="lock icon"></i>Verification</h3>
-						<div class="ui bottom attached secondary segment">
-							<table class="ui two column large table">
-								<tbody>
-										<% if(user.edu_verified == "Verified") {%>
-										<tr class="positive">
-											<td>Edu Email</td>
-											<td><i class="icon checkmark"></i>Verified</td>
-										</tr>
-										<% } else { %>
-										<tr class="negative">
-											<td>Edu Email</td>
-											<td><i class="icon close"></i>Not Verified</td>
-										</tr>
-										<% } %>
-									</tr>
-									<% if(!(typeof user.facebook_id == "undefined")) {%>
-										<tr class="positive">
-											<td>Facebook</td>
-											<td><i class="icon checkmark"></i>Verified</td>
-										</tr>
-										<% } else { %>
-										<tr class="negative">
-											<td>Facebook</td>
-											<td><i class="icon close"></i>Not Verified</td>
-										</tr>
-									<% } %>
-								</tbody>
-							</table>
+					<h3 class="ui block top attached header"><div><i class="heart icon"></i>Interests and Bio<button class="ui black basic button profile" type="submit" name="bioBtn">Save</button></div></h3>
+					<div class="ui bottom attached secondary segment">
+						<div class="ui stackable grid">
+								<div class="wide column">
+<!-- 									<form class="ui form" action="/profile/edit" method="post" id="bioForm"> -->
+										<div class="field">
+											<div class="field">
+												<label for="interests" class="ui huge label">Interest</label>
+												<input type="text" name="interests" id="interests" class="ui input" value="<%= user.interests %>"/>
+											</div>
+										</div>
+										<div class="field">
+											<div class="field">
+												<label for="bio" class="ui huge label">Describe Yourself</label>
+												<textarea name="bio"><%= user.bio %></textarea>
+											</div>
+										</div>
+<!-- 									</form> -->
+								</div>
 						</div>
+					</div>
 
 
-				</div> 
-       
-	        </div><!-- /.col-xs-12 main -->
-	    </div><!-- ui grid -->
-	<% } %>
+					<h3 class="ui block top attached header"><div><i class="lock icon"></i>Verification</h3>
+					<div class="ui bottom attached secondary segment">
+						<table class="ui two column large table">
+							<tbody>
+									<% if(user.edu_verified == "Verified") {%>
+									<tr class="positive">
+										<td>Edu Email</td>
+										<td><i class="icon checkmark"></i>Verified</td>
+									</tr>
+									<% } else { %>
+									<tr class="negative">
+										<td>Edu Email</td>
+										<td><i class="icon close"></i>Not Verified</td>
+									</tr>
+									<% } %>
+								</tr>
+								<% if(!(typeof user.facebook_id == "undefined")) {%>
+									<tr class="positive">
+										<td>Facebook</td>
+										<td><i class="icon checkmark"></i>Verified</td>
+									</tr>
+									<% } else { %>
+									<tr class="negative">
+										<td>Facebook</td>
+										<td><i class="icon close"></i>Not Verified</td>
+									</tr>
+								<% } %>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div> <!-- section -->
+   
+        </div><!-- 12 wide column -->
+    </div><!-- ui grid -->
 	<script>
 		$(document).ready(function() {
 			$('.ui.dropdown').dropdown();
