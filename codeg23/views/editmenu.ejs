@@ -4,6 +4,7 @@
 </head>
 <body onload="getDefaultOption()">
 	<% include ../views/nav %>
+
 	<h1>Edit Menu</h1>
 	<form method="post">
 		<label for="menuTitle">Menu Title: </label>
@@ -27,6 +28,7 @@
       	<input type="submit" value="Submit">
 	</form>
 	<button onclick="location.href='/menu/detail/<%= menu._id %>'">Cancel</button>
+
 	<script>
 		function getDefaultOption(){
 			var defaultValue = $("#menuQuantity").attr("value");

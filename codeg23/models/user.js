@@ -19,7 +19,8 @@ var userSchema = mongoose.Schema({
 	edu_email: String,
 	edu_key: String,
 	gender: String,
-	facebook_id: String
+	facebook_id: String,
+	city: String
 });
 
 // create the model for users and expose it to our app

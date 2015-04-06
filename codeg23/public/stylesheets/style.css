@@ -211,8 +211,14 @@ label.control-label span {
 }
 
 
+/* CSS for all profile pages */
+.section {
+	padding: 1rem;
+}
 
-
+.ui.attached.block.header {
+	background-color: #93E2D5;
+}
 
 
 

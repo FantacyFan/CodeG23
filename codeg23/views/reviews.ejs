@@ -4,16 +4,28 @@
 </head>
 <body>
 	<% include ../views/nav %>
-	<h2>Your reviews for others</h2>
-	<ul>
-		<% reviewGiven.forEach(function(rg){%>
-		<li><%= rg.text %></li>
-		<% }) %>
-  	</ul>
-  	<h2>Your received reviews</h2>
-	<ul>
-		<% reviewReceived.forEach(function(rr){%>
-		<li><%= rr.text %></li>
-		<% }) %>
-  	</ul>
+	<div class="ui stackable page grid">
+
+		<!-- veritical menu -->
+		<div class="four wide column">	
+			<% include ../views/profile-vertical-menu %>
+		</div>
+
+		<div class="twelve wide column">
+			<div class="section">
+			<h2>Your reviews for others</h2>
+			<ul>
+				<% reviewGiven.forEach(function(rg){%>
+				<li><%= rg.text %></li>
+				<% }) %>
+		  	</ul>
+		  	<h2>Your received reviews</h2>
+			<ul>
+				<% reviewReceived.forEach(function(rr){%>
+				<li><%= rr.text %></li>
+				<% }) %>
+		  	</ul>
+		  </div>
+	  	</div>
+	</div>
 </body>

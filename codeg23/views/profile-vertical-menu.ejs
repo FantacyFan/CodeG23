@@ -1,17 +1,47 @@
-<div class="ui vertical menu">
-  <a class="active teal item">
-    Personal Info
-  </a>
-  <a class="item">
-    Event Hosting
-  </a>
-  <a class="item">
-    Event Attending
-  </a>
-  <a class="item">
-    Reviews
-  </a>
-  <a class="item">
-    Verification
-  </a>
+<div class="section">
+  <div class="ui vertical menu">
+    <a class="item" href="/profile/detail/<%= user._id%>" id="info">
+      <h3 class="ui header">Personal Info</h3>
+    </a>
+    <a class="item" href="/profile/edit" id="edit">
+      <h3 class="ui header">Edit Profile</h3>
+    </a>
+    <a class="item" href="/profile/posts" id="host">
+      <h3 class="ui header">Event Hosting</h3>
+    </a>
+    <a class="item" href="/request/history" id="attend">
+      <h3 class="ui header">Event Attending</h3>
+    </a>
+    <a class="item" href="/review" id="review">
+      <h3 class="ui header">Reviews</h3>
+    </a>
+    <a class="item" href="/profile/verify" id="verify">
+      <h3 class="ui header">Verification</h3>
+    </a>
+  </div>
 </div>
+<script>
+  window.onload = function(){
+      var url = window.location.href;
+      var item;
+      if(url.indexOf("detail") != -1){
+        item = document.getElementById("info");
+        //alert("info");
+      } else if(url.indexOf("request") != -1) {
+        item = document.getElementById("attend");
+        //alert("attend");
+      } else if(url.indexOf("review") != -1) {
+        item = document.getElementById("review");
+        //alert("review");
+      } else if(url.indexOf("verify") != -1) {
+        item = document.getElementById("verify");
+        //alert("verify");
+      } else if(url.indexOf("posts") != -1) {
+        item = document.getElementById("host");
+        //alert("host");
+      } else if(url.indexOf("edit") != -1) {
+        item = document.getElementById("edit");
+      }
+      item.setAttribute("class", "active teal item");    
+  }
+</script>

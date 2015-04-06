@@ -68,17 +68,6 @@ router.get('/verify/:key', function(req, res){
 	});
 })
 
-/* Review Page */
-router.get('/reviews', function(req, res){
-	ReviewSchema.find({reviewer_id:req.user._id}, function(err,reviewGiven){
-		ReviewSchema.find({receiver_id:req.user._id}, function(err,reviewReceived){
-			res.render("reviews", {
-				reviewGiven:reviewGiven,
-				reviewReceived:reviewReceived 
-			})
-		})
-	})
-})
 
 
 /* Requests page */

@@ -4,22 +4,35 @@
 </head>
 <body>
 	<% include ../views/nav %>
-	<h2>Verification</h2>
-	<div>
-		<% if(user.edu_verified=="Verified") {%>
-			<h4>Congratulation! You verified your edu email successfully!</h4>
-		<%} else {%>
-		<form method="post">
-			<% if(typeof message !== 'undefined'){ %>
-			<label><%= message.content %></label><br/>
-			<% } %>
-			<% if(user.edu_verified=="Pending"){ %>
-			<label>The activation email has been sent to <%= user.edu_email %></label><br/>
-			<% } %>
-			<label for="eduemail">Edu Email Verification</label>
-			<input id="eduemail" name="eduemail"/>
-			<input type="submit" value="Verify"/>
-		</form>
-		<% } %>
+	<div class="ui stackable page grid">
+
+		<!-- veritical menu -->
+		<div class="four wide column">
+			<% include ../views/profile-vertical-menu %>
+		</div>
+
+		<!-- verification details -->
+		<div class="twelve wide column">
+			<div class="section">
+				<h2>Verification</h2>
+				<div>
+					<% if(user.edu_verified=="Verified") {%>
+						<h4>Congratulation! You verified your edu email successfully!</h4>
+					<%} else {%>
+					<form method="post">
+						<% if(typeof message !== 'undefined'){ %>
+						<label><%= message.content %></label><br/>
+						<% } %>
+						<% if(user.edu_verified=="Pending"){ %>
+						<label>The activation email has been sent to <%= user.edu_email %></label><br/>
+						<% } %>
+						<label for="eduemail">Edu Email Verification</label>
+						<input id="eduemail" name="eduemail"/>
+						<input type="submit" value="Verify"/>
+					</form>
+					<% } %>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>

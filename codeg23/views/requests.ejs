@@ -4,33 +4,30 @@
 </head>
 <body>
 	<% include ../views/nav %>
-	<div class="row row-offcanvas row-offcanvas-left" style="margin-left:35px !important; width:45%;">
-		<h2>Requests</h2>
-		<!-- sidebar -->
-	    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-	        <ul class="nav">
-	          <li><div class="my-posts"><a href="/profile/posts">Posts</a></div></li>
-	          <li><div class="my-order-sold"><a href="/profile/sold">Sold</a></div></li>
-	          <li><div class="my-requests"><a href="/profile/requests">Requests</a></div></li>   
-	          <li><div class="my-order-bought"><a href="/profile/bought">Bought</a></div></li> 
-	          <li><div class="my-reviews"><a href="/profile/reviews">Reviews</a></div></li>
-	          <li><div class="my-verify"><a href="/profile/verify">Verify</a></div></li>    
-	        </ul>
-	    </div>
+	<div class="ui stackable page grid">
+		<!-- veritical menu -->
+		<div class="four wide column">
+			<% include ../views/profile-vertical-menu %>
+		</div>
 
-		<ul style="padding-left:200px;">
-			<% requests.forEach(function(r) {%>
-		  	<li>
-		    	<form method="post">
-		      		<input type="hidden" name="reqid" value="<%= r._id %>"/>
-		      		<p>Owner Name: <%= r.owner_id %> </p>
-		      		<p>Menu Title: <%= r.menu_id %> </p>
-		      		<p>Time: <%= r.timestamp %> </p>
-		      		<p>Message: <%= r.text %> </p>
-		      		<input type="submit" value="Cancel"/>
-		    	</form>
-		  	</li>
-		  	<% }) %>
-		</ul>
+		<div class="twelve wide column">
+			<div class="section">
+				<h2>Requests</h2>
+				<ul style="padding-left:200px;">
+					<% requests.forEach(function(r) {%>
+				  	<li>
+				    	<form method="post">
+				      		<input type="hidden" name="reqid" value="<%= r._id %>"/>
+				      		<p>Owner Name: <%= r.owner_id %> </p>
+				      		<p>Menu Title: <%= r.menu_id %> </p>
+				      		<p>Time: <%= r.timestamp %> </p>
+				      		<p>Message: <%= r.text %> </p>
+				      		<input type="submit" value="Cancel"/>
+				    	</form>
+				  	</li>
+				  	<% }) %>
+				</ul>
+			</div>
+		</div>
 	</div>
 </body>
