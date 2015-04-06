@@ -1,6 +1,6 @@
 
 <div class="nav-bar">
-	<ul class="nav nav-pills">
+	<ul class="nav">
 		<div class="floatleft">
 			<li role="presentation" class="active"><a href="/">CodeG23</a></li>
 		</div>
@@ -16,11 +16,21 @@
 			<li role="presentation"><a href="/profile/detail/<%= user._id %>"><%= user.firstname%></a></li>
 
 			<li role="presentation"><a href="/logout">Logout</a></li>
+			<li>
+				<div class="addMenu">
+			    	<a href="/menu/add"><button type="button" onclick="location.href='/menu/add'" class="ui blue button">List Your Menu</button></a>
+			    </div>
+			</li>
 		</div>
 		<% } else { %>
 		<div class="floatright">
 			<li role="presentation"><a href="javascript:void" onclick="return signpopup();">Sign Up</a></li>
 		 	<li role="presentation"><a href="javascript:void" onclick="return logpopup();">Log In</a></li>
+		 	<li>
+				<div class="addMenu">
+			    	<a href="/menu/add"><button type="button" onclick="location.href='/menu/add'" class="ui blue button" style="border-radius:.1857rem; padding:8px;">List Your Menu</button></a>
+			    </div>
+			</li>
 		</div>
 		<% } %>
 		
@@ -29,7 +39,7 @@
 
 	    <div class="ui stackable grid">
 	      <div class="ui small modal login">
-	        <i class="close icon"></i>
+	        <i class="close icon" style="z-index:101;"></i>
 	        
 	        <div class="ui form segment" style="padding:20px 50px; margin-top:0px; margin-bottom:0px;">
 	            <div class="ui grid">
@@ -64,7 +74,10 @@
 	        <div class="field">
 	          
 	            <div class="ui green submit button">Login</div>
-	            <div class="ui blue submit button">Login with Facebook</div>
+	            <div class="ui facebook button">
+	              <i class="facebook icon"></i>
+	              Login with Facebook
+	            </div> 
 	       
 	        </div>
 	      </div>
@@ -84,7 +97,7 @@
 
 	    <div class="ui stackable grid">
         <div class="ui small modal signup">
-          <i class="close icon"></i>
+          <i class="close icon" style="z-index:101;"></i>
           
           <div class="ui form segment" style="padding:20px 50px; margin-top:0px; margin-bottom:0px;">
               <div class="ui grid">           
@@ -134,7 +147,10 @@
           <div class="field" style="padding-top:20px;">
             
               <div class="ui green submit button">Sign Up</div>
-              <div class="ui blue submit button">Sign Up with Facebook</div>
+              <div class="ui facebook button">
+              	<i class="facebook icon"></i>
+              	Sign Up with Facebook
+              </div> 
          
           </div>
         </div>

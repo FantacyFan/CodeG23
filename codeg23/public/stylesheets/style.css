@@ -1,28 +1,29 @@
-body{
-	overflow-x: hidden;
-	margin:0px;
+
+html, body{
+overflow-x: hidden;
+margin: 0px;
+padding: 0px;
+height:100%;
+width:100%;
 }
 
-#bg_container{ height:400px; overflow:hidden; z-index: 0;}
-
-
-video#bg {
-position: absolute; 
-right: 0; 
-bottom: 0;
-top: -60;
-min-width: 100%; 
-min-height: 100%;
-width: auto; 
-height: auto; 
-z-index: -100;
-background-size: cover;
-}
 
 
 /*start of navigation bar*/
 .nav-bar{
-	border-bottom: 1px solid #ddd;
+	z-index: 102;
+  	position: fixed;
+  	width: 100%;
+  	height: 50px;
+  	background-color: rgba(255,255,255,0.2);
+}
+
+.nav-bar a{
+	color: white;
+}
+
+.nav{
+	margin: 0px 0px;
 }
 
 .floatleft{
@@ -31,8 +32,8 @@ background-size: cover;
 
 .floatleft li{
 	margin-left:30px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	font-size: 20px;
 }
 
@@ -44,8 +45,8 @@ background-size: cover;
 .floatright li{
 	display: inline-block;
 	margin-right: 30px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
     font-size: 20px;
 }
 /*end of navigation bar*/
@@ -65,18 +66,9 @@ label.control-label span {
 	width: 40%;
 }
 
-#date-picker{
-	width:180px;
-}
-
 
 /*end of datepicker*/
 
-/*button style*/
-#btn-fbsignup{
-	width:180px;
-}
-/*end of button style*/
 
 /*google map*/
 #map-canvas {
@@ -127,15 +119,24 @@ label.control-label span {
 }
 /*end list of menu*/
 
-
 /*search form*/
-#search-form{
+.search-form{
+	position:static !important;
 	float: none;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0px;
+    padding-top: 15%;
     z-index: 100;
+    text-align: center;
+}
+
+.welcome h1{
+	font-size: 40px;
+	color: white;
+}
+
+.welcome h3{
+	font-size: 20px;
+	color: white;
 }
 
 .navbar-form{
@@ -143,30 +144,56 @@ label.control-label span {
 }
 
 #front-page{
-	border-bottom: 1px solid #ddd;
-	height:600px;
+	height:510px;
 }
 
+#front-img{
+	height: 225px;
+}
 
 #second-page{
-	border-bottom: 1px solid #ddd;
-	height:610px;
+	height:350px;
+	margin-top: 10%;
+}
+
+.univ-name{
+	position: absolute; 
+	top: 45%; 
+	text-align: center;
+	width: 91%;
+	z-index:100;
+	color: white;
 }
 
 #third-page{
 	border-bottom: 1px solid #ddd;
-	height:610px;
+	height:680px;
+	margin-top: 5%;
 }
 
 #footer{
 	clear: both;
     position: relative;
     z-index: 10;
-    height: 10em;
+    height: 20em;
     margin-top: -3em;
     background-color: black;
     color:white;
     text-align: center;
+}
+
+.footer-list li{
+	list-style-type: none;
+	padding-bottom: 3px;
+}
+
+.footer-list li a{
+	text-decoration: none;
+	color: #eee;
+}
+
+.copyright{
+	text-align: center;
 }
 
 /*sidebar in profile*/

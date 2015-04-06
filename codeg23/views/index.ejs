@@ -5,136 +5,189 @@
 <body>
 	<% include ../views/nav %>
 	
-	<div class="row" id="front-page">
-		<div id="bg_container">
-			<video controls id="bg" autoplay loop muted>
-	            <source src="video/homepage.mp4" type="video/mp4"/>
-	            <source src="video/homepage.webm" type="video/webm"/>
-	            <source src="video/homepage.ogg" type="video/ogg"/>
-	            <!-- fallback -->
-	            Your browser does not support the <code>video</code> element.
-        	</video>
-		</div>
 
-		    <div class="search-form">  	
-			    <form class="ui form" action="/menus" method="post">
-				  <div class="two fields">
+	<div class="row" id="front-page" style="position:relative">
 
-				    <div class="field">
-				      <div class="two fields">
+		  <video autoplay="" loop="" muted class="fillWidth" id="video-bg " style="min-width: 100%; position:absolute; z-index:-1">
+		    <source src="video/homepage.mp4" type="video/mp4"/>
+		    <source src="video/homepage.webm" type="video/webm"/>
+		    <source src="video/homepage.ogg" type="video/ogg"/>
+		  </video>
+		  	<div class="ui grid">
+		  		<div class="column welcome" style="text-align: center; padding-top: 18%;">
+		  			<h1>Welcome To My Dining Room</h1>
+		  			<h3>House Special And New Friends</h3>
+		  		</div>
+		  	</div>
+	    	<form class="ui form search-form" action="/menus" method="post">
+		        
+		          	<div class="ui icon input" style="width:250px; display:inline-block;">
+		          		<input type="text" name="university" placeholder="Which university are you in?">
+					  	<i class="search icon"></i>
+					</div>
 
-				        <div class="field">
-				          	<div class="ui icon input">
-				          		<input type="text" name="university" placeholder="Which University are you in?">
-							  	<i class="search icon"></i>
+		          	<div class="datePicker" style="display:inline-block; ">  
+						<div class="form-horizontal">
+							<div class="control-group">
+						        <div class="controls">
+						            <div class="ui icon input" style="width:140px; vertical-align:baseline;">
+						                <input id="date-picker" type="text" class="date-picker form-control" placeholder="Date" name="date"/>
+						                <i class="calendar outline icon"></i>
+						                <label for="date-picker" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span>
+						                </label>
+						            </div>
+						        </div>
 							</div>
-				        </div>
+						</div>
+			    	</div>
+		       
 
-
-
-				        <div class="field">
-				          	<div class="datePicker">  
-								<div class="form-horizontal">
-									<div class="control-group">
-								        <div class="controls">
-								            <div class="input-group">
-								                <input id="date-picker" type="text" class="date-picker form-control" placeholder="Date" name="date"/>
-								                <label for="date-picker" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span>
-								                </label>
-								            </div>
-								        </div>
-									</div>
-								</div>
-					    	</div>
-				        </div>
-
-				      </div>
-				    </div>
-
-				    <div class="field">
-				    	<div class="three fields">
-				    		<div class="field">
-						      	<div class="ui selection dropdown">
-						        	<input type="hidden" name="gender">
-						        	<div class="default text">Guest</div>
-						        	<i class="dropdown icon"></i>
-							        <div class="menu">
-							          <div class="item" data-value="1guest">1 Guest</div>
-							          <div class="item" data-value="2guests">2 Guests</div>
-							          <div class="item" data-value="3guests">3 Guests</div>
-							          <div class="item" data-value="4guests">4 Guests</div>
-							          <div class="item" data-value="5guests">5 Guests</div>
-							          <div class="item" data-value="6guests">6 Guests</div>
-							          <div class="item" data-value="6plusguests">6+ Guests</div>
-							        </div>
-						      	</div>
-				  			</div>
-					  		<div class="field">
-						      	<select class="ui search dropdown">
-								  <option value="">American</option>
-								  <option value="chinese">Chinese</option>
-								  <option value="indian">Indian</option>
-								  <option value="thai">Thai</option>
-								  <option value="korean">Korean</option>
-								  <option value="japanese">Japanese</option>
-								  <option value="mexican">Mexican</option>
-								</select>
-					  		</div>
-
-					  		<div class="field">
-					  			<div class="ui inverted red button" type="submit" id="search_button">Search</div>
-					  		</div>
-				  		</div>
-				    </div>
-				  </div>
-				</form>
-
-
-
-
-		    </div>
+		    
+		    	
+		    	
+				      	<div class="ui selection dropdown" style="min-width:100px; display:inline-block; ">
+				        	<input type="hidden" name="gender">
+				        	<div class="default text" style="margin-right:0px;">Guest</div>
+				        	<i class="dropdown icon"></i>
+					        <div class="menu">
+					          <div class="item" data-value="1guest">1 Guest</div>
+					          <div class="item" data-value="2guests">2 Guests</div>
+					          <div class="item" data-value="3guests">3 Guests</div>
+					          <div class="item" data-value="4guests">4 Guests</div>
+					          <div class="item" data-value="5guests">5 Guests</div>
+					          <div class="item" data-value="6guests">6 Guests</div>
+					          <div class="item" data-value="6plusguests">6+ Guests</div>
+					        </div>
+					    </div>
+				     
+		  			
+			  			<div class="type" style="display:inline-block;">
+				      	<select class="ui search dropdown" >
+				      	  <option value="">Category</option>
+						  <option value="american">American</option>
+						  <option value="chinese">Chinese</option>
+						  <option value="indian">Indian</option>
+						  <option value="thai">Thai</option>
+						  <option value="korean">Korean</option>
+						  <option value="japanese">Japanese</option>
+						  <option value="mexican">Mexican</option>
+						</select>
+						</div>
+			  	
+			  			<div class="ui red button" type="submit" id="search_button">Search</div>
+	
+			</form>
+		   
 
 	</div>
 
 		<div id="second-page">
-			<div class="row carousel-item" style="padding-top:150px; display: table-cell; vertical-align: middle; ">
-				<div class="col-lg-4 rm-padding-sm col-md-4">
-					<img src="image/cornell.jpg" alt="cornell">
-					<div class="va-middle text-center text-contrast">
-			          	<div class="h2 strong">
-			            Cornell
-			          	</div>
-			      	</div>
-				</div>
-				<div class="col-lg-4 rm-padding-sm col-md-4">	
-					<img src="image/pennstate.jpg" alt="pennstate">	
-					<div class="va-middle text-center text-contrast">
-			          	<div class="h2 strong">
-			            Penn State
-			          	</div>
-			      	</div>		
-				</div>
-				<div class="col-lg-4 rm-padding-sm col-md-4">	
-					<img src="image/nyu.jpg" alt="nyu">	
-					<div class="va-middle text-center text-contrast">
-			          	<div class="h2 strong">
-			            NYU
-			          	</div>
-			      	</div>		
-				</div>
+
+		 	<div class="ui grid">
+		  		<div class="column welcome" style="text-align: center;">
+		  			<h1 style="color:#565a5c">Explore Your Neighborhood</h1>
+		  		</div>
+		  	</div>
+
+			 <div class="ui stackable three column grid" style="margin-left:3%; margin-right:3%;">
+			  <div class="column">
+			  	<h1 class="univ-name">Cornell</h1>
+			    <div class="ui fluid image">
+			      <img src="image/university/cornell.jpg" alt="cornell" id="front-img">
+			    </div>
+			  </div>
+			  <div class="column">
+			  	<h1 class="univ-name">Penn State</h1>
+			    <div class="ui fluid image">
+			      <img src="image/university/pennstate.jpg" alt="pennstate" id="front-img">	
+			    </div>
+			  </div>
+			  <div class="column">
+			  	<h1 class="univ-name">NYU</h1>
+			    <div class="ui fluid image">
+			      <img src="image/university/nyu.jpg" alt="nyu" id="front-img">		
+			    </div>
+			  </div>
 			</div>
+
+
 		</div>
 
 		<div id="third-page">
-			This is the third page
+			<div class="ui grid">
+		  		<div class="column welcome" style="text-align: center;">
+		  			<h1 style="color:#565a5c">Taste House Specials</h1>
+		  		</div>
+		  	</div>
+
+			 <div class="ui stackable three column grid" style="margin-left:3%; margin-right:3%;">
+			  <div class="column">
+			  	<h1 class="univ-name">American</h1>
+			    <div class="ui fluid image">
+			      <img src="image/dishes-eg/american.jpg" alt="american" id="front-img">
+			    </div>
+			  </div>
+			  <div class="column">
+			  	<h1 class="univ-name">Chinese</h1>
+			    <div class="ui fluid image">
+			      <img src="image/dishes-eg/chinese.jpg" alt="chinese" id="front-img">	
+			    </div>
+			  </div>
+			  <div class="column">
+			  	<h1 class="univ-name">Mexican</h1>
+			    <div class="ui fluid image">
+			      <img src="image/dishes-eg/mexican.jpg" alt="mexican" id="front-img">		
+			    </div>
+			  </div>
+			  <div class="column">
+			  	<h1 class="univ-name">Korean</h1>
+			    <div class="ui fluid image">
+			      <img src="image/dishes-eg/korean.jpg" alt="korean" id="front-img">		
+			    </div>
+			  </div>
+			  <div class="column">
+			  	<h1 class="univ-name">Italian</h1>
+			    <div class="ui fluid image">
+			      <img src="image/dishes-eg/italian.jpg" alt="italian" id="front-img">		
+			    </div>
+			  </div>
+			  <div class="column">
+			  	<h1 class="univ-name">Japanese</h1>
+			    <div class="ui fluid image">
+			      <img src="image/dishes-eg/japanese.jpg" alt="japanese" id="front-img">		
+			    </div>
+			  </div>
+			</div>
 		</div>
 
 
 
 		<div id="footer">
-			This is a footer<br>
-			©2015 CodeG23 all rights reserved 
+			<div class="ui grid">
+			  	<div class="ui grid">
+				    <div class="six wide column">
+				    	<ul class="footer-list">
+									<li class="footer-list"><a href="#">About</a></li>
+									<li class="footer-list"><a href="#">Help</a></li>
+									<li class="footer-list"><a href="#">Term&Pirvacy</a></li>
+									<li class="footer-list"><a href="#">Career</a></li>
+									<li class="footer-list"><a href="#">Contact</a></li>
+						<ul>
+				    </div>
+				    <div class="ten wide column">
+				    	<h3 style="color:#eee">Join Us On</h3>
+				    </div>
+			 	</div>
+		  	</div>
+			<div class="ui grid">
+		  		<div class="column copyright">
+		  			<h5 style="color:#565a5c">©2015 CodeG23 all rights reserved </h5>
+		  		</div>
+		  	</div>	
 		</div>
+
+
+	
 
 	
 
