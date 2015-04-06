@@ -259,6 +259,11 @@ label.control-label span {
 	color: rgb(0,0,0);
 }
 
+.ui.stackable.page.grid.main {
+	padding-top: 5rem;
+}
+/* End of css for profile pages */
+
 
 
 
