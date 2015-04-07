@@ -1,6 +1,5 @@
-<div class="section">
-  <div class="ui vertical menu">
-    <a class="item" href="/profile/detail/<%= user._id%>" id="info">
+<div class="ui vertical menu profile">
+    <a class="item" href="/profile/detail/" id="info">
       <h3 class="ui header">Personal Info</h3>
     </a>
     <a class="item" href="/profile/posts" id="host">
@@ -15,8 +14,8 @@
     <a class="item" href="/profile/verify" id="verify">
       <h3 class="ui header">Verification</h3>
     </a>
-  </div>
 </div>
+
 <script>
   window.onload = function(){
       var url = window.location.href;

@@ -9,12 +9,12 @@
 
 		<div class="ui stackable grid">
 
-			<div class="row" style="width:100%;">
+			<div class="row" style="width:100%; margin-left:-1rem; margin-right:-1rem;">
 				<div class="column" style="width:100%;">
 					<div class="ui stackable grid">
 						<div class="row">
 							<div class="wide column" style="z-index:-1;">
-								<video autoplay="" loop="" muted class="fillWidth" id="video-bg" style="width:100%; height:auto;">
+								<video autoplay="" loop="" muted class="fillWidth" id="video-bg" style="width:100%; height:auto;margin-top:3rem;">
 									<source src="video/homepage.mp4" type="video/mp4"/>
 									<source src="video/homepage.webm" type="video/webm"/>
 									<source src="video/homepage.ogg" type="video/ogg"/>
@@ -40,13 +40,13 @@
 												<div class="ten wide column">
 									    	<form class="ui form search-form" action="/menus" method="post">
 									    		<div class="fields">
-										    		<div class="five wide field index" style="margin:0px;">
+										    		<div class="five wide field index majorsearch" style="margin:0px;">
 											          	<div class="ui icon input" style="width:100%; display:inline-block;">
 											          		<input type="text" name="university" placeholder="Which university are you in?">
 														  	<i class="search icon"></i>
 														</div>
 													</div>
-													<div class="three wide field index" style="margin:0px;">
+													<div class="three wide field index minorsearch" style="margin:0px;">
 											          	<div class="datePicker">
 															<div class="form-horizontal">
 																<div class="control-group">
@@ -62,7 +62,7 @@
 															</div>
 												    	</div>
 												    </div>
-											    	<div class="three wide field index" style="margin:0px;">
+											    	<div class="three wide field index minorsearch" style="margin:0px;">
 														<div class="ui selection dropdown" style="min-width:100%;">
 															<input type="hidden" name="gender">
 															<div class="default text" style="margin-right:0px;">Guest</div>
@@ -79,7 +79,7 @@
 														</div>
 													</div>
 
-													<div class="three wide field index" style="margin:0px;">
+													<div class="three wide field index minorsearch" style="margin:0px;">
 														<div class="ui fluid search selection dropdown">
 															<input type="hidden" name="category">
 															<i class="dropdown icon"></i>
@@ -95,7 +95,7 @@
 															</div>
 														</div>
 													</div>
-											  		<div class="two wide field index" style="margin:0px;">
+											  		<div class="two wide field index majorsearch" style="margin:0px;">
 											  			<button class="ui red button" type="submit" id="search_button" style="min-width:100%;">Search</button>
 											  		</div><!-- button column -->
 										  		</div>
@@ -120,19 +120,19 @@
 			</div>
 			  	
 			<div class="three column row" style="margin-left:3%; margin-right:3%;" id="second-page-content">
-				<div class="column">
+				<div class="column img">
 					<h1 class="univ-name">Cornell</h1>
 					<div class="ui fluid image">
 						<img src="image/university/cornell.jpg" alt="cornell" id="front-img">
 					</div>
 				</div>
-				<div class="column">
+				<div class="column img">
 					<h1 class="univ-name">Penn State</h1>
 					<div class="ui fluid image">
 						<img src="image/university/pennstate.jpg" alt="pennstate" id="front-img">	
 					</div>
 				</div>
-				<div class="column">
+				<div class="column img">
 					<h1 class="univ-name">NYU</h1>
 					<div class="ui fluid image">
 						<img src="image/university/nyu.jpg" alt="nyu" id="front-img">		
@@ -149,22 +149,22 @@
 
 
 
-			<div class="three column row" style="margin-left:3%; margin-right:3%;" id="third-page-content">
+			<div class="row" style="margin-left:3%; margin-right:3%;" id="third-page-content">
 				<div class="ui stackable grid">
 					<div class="three column row">
-						<div class="column">
+						<div class="column img">
 							<h1 class="univ-name">American</h1>
 							<div class="ui fluid image">
 								<img src="image/dishes-eg/american.jpg" alt="american" id="front-img">
 							</div>
 						</div>
-						<div class="column">
+						<div class="column img">
 							<h1 class="univ-name">Chinese</h1>
 							<div class="ui fluid image">
 								<img src="image/dishes-eg/chinese.jpg" alt="chinese" id="front-img">	
 							</div>
 						</div>
-						<div class="column">
+						<div class="column img">
 							<h1 class="univ-name">Mexican</h1>
 							<div class="ui fluid image">
 								<img src="image/dishes-eg/mexican.jpg" alt="mexican" id="front-img">		
@@ -172,19 +172,19 @@
 						</div>
 					</div>
 					<div class="three column row">
-						<div class="column">
+						<div class="column img">
 							<h1 class="univ-name">Korean</h1>
 							<div class="ui fluid image">
 								<img src="image/dishes-eg/korean.jpg" alt="korean" id="front-img">		
 							</div>
 						</div>
-						<div class="column">
+						<div class="column img">
 							<h1 class="univ-name">Italian</h1>
 							<div class="ui fluid image">
 								<img src="image/dishes-eg/italian.jpg" alt="italian" id="front-img">		
 							</div>
 						</div>
-						<div class="column">
+						<div class="column img">
 							<h1 class="univ-name">Japanese</h1>
 							<div class="ui fluid image">
 								<img src="image/dishes-eg/japanese.jpg" alt="japanese" id="front-img">		

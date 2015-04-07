@@ -15,14 +15,66 @@ width:100%;
 
 
 
-
 /*start of navigation bar*/
 .nav-bar{
 	z-index: 102;
   	position: fixed;
   	width: 100%;
-  	height: 8%;
-  	background-color: rgba(255,255,255,0.2);
+  	height: 4rem;
+  	background-color: #fff;
+}
+.item.nav-btn{
+	display: inline-block;
+}
+.side-bar{
+	display: none;
+}
+.item.side-btn{
+	display: none!important;
+}
+#list-menu-btn {
+	margin-left: 10px;
+	display: inline-block;
+}
+#vertical-menu {
+	display: inline-block;
+}
+.majorsearch {
+	display: : inline-block;
+}
+.minorsearch {
+	display: inline-block;
+}
+
+@media screen and (max-width: 767px){
+	.item.nav-btn{
+		display: none!important;
+	}
+	.item.side-btn{
+		display: inline-block!important;
+	}
+	.side-bar{
+		display: block;
+	}
+	#list-menu-btn {
+		display: none!important;
+	}
+	#vertical-menu {
+		display: none!important;
+	}
+	.section {
+		margin-left:0!important;
+		margin-right:0!important;
+	}
+	.minorsearch {
+		display: none!important;
+	}
+	.welcome h1 {
+		font-size: 2rem !important;
+	}
+	.welcome h3 {
+		font-size: 1rem !important;
+	}
 }
 
 .nav-bar a{
@@ -33,29 +85,23 @@ width:100%;
 	margin: 0px 0px;
 }
 
-.floatleft{
+.item.left{
 	float:left;
-}
-
-.floatleft li{
-	margin-left:30px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	font-size: 20px;
-}
-
-.floatright{
-	float: right;
-	display: inline;
-}
-
-.floatright li{
 	display: inline-block;
-	margin-right: 30px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-    font-size: 20px;
+	margin-left:10px;
+	margin-top: 12px;
+	font-size: 1.2rem!important;
 }
+
+
+.item.right{
+	float: right;
+	display: inline-block;
+	margin-right: 10px;
+	margin-top: 12px;
+	font-size: 1.2rem!important;
+}
+
 /*end of navigation bar*/
 
 
@@ -253,8 +299,19 @@ label.control-label span {
 
 
 /* CSS for all profile pages */
+.ui.vertical.menu.profile {
+	position:fixed;
+	margin-top: 5rem;
+	margin-left:5%;
+	margin-right:0%;
+	margin-bottom:5%;
+}
+
 .section {
-	padding: 1rem;
+	margin-top: 5rem;
+	margin-left:1%;
+	margin-right:5%;
+	margin-bottom:5%;
 }
 
 .ui.massive.label {

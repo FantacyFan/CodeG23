@@ -5,13 +5,13 @@
 <body>
 	<% include ../views/nav %>
 	
-	<div class="ui stackable page grid main">        
+	<div class="ui stackable grid main">        
         <!-- vertical menu -->
-        <div class="four wide column">
+        <div class="five wide column" id="vertical-menu">
   			<% include ../views/profile-vertical-menu %>
   		</div>
         <!-- main area -->
-        <div class="twelve wide column">
+        <div class="eleven wide column">
 	        <div class="section">
 	        	<form class="ui form" action="/profile/edit" method="post">
 					<h3 class="ui block top attached header"><div><i class="user icon"></i>Demographic<button class="ui black basic button profile" type="submit">Save</button></div></h3>
@@ -115,10 +115,10 @@
 										</div>
 									<!-- </form>
  -->								</div>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 
 					<h3 class="ui block top attached header"><div><i class="book icon"></i>Contact<button class="ui black basic button profile" type="submit" name="contactBtn">Save</button></div></h3>
 					<div class="ui bottom attached secondary segment">
@@ -233,7 +233,7 @@
 					</div>
 
 
-					<h3 class="ui block top attached header"><div><i class="lock icon"></i>Verification</h3>
+					<h3 class="ui block top attached header"><i class="lock icon"></i>Verification</h3>
 					<div class="ui bottom attached secondary segment">
 						<table class="ui two column large table">
 							<tbody>
@@ -248,7 +248,6 @@
 										<td><i class="icon close"></i>Not Verified</td>
 									</tr>
 									<% } %>
-								</tr>
 								<% if(!(typeof user.facebook_id == "undefined")) {%>
 									<tr class="positive">
 										<td>Facebook</td>
@@ -265,7 +264,6 @@
 					</div>
 				</form>
 			</div> <!-- section -->
-   
         </div><!-- 12 wide column -->
     </div><!-- ui grid -->
 	<script>
