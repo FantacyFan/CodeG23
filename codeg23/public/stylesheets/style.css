@@ -7,6 +7,13 @@ height:100%;
 width:100%;
 }
 
+/*Index page*/
+.field.index {
+	padding-left: 0!important;
+	padding-right: 0!important;
+}
+
+
 
 
 /*start of navigation bar*/
@@ -121,12 +128,12 @@ label.control-label span {
 
 /*search form*/
 .search-form{
-	position:static !important;
+/*	position:static !important;
 	float: none;
     display: block;
     padding-top: 15%;
     z-index: 100;
-    text-align: center;
+    text-align: center;*/
 }
 
 .welcome h1{
@@ -172,9 +179,9 @@ label.control-label span {
 	position: relative;
 }
 .wrapper{
-	height: 95%;
+	/*height: 95%;
 	position: relative;
-}
+*/}
 
 #footer{
 	clear: both;
