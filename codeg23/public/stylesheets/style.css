@@ -5,6 +5,7 @@ margin: 0px;
 padding: 0px;
 height:100%;
 width:100%;
+background-color: #fff !important;
 }
 
 /*Index page*/
@@ -128,7 +129,6 @@ label.control-label span {
     height: 800px;
     background-color: #CCC;
     margin-top: 0px;
-    margin-left: 50px;
     margin-right: 0px;
 
 }
@@ -143,14 +143,14 @@ label.control-label span {
 
 
 /*menuList*/
-.menuList{
+#menuList{
 	position: relative;
-	overflow: scroll;
-	height:650px;
-	width: 660px;
+	height:658px;
 	overflow:scroll;
 	overflow-x:hidden;
 	overflow-y:scroll;
+	width: 106%;
+	margin-left: 0px;
 }
 
 .menuList ul{
@@ -160,14 +160,23 @@ label.control-label span {
 /*end of menuList*/
 
 /*list of menu*/
-.list{
-	height: 200px;
+.item{
 	border-bottom:1px solid #ddd;
+}
+
+.price{
+	position: absolute; 
+	color:white;
+	background-color: rgba(0,0,0,0.6);
+	padding: 12px;
+	bottom:100px;
+	left:0;
+
 }
 
 #menuImg{
 	width:250px;
-	height: 200px;
+	height: 220px;
 	padding: 5px;
 }
 /*end list of menu*/

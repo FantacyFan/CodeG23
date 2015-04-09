@@ -1,17 +1,17 @@
 
 <div class="nav-bar">
 	<div class="ui horizontal link list" style="border-bottom: none; height:4rem; width:100%;">
-		<a class="item side-btn" onclick="toggleSideBar()" style="margin-top:10px;"><i class="align justify icon" style="font-size:2em; margin-left:1em;"></i></a>
-		<a class="item nav-btn left" href="/">CodeG23</a>
+		<a class="item side-btn" onclick="toggleSideBar()" style="margin-top:10px; border-style: none; height: 50px;"><i class="align justify icon" style="font-size:2em; margin-left:1em; "></i></a>
+		<a class="item nav-btn left" href="/" style="border-style: none; height: 50px;">CodeG23</a>
 		<button type="button" onclick="location.href='/menu/add'" class="ui blue button" id="list-menu-btn"
 		style="float:right; margin-top:10px; margin-right:10px;">List Your Menu</button>
 		<% if(typeof user != 'undefined') {%>
-		<a class="item nav-btn right" href="/logout">Logout</a>
-		<a class="item nav-btn right" href="/notification"><i class="alarm icon"></i></a>
-		<a class="item nav-btn right" href="/profile/detail"><%= user.firstname%></a>
+		<a class="item nav-btn right" href="/logout" style="border-style: none; height: 50px;">Logout</a>
+		<a class="item nav-btn right" href="/notification" style="border-style: none; height: 50px;"><i class="alarm icon"></i></a>
+		<a class="item nav-btn right" href="/profile/detail" style="border-style: none; height: 50px;"><%= user.firstname%></a>
 		<% } else { %>
-		<a class="item nav-btn right" onclick="signpopup();">Sign Up</a>
-		<a class="item nav-btn right" onclick="logpopup();">Log In</a>
+		<a class="item nav-btn right" onclick="signpopup();" style="border-style: none; height: 50px;">Sign Up</a>
+		<a class="item nav-btn right" onclick="logpopup();" style="border-style: none; height: 50px;">Log In</a>
 		<% } %>
 	</div>
 </div>
