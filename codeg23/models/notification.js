@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var ObjectId = mongoose.Schema.Types.ObjectId;
 
 // define the schema for our order model
-//type: message, request, approved, declined，system
+//type: message, request, approved, rejected, system
 //status: read, unread
 var notificationSchema = mongoose.Schema({
 	user_id : ObjectId,
