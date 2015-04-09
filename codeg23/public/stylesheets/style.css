@@ -291,19 +291,19 @@ label.control-label span {
 
 
 /*add menu*/
-.add-menu{
+#add-menu{
 	width:100%;
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: 80px;
 }
 
-.addmenu-form-horizontal{
-	padding: 20px 300px;
+#add-menu h1{
+	text-align: center;
+}
+
+#add-menu-form-1{
 	width: 100%;
-}
-
-.addmenu-controls input{
-	width: 300px;
 }
 
 
