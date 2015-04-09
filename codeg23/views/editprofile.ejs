@@ -4,13 +4,25 @@
 </head>
 <body onload="getDefaultOption()">
 	<% include ../views/nav %>
-	<h1>Edit Profile</h1>
-	<form method="post">
-		<label for="profileAddress">Address: </label>
-		<input id="profileAddress" name="address" value="<%= user.address %>"/>
-		<label for="profileBio">Bio: </label>
-		<input id="profileBio" type="textarea" name="bio" value="<%= user.bio %>"/>
-      	<input type="submit" value="Submit">
-	</form>
-	<button onclick="location.href='/profile/detail/<%= user._id %>'">Cancel</button>
+	<div class="ui stackable page grid main">        
+	    <!-- vertical menu -->
+	    <div class="four wide column">
+			<% include ../views/profile-vertical-menu %>
+		</div>
+
+		<!-- edit menu -->
+		<div class="twelve wide column">
+			<div class="section">
+				<h1>Edit Profile</h1>
+				<form method="post">
+					<label for="profileAddress">Address: </label>
+					<input id="profileAddress" name="address" value="<%= user.address %>"/>
+					<label for="profileBio">Bio: </label>
+					<input id="profileBio" type="textarea" name="bio" value="<%= user.bio %>"/>
+			      	<input type="submit" value="Submit">
+				</form>
+				<button onclick="location.href='/profile/detail/<%= user._id %>'">Cancel</button>
+			</div>
+		</div>
+	</div>
 </body>

@@ -68,17 +68,6 @@ router.get('/verify/:key', function(req, res){
 	});
 })
 
-/* Review Page */
-router.get('/reviews', function(req, res){
-	ReviewSchema.find({reviewer_id:req.user._id}, function(err,reviewGiven){
-		ReviewSchema.find({receiver_id:req.user._id}, function(err,reviewReceived){
-			res.render("reviews", {
-				reviewGiven:reviewGiven,
-				reviewReceived:reviewReceived 
-			})
-		})
-	})
-})
 
 
 /* Requests page */
@@ -117,10 +106,65 @@ router.get('/edit',function(req, res){
 
 /* Handle edit page post */
 router.post('/edit', function(req, res){
-	var bio = req.body.bio;
-	var address = req.body.address;
-	UserSchema.update({_id: req.user._id},{bio:bio,address:address},function(err){
-		res.redirect('/profile/detail/'+req.user._id);
+	console.log(req.body);
+	/* Demographic */
+	var _firstname = req.body.firstname;
+	var _lastname = req.body.lastname;
+	var _gender = req.body.gender;
+	var _birth_month = req.body.month;
+	var _bitrh_day = req.body.day;
+	var _birth_year = req.body.year;
+	var _languages = req.body.languages;
+	var _nationality = req.body.nationality;
+	console.log("1");
+	/* Contact */
+	var _phone = req.body.phone;
+	var _address = req.body.address;
+	var _city = req.body.city;
+	var _state = req.body.state;
+	var _country = req.body.country;
+	var _wechat = req.body.wechat;
+	var _linkedin = req.body.linkedin;
+
+	/* Work and Education */
+	var _company = req.body.company;
+	var _school = req.body.school;
+	console.log("2");
+	/* Interests and Bio */
+	var _interests = req.body.interests;
+	console.log("3");
+	var _bio = req.body.bio;
+	console.log("4");
+	console.log(_bio);
+	console.log(req.user._id);
+	UserSchema.findOne({_id : req.user._id},function(err, doc){
+		doc.firstname = _firstname;
+		doc.lastname = _lastname;
+		doc.gender = _gender;
+		doc.birth_month = _birth_month;
+		doc.birth_day = _bitrh_day;
+		doc.birth_year  = _birth_year;
+		doc.languages = _languages;
+		doc.nationality = _nationality;
+
+		/* Contact */
+		doc.phone = _phone;
+		doc.address = _address;
+		doc.city = _city;
+		doc.state = _state;
+		doc.country = _country;
+		doc.wechat = _wechat;
+		doc.linkedin = _linkedin;
+
+		/* Work and Education */
+		doc.company = _company;
+		doc.school = _school;
+
+		/* Interests and Bio */
+		doc.interests = _interests;
+		doc.bio = _bio;
+		doc.save();
+		res.redirect('/profile/detail');
 	});
 })
 
@@ -136,7 +180,7 @@ router.get('/bought', function(req, res){
 })
 
 /* Get profile page */
-router.get('/detail/:id', function(req, res) {
+router.get('/detail', function(req, res) {
 	// var record = new UserSchema({
 	// 	fullname: "Long",
 	// 	email: "lm675@cornell.edu",
@@ -153,7 +197,7 @@ router.get('/detail/:id', function(req, res) {
 	// 	}
 	// 	console.log(123);
 	// });
-	var idString = req.params.id;
+	var idString = req.user._id;
 	//console.log(idString);
 	UserSchema.findOne({_id:idString},function(err,user){
 		if(user==null){
@@ -167,7 +211,6 @@ router.get('/detail/:id', function(req, res) {
 			//console.log("found");
 			//console.log(user);
 			res.render('profile',{
-				target_user : user,
 				user : req.user,
 			})	
 

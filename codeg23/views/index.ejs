@@ -4,130 +4,208 @@
 </head>
 <body>
 	<% include ../views/nav %>
-	
-	<div class="row" id="front-page">
-		<div id="bg_container">
-			<video controls id="bg" autoplay loop muted>
-	            <source src="video/homepage.mp4" type="video/mp4"/>
-	            <source src="video/homepage.webm" type="video/webm"/>
-	            <source src="video/homepage.ogg" type="video/ogg"/>
-	            <!-- fallback -->
-	            Your browser does not support the <code>video</code> element.
-        	</video>
-		</div>
-<!-- 		<div id="bg_container">
-		    <iframe id="bg" src="//www.youtube.com/embed/ZHJiMrUaxm0?autoplay=1&amp;controls=0&amp;loop=1&amp;showinfo=0&amp;modestbranding=1&amp;disablekb=1&amp;enablejsapi=1&amp;playlist=PLAYLIST_ID_HERE" frameborder="0"></iframe>
-		</div> -->
-	    <div class="col-sm-9 col-centered" id="search-form"> 
-		    <div class="search-form">  	
-	    		<form action="/menus" method="post" class="navbar-form navbar-left" role="search">
-			        <div class="form-group">
-			        	<input type="text" class="form-control" id="university-search" placeholder="University" name="university">
-			        </div>
 
-			        <div class="datePicker">  
-						<div class="form-horizontal">
-							<div class="control-group">
-						        <div class="controls">
-						            <div class="input-group">
-						                <input id="date-picker" type="text" class="date-picker form-control" placeholder="Date" name="date"/>
-						                <label for="date-picker" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span>
-						                </label>
-						            </div>
-						        </div>
+	<div class="wrapper">
+
+		<div class="ui stackable grid">
+
+			<div class="row" style="width:100%; margin-left:-1rem; margin-right:-1rem;">
+				<div class="column" style="width:100%;">
+					<div class="ui stackable grid">
+						<div class="row">
+							<div class="wide column" style="z-index:-1;">
+								<video autoplay="" loop="" muted class="fillWidth" id="video-bg" style="width:100%; height:auto;margin-top:3rem;">
+									<source src="video/homepage.mp4" type="video/mp4"/>
+									<source src="video/homepage.webm" type="video/webm"/>
+									<source src="video/homepage.ogg" type="video/ogg"/>
+								</video>
 							</div>
 						</div>
-				    </div>
+						<div class="row" style="z-index:2; position:absolute; bottom:10%; margin:auto; left:0; right:0;">
+							<div class="column" style="position:relative;">
+								<div class="ui stackable grid">
+									<div class="row">
+										<div class="column">
+											<div class="welcome" style="text-align: center;">
+									  			<h1>Welcome To My Dining Room</h1>
+									  			<h3>House Special And New Friends</h3>
+									  		</div>
+									  	</div>
+									</div>
+							  	
+									<div class="row">
+										<div class="column">
+											<div class="ui grid">
+												<div class="three wide column"></div>
+												<div class="ten wide column">
+									    	<form class="ui form search-form" action="/menus" method="post">
+									    		<div class="fields">
+										    		<div class="five wide field index majorsearch" style="margin:0px;">
+											          	<div class="ui icon input" style="width:100%; display:inline-block;">
+											          		<input type="text" name="university" placeholder="Which university are you in?">
+														  	<i class="search icon"></i>
+														</div>
+													</div>
+													<div class="three wide field index minorsearch" style="margin:0px;">
+											          	<div class="datePicker">
+															<div class="form-horizontal">
+																<div class="control-group">
+															        <div class="controls">
+															            <div class="ui icon input" style="vertical-align:baseline; min-width:100%">
+															                <input id="date-picker" type="text" class="date-picker form-control" placeholder="Date" name="date"/>
+															                <i class="calendar outline icon"></i>
+															                <label for="date-picker" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span>
+															                </label>
+															            </div>
+															        </div>
+																</div>
+															</div>
+												    	</div>
+												    </div>
+											    	<div class="three wide field index minorsearch" style="margin:0px;">
+														<div class="ui selection dropdown" style="min-width:100%;">
+															<input type="hidden" name="gender">
+															<div class="default text" style="margin-right:0px;">Guest</div>
+															<i class="dropdown icon"></i>
+															<div class="menu">
+																<div class="item" data-value="1guest">1 Guest</div>
+																<div class="item" data-value="2guests">2 Guests</div>
+																<div class="item" data-value="3guests">3 Guests</div>
+																<div class="item" data-value="4guests">4 Guests</div>
+																<div class="item" data-value="5guests">5 Guests</div>
+																<div class="item" data-value="6guests">6 Guests</div>
+																<div class="item" data-value="6plusguests">6+ Guests</div>
+															</div>
+														</div>
+													</div>
 
-				    <!-- This is a dropdown menu for selecting how many guest will come -->
-		    
-				    <div class="guestNumber">
-				    	<div class="dropdown">
-						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-						    Guest
-						    <span class="caret"></span>
-						  </button>
-						  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-						    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1 Guest</a></li>
-						    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2 Guest</a></li>
-						    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">3 Guest</a></li>
-						    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">4 Guest</a></li>
-						    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">5 Guest</a></li>
-						    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">6 Guest</a></li>
-						    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">7 Guest</a></li>
-						    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">8 Guest</a></li>
-						    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">8+ Guest</a></li>
-						  </ul>
+													<div class="three wide field index minorsearch" style="margin:0px;">
+														<div class="ui fluid search selection dropdown">
+															<input type="hidden" name="category">
+															<i class="dropdown icon"></i>
+															<div class="default text">Category</div>
+															<div class="menu">
+																<div class="item" data-value="American"><i class="us flag"></i>American</div>
+																<div class="item" data-value="Chinese"><i class="cn flag"></i>Chinese</div>
+																<div class="item" data-value="Indian"><i class="id flag"></i>Indian</div>
+																<div class="item" data-value="Thai"><i class="th flag"></i>Thai</div>
+																<div class="item" data-value="Korean"><i class="kr flag"></i>Korean</div>
+																<div class="item" data-value="Japanese"><i class="jp flag"></i>Japanese</div>
+																<div class="item" data-value="Mexican"><i class="mx flag"></i>Mexican</div>
+															</div>
+														</div>
+													</div>
+											  		<div class="two wide field index majorsearch" style="margin:0px;">
+											  			<button class="ui red button" type="submit" id="search_button" style="min-width:100%;">Search</button>
+											  		</div><!-- button column -->
+										  		</div>
+											</form>
+										</div>
+									<div class="three wide column"></div>
+									</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-				    </div>
+					</div>
+				</div> <!-- column -->
+			</div><!-- row -->
 
-				    <!-- This is a dropdown menu for selecting food type -->
-		   
-				    <div class="foodType">
-				    	<div class="dropdown">
-						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-						    Food Type
-						    <span class="caret"></span>
-						  </button>
-						  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-						    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">American</a></li>
-						    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Chinese</a></li>
-						    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Indian</a></li>
-						    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Korean</a></li>
-						    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Thai</a></li>
-						    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Italian</a></li>
-						  </ul>
-						</div>
-				    </div>
-
-		        	<button type="submit" class="btn btn-default" id="search_button">Search</button>
-			    	
-			    </form>
-		    </div>
-		</div>
-	</div>
-
-		<div id="second-page">
-			<div class="row carousel-item" style="padding-top:150px; display: table-cell; vertical-align: middle; ">
-				<div class="col-lg-4 rm-padding-sm col-md-4">
-					<img src="image/cornell.jpg" alt="cornell">
-					<div class="va-middle text-center text-contrast">
-			          	<div class="h2 strong">
-			            Cornell
-			          	</div>
-			      	</div>
+		
+			<div class="row" id="second-page-title">
+			  	<div class="column welcome" style="text-align: center;">
+			  			<h1 style="color:#565a5c">Explore Your Neighborhood</h1>
+			  	</div>
+			</div>
+			  	
+			<div class="three column row" style="margin-left:3%; margin-right:3%;" id="second-page-content">
+				<div class="column img">
+					<h1 class="univ-name">Cornell</h1>
+					<div class="ui fluid image">
+						<img src="image/university/cornell.jpg" alt="cornell" id="front-img">
+					</div>
 				</div>
-				<div class="col-lg-4 rm-padding-sm col-md-4">	
-					<img src="image/pennstate.jpg" alt="pennstate">	
-					<div class="va-middle text-center text-contrast">
-			          	<div class="h2 strong">
-			            Penn State
-			          	</div>
-			      	</div>		
+				<div class="column img">
+					<h1 class="univ-name">Penn State</h1>
+					<div class="ui fluid image">
+						<img src="image/university/pennstate.jpg" alt="pennstate" id="front-img">	
+					</div>
 				</div>
-				<div class="col-lg-4 rm-padding-sm col-md-4">	
-					<img src="image/nyu.jpg" alt="nyu">	
-					<div class="va-middle text-center text-contrast">
-			          	<div class="h2 strong">
-			            NYU
-			          	</div>
-			      	</div>		
+				<div class="column img">
+					<h1 class="univ-name">NYU</h1>
+					<div class="ui fluid image">
+						<img src="image/university/nyu.jpg" alt="nyu" id="front-img">		
+					</div>
 				</div>
 			</div>
-		</div>
+		
 
-		<div id="third-page">
-			This is the third page
-		</div>
+			<div class="row" id="third-page-title">
+		  		<div class="column welcome" style="text-align: center;">
+		  			<h1 style="color:#565a5c">Taste House Specials</h1>
+		  		</div>
+			</div>
 
-		<div id="footer">
-			This is a footer<br>
-			©2015 CodeG23 all rights reserved 
-		</div>
+
+
+			<div class="row" style="margin-left:3%; margin-right:3%;" id="third-page-content">
+				<div class="ui stackable grid">
+					<div class="three column row">
+						<div class="column img">
+							<h1 class="univ-name">American</h1>
+							<div class="ui fluid image">
+								<img src="image/dishes-eg/american.jpg" alt="american" id="front-img">
+							</div>
+						</div>
+						<div class="column img">
+							<h1 class="univ-name">Chinese</h1>
+							<div class="ui fluid image">
+								<img src="image/dishes-eg/chinese.jpg" alt="chinese" id="front-img">	
+							</div>
+						</div>
+						<div class="column img">
+							<h1 class="univ-name">Mexican</h1>
+							<div class="ui fluid image">
+								<img src="image/dishes-eg/mexican.jpg" alt="mexican" id="front-img">		
+							</div>
+						</div>
+					</div>
+					<div class="three column row">
+						<div class="column img">
+							<h1 class="univ-name">Korean</h1>
+							<div class="ui fluid image">
+								<img src="image/dishes-eg/korean.jpg" alt="korean" id="front-img">		
+							</div>
+						</div>
+						<div class="column img">
+							<h1 class="univ-name">Italian</h1>
+							<div class="ui fluid image">
+								<img src="image/dishes-eg/italian.jpg" alt="italian" id="front-img">		
+							</div>
+						</div>
+						<div class="column img">
+							<h1 class="univ-name">Japanese</h1>
+							<div class="ui fluid image">
+								<img src="image/dishes-eg/japanese.jpg" alt="japanese" id="front-img">		
+							</div>
+						</div>
+					</div>
+				</div>	  
+			</div>
+		</div><!-- stackable grid -->
+	</div><!-- wrapper -->
+
+
+	
 
 	
 
 	<script>
+	$(document).ready(function() {
 		$("#date-picker").datepicker();
+		$('.ui.dropdown').dropdown();
+	});
+		
 	</script>
 </body>

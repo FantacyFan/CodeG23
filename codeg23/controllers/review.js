@@ -6,6 +6,20 @@ var moment = require('moment');
 var ObjectId = require('mongoose').Types.ObjectId;
 var ReviewSchema = require('../models/review');
 
+/* Review Page */
+router.get('/', function(req, res){
+	ReviewSchema.find({reviewer_id:req.user._id}, function(err,reviewGiven){
+		ReviewSchema.find({receiver_id:req.user._id}, function(err,reviewReceived){
+			res.render("reviews", {
+				user : req.user,
+				reviewGiven:reviewGiven,
+				reviewReceived:reviewReceived 
+			})
+		})
+	})
+})
+
+
 router.post('/add/', function(req, res){
 	var _text = req.body.text;
 	var _rate = req.body.rate;
