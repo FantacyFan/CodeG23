@@ -350,7 +350,21 @@ label.control-label span {
 .list-items {
 	margin: 1em;
 }
+.description-area {
+	margin: 1em;
+}
+.row.intro {
+	padding-left:15% !important;
+	padding-right:5% !important;
+}
 
+.ui.button.quick.control {
+	margin-bottom: 10px;
+	min-width: 100%;
+}
+.ui.input.quick.control {
+	min-width: 100%;
+}
 
 
 
