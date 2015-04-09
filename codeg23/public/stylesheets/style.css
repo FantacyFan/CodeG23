@@ -333,6 +333,14 @@ label.control-label span {
 }
 /* End of css for profile pages */
 
+/* Event Page */
+.detail.row {
+	border-bottom: 0px !important;
+}
+
+.list-items {
+	margin: 1em;
+}
 
 
 

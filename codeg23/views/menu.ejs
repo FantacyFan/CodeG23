@@ -4,6 +4,137 @@
 </head>
 <body>
 	<% include ../views/nav %>
+
+	<div class="ui stackable grid">
+		<div class="row" id="cover">
+			<div class="column">
+				<img src="/image/sample-env-cover-1.jpg" alt="Enviroment Cover" style="width:100%;">
+			</div>
+		</div>
+		<div class="row" id="overview">
+			<div class="column">
+				<div class="ui segment">
+					<div class="ui stackable grid">
+						<div class="two column row">
+							<div class="two wide column">
+								<img class="ui small circular image" src="/image/sample-portrait.jpg">
+							</div>
+							<div class="fourteen wide column">
+								<h2 class="ui header">Delicious Chongqing Hot Pot Night</h2>
+								<h4 class="ui header">Ithaca, NY, United States</h4>
+								<p>This place should contains some basic information</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" id="detail">
+			<div class="column">
+				<div class="ui divided list">
+					<div class="item">
+						<div class="content">
+							<div class="description">
+								<div class="ui stackable grid">
+									<div class="three column row">
+										<div class="six wide column">
+											<h4 class="ui header">Hosting Environment</h4>
+										</div>
+										<div class="five wide column">
+											<div class="list-items"><i class="users icon"></i> Seats: <b>6</b></div>
+											<div class="list-items"><i class="food icon"></i> Tableware: <b>All</b></div>
+											<div class="list-items"><i class="desktop icon"></i> TV: <b>Yes</b></div>
+										</div>
+										<div class="five wide column">
+											<div class="list-items"><i class="music icon"></i> Music: <b>Yes</b></div>
+											<div class="list-items"><i class="at icon"></i> Internet: <b>No</b></div>
+											<div class="list-items"><i class="car icon"></i> Parking: <b>Yes</b></div>
+										</div>
+									</div>
+								</div><!-- grid -->
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="content">
+						<div class="description">
+							<div class="ui stackable grid">
+								<div class="three column row">
+									<div class="six wide column">
+										<h4 class="ui header">Payment</h4>
+									</div>
+									<div class="five wide column">
+										<div class="list-items"><i class="payment icon"></i> Prices: <b>16$</b></div>
+									</div>
+									<div class="five wide column">
+										<div class="list-items"><i class="ban icon"></i> Cancellation: <b>No</b></div>
+									</div>
+								</div>
+							</div><!-- grid -->
+						</div>
+					</div>
+					</div>
+					</div>
+					<div class="item">
+						<div class="content">
+							<div class="description">
+								<div class="ui stackable grid">
+									<div class="two column row">
+										<div class="six wide column">
+											<h4 class="ui header">Event Rules</h4>
+										</div>
+										<div class="ten wide column">
+											<p>This place should be even rules.</p>
+										</div>
+									</div>
+								</div><!-- grid -->
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="content">
+							<div class="description">
+								<div class="ui stackable grid">
+									<div class="two column row">
+										<div class="six wide column">
+											<h4 class="ui header">Availability</h4>
+										</div>
+										<div class="ten wide column">
+											<p>This place should be availability.</p>
+										</div>
+									</div>
+								</div><!-- grid -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="item">
+			<div class="content">
+				<div class="description">
+					<div class="ui stackable grid">
+						<div class="two column row">
+							<div class="six wide column">
+								<h4 class="ui header">Menu</h4>
+							</div>
+							<div class="ten wide column">
+								<p>This place should be dishes gallery.</p>
+							</div>
+						</div>
+					</div><!-- grid -->
+				</div>
+			</div>
+		</div>
+		<div class="row" id="gallery">
+		</div>
+		<div class="row" id="review">
+			<div class="column">
+			</div>
+		</div>
+	</div>
+
+
 	<h1>Title: <%= menu.title %></h1><br/>
 	<h2>Description: <%= menu.detail %></h2><br/>
 	<h2>Type: <%= menu.type %></h2><br/>
