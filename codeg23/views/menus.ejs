@@ -4,145 +4,163 @@
 </head>
 <body>
 	<% include ../views/nav %>
-
-	<div class="row">
-		<div class="col-sm-12">
-
-			    <div class="col-xs-8 col-sm-6">
-				    <div class="preFilter">
-				    	<form class="navbar-form navbar-left" role="search" action="/menus" method="post">
-					    	<div class="col-md-12">
-						    	<div class="location">
+		<div class="ui stackable grid">
+			
+					
+						<div class="row" style="padding:0px;">
+							<div class="nine wide column" style="margin-top:80px; padding-left:20px;">
+			
+			    				<form class="ui form search-form" action="/menus" method="post">
+			    					<div class="two fields">
+				    					<div class="field">				
+					    					
+						          				<div class="ui icon input">
+						          					<input type="text" name="university" placeholder="Which university are you in?">
+									  				<i class="search icon"></i>
+												</div>
+											
+										</div>
+										
+										<div class="field">						
+											
+						          				<div class="datePicker">
+													<div class="form-horizontal">
+														<div class="control-group">
+										        			<div class="controls">
+										            			<div class="ui icon input">
+										                			<input id="date-picker" type="text" class="date-picker form-control" placeholder="Date" name="date"/>
+										               				 <i class="calendar outline icon"></i>
+										                			<label for="date-picker" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span>
+										                			</label>
+										            			</div>
+										        			</div>
+														</div>
+													</div>
+							    				</div>
+							    		</div>
+						    		</div>
+					    
+									    	
+						    			
 						    		
-								        <div class="form-group">
-								        	<input type="text" class="form-control" id="university-search" name="university" placeholder="University">
-								        </div>
-								        <button type="submit" class="btn btn-default">Search</button>
-								    
-						    	</div>
-					    	</div>
-						    <!-- This is a datepicker for selecting dates -->
-						    <div class="col-md-6">
-						    <div class="datePicker">  
-								<div class="form-horizontal">
-									<div class="control-group">
-								        <div class="controls">
-								            <div class="input-group">
-								                <input id="date-picker" type="text" name="date" class="date-picker form-control" placeholder="Date"/>
-								                <label for="date-picker" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span>
-								                </label>
-								            </div>
-								        </div>
-									</div>
-								</div>
-						    </div>
-							</div>
+						    			
+						    		<div class="three fields">
+						    			<div class="field">
+						    				
+												<div class="ui selection dropdown">
+													<input type="hidden" name="gender">
+													<div class="default text">Guest</div>
+													<i class="dropdown icon"></i>
+													<div class="menu">
+														<div class="item" data-value="1guest">1 Guest</div>
+														<div class="item" data-value="2guests">2 Guests</div>
+														<div class="item" data-value="3guests">3 Guests</div>
+														<div class="item" data-value="4guests">4 Guests</div>
+														<div class="item" data-value="5guests">5 Guests</div>
+														<div class="item" data-value="6guests">6 Guests</div>
+														<div class="item" data-value="6plusguests">6+ Guests</div>
+													</div>
+												</div>
+											
+										</div>
+									
 
-						    <!-- This is a dropdown menu for selecting how many guest will come -->
-<!-- 						<div class="col-md-3">
-							    <div class="guestNumber">
-							    	<div class="dropdown">
-									  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-									    Guest
-									    <span class="caret"></span>
-									  </button>
-									  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1 Guest</a></li>
-									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2 Guest</a></li>
-									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">3 Guest</a></li>
-									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">4 Guest</a></li>
-									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">5 Guest</a></li>
-									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">6 Guest</a></li>
-									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">7 Guest</a></li>
-									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">8 Guest</a></li>
-									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">8+ Guest</a></li>
-									  </ul>
-									</div>
-							    </div>
+										<div class="field">
+											
+												<div class="ui fluid search selection dropdown">
+													<input type="hidden" name="category">
+													<i class="dropdown icon"></i>
+													<div class="default text">Category</div>
+													<div class="menu">
+														<div class="item" data-value="American"><i class="us flag"></i>American</div>
+														<div class="item" data-value="Chinese"><i class="cn flag"></i>Chinese</div>
+														<div class="item" data-value="Indian"><i class="id flag"></i>Indian</div>
+														<div class="item" data-value="Thai"><i class="th flag"></i>Thai</div>
+														<div class="item" data-value="Korean"><i class="kr flag"></i>Korean</div>
+														<div class="item" data-value="Japanese"><i class="jp flag"></i>Japanese</div>
+														<div class="item" data-value="Mexican"><i class="mx flag"></i>Mexican</div>
+													</div>
+												</div>
+										
+										</div>
+									
+
+										<div class="field">
+									  		
+								  			<button class="ui red button" type="submit" id="search_button" s>Search</button>
+									  	
+								  		</div>		
+							  		</div>  						
+								</form>
+									
+								<div class="column" id="menulist" style="background-color: #f5f5f5; border-top: 1px solid #958D8D;">
+										<div class="ui stackable grid" style="margin:0px;">
+											<div class="two column row">
+
+											    <% menus.forEach(function(menu){%>
+													<div id="<%= menu._id %>" class="eight wide column" lat="<%= menu.lat %>" lng="<%= menu.lng%>" style="padding:0px; padding-right:5px;">
+														<div class="image" style="width:100% !important;">
+															<h3 class="price">$<%= menu.price %></h3>
+															<img src="image/test/placeholder1.jpg" alt="img" id="menuImg" style="width:100%; padding:0px !important;">
+														</div>
+
+														<div class="ui grid">
+															<div class="row">
+																<div class="six wide column">
+																	<img class="ui avatar image" src="image/test/placeholder1.jpg" style="width:4.5em; height:4.5em;">
+																</div>
+
+																<div class="ten wide column">
+																	<div class="content" style="padding-left:0.5em !important; text-align:center;">
+																		<a href="/menu/detail/<%= menu._id %>" class="header"><%= menu.title %></a>
+
+																		<div class="description">
+																		</div>
+																		
+																		<div class="extra">
+																	        <div class="ui label"><%= menu.type %></div>
+																	        <div class="ui label"><%= menu.university %></div>
+																        </div>
+																    </div>
+																</div>
+															</div>
+														</div>
+													</div>
+												<% }) %>
+											</div>
+										</div>
+									
+								    
+								</div>									
 							</div>
- -->
-						    <!-- This is a dropdown menu for selecting food type -->
-<!-- 						<div class="col-md-3">
-							    <div class="foodType">
-							    	<div class="dropdown">
-									  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-									    Food Type
-									    <span class="caret"></span>
-									  </button>
-									  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" >
-									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">American</a></li>
-									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Chinese</a></li>
-									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Indian</a></li>
-									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Korean</a></li>
-									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Thai</a></li>
-									    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Italian</a></li>
-									  </ul>
-									</div>
-							    </div>
+					
+							<div class="seven wide column" style="padding:0px; margin-top:56px; left:25;">
+								
+									<!-- This is a div for google map -->
+								    <% if(typeof geo == 'undefined'){%>
+								    <div id="map-canvas" lat="undefined" lng="undefined" style="width:92%;">
+								    <% } else { %>
+									    <div id="map-canvas" lat="<%= geo[0].latitude %>" lng="<%= geo[0].longitude %>" style="margin-left:0px;">
+									    <% } %>
+								    	</div>
+										<!-- end of google map -->
+									</div>			
+								
 							</div>
-						</form>
- -->					    
-					    <div class="col-md-12">
-					    <div class="addMenu">
-					    	<a href="/menu/add"><button type="button" onclick="location.href='/menu/add'" class="btn btn-primary">Add Menu</button></a>
-					    </div>
 						</div>
 
-				    </div>
-				    <!-- end of preFilter -->				  
-
-				<!-- This is a div for the menu list -->
-				
-				<div class="menuList">
-				    <% menus.forEach(function(menu){%>
-					<div id="<%= menu._id %>" class="list" lat="<%= menu.lat %>" lng="<%= menu.lng%>">
-					<img src="#" alt="img" id="menuImg">
-					<ul>
-						<li>
-							<a href="/menu/detail/<%= menu._id %>"><%= menu.title %></a>
-						</li>
-						<li>
-							Location: <%= menu.location %>
-						</li>
-						<li>
-							Food Type: <%= menu.type %>
-						</li>
-						<li>
-							Price: <%= menu.price %> /person
-						</li>
-						<li>
-							Time: <%= menu.host_time %>
-						</li>
-						<li>
-							University: <%= menu.university %>
-						</li>
-					</ul>
-					</div>
-					<% }) %>
-				</div>
-				<!-- end of menu list -->
-				</div>
-
-			<div class="col-xs-4 col-sm-6" style="padding:0px;">
-				<!-- This is a div for google map -->
-			    <% if(typeof geo == 'undefined'){%>
-			    <div id="map-canvas" lat="undefined" lng="undefined">
-			    <% } else { %>
-			    <div id="map-canvas" lat="<%= geo[0].latitude %>" lng="<%= geo[0].longitude %>">
-			    <% } %>
-		    	</div>
-				<!-- end of google map -->
-			</div>			
+			
 		</div>
-	</div>
-
-
 
 
 	<script src="/scripts/menus-map.js"></script>
-
 	<script>
+	
+	$(document).ready(function() {
 		$("#date-picker").datepicker();
+		$('.ui.dropdown').dropdown();
+	});
+		
 	</script>
 
 </body>
