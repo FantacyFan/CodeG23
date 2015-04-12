@@ -1,6 +1,6 @@
 
 html, body{
-overflow-x: hidden;
+/*overflow-x: hidden;*//*This line makes sticky element not work!!!*/ 
 margin: 0px;
 padding: 0px;
 height:100%;
@@ -364,6 +364,10 @@ label.control-label span {
 }
 .ui.input.quick.control {
 	min-width: 100%;
+}
+.ui.segment.event {
+	padding: 0px;
+	box-shadow: none;
 }
 
 
