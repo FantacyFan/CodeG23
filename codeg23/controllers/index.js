@@ -97,6 +97,12 @@ module.exports = function(passport){
 	/* Review controller */
 	router.use('/review', isAuthenticated, require('./review'));
 
+	router.get('/help', function(res, req){
+		req.render('help',{
+			user: res.user
+		});
+	})
+
 	/* User */
 	router.use('/users', require('./users'));
 
