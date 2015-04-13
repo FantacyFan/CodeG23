@@ -103,6 +103,8 @@ module.exports = function(passport){
 		});
 	})
 
+	/* User */
+	router.use('/users', require('./users'));
 
 	return router;
 }

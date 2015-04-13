@@ -4,14 +4,15 @@
 </head>
 <body>
 	<% include ../views/nav %>
-	<div class="ui stackable grid">
 
-		
-			<img src="/image/sample-env-cover-1.jpg" alt="Enviroment Cover" style="width:100%; max-height:600px;">
-		
-
+	<div class="ui segment event">
+		<img src="/image/sample-env-cover-1.jpg" alt="Enviroment Cover" style="position:abosulte; width:100%; max-height:600px;"> 
+	</div>
+	<div class="ui segment event" id="context">		
+		<div class="ui stackable grid">
+		<div class="row">
 			<div class="ten wide column" >
-				<div class="ui stackable grid">
+				<div class="ui stackable grid" >
 					<div class="row intro" id="overview">
 						<div class="column">
 							<div class="ui segment">
@@ -157,53 +158,72 @@
 							</div>
 						</div>
 					</div>
-					<div class="row intro" id="review">
+					<div class="row intro">
 						<div class="column">
-
+						<div class="ui comments">
+							<h3 class="ui dividing header">Reviews</h3>
+							<div class="comment">
+								<a class="avatar" >
+									<img class="ui circular image" src="/image/sample-portrait.jpg" style="height:auto;">
+								</a>
+								<div class="content">
+									<a class="author">Kelly</a>
+									<div class="metadata">
+										<span class="date">Today at 5:42PM</span>
+									</div>
+									<div class="text">
+										What a great event!
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
+					</div>
+				</div><!-- grid -->
 			</div>
 
-			<div class="six wide column"
-			style="padding-right:10%;">
-					<% if(user._id != menu.user_id) {%>
-					<form method="post">
+			<div class="six wide column" style="padding-right:10%;">
+				<div class="ui sticky">
+					<div style="min-height:80px;">
+					</div>
+					<form method="post" >
+						<% if(user._id != menu.user_id) {%>
 						<div class="field quick control">
 					    	<button class="ui button quick control" type="submit" name="action" id="contact_button">
 					    		Contact Host
 					    	</button>
 						</div>
-						<% if(typeof request != 'undefined') {%>
-						<div class="field quick control">
-						    <h3 class="ui header">You said: <%= request.text %></h3>
-						</div>
-						<div class="field quick control">
-					    	<input class="ui button
-					    	quick control" type="submit" name="action" value="Already Applied" disabled/>
-					    </div>
-						<% } else { %>
-						<div class="field quick control">
-							<div class="ui attached segement">
-							<div class="ui input quick control">
-						    	<input type="text" name="text" placeholder="Say Something to apply."/>
+							<% if(typeof request != 'undefined') {%>
+							<div class="field quick control">
+							    <h3 class="ui header">You said: <%= request.text %></h3>
 							</div>
-							</div>
-							<input class="ui bottom attached button quick control" type="submit" name="action" value="Apply"/>
+							<div class="field quick control">
+						    	<input class="ui button
+						    	quick control" type="submit" name="action" value="Already Applied" disabled/>
+						    </div>
+							<% } else { %>
+							<div class="field quick control">
+								<div class="ui attached segement">
+								<div class="ui input quick control">
+							    	<input type="text" name="text" placeholder="Say Something to apply."/>
+								</div>
+								</div>
+								<input class="ui bottom attached button quick control" type="submit" name="action" value="Apply"/>
 
-						</div>
-						<div class="field quick control">
-						    						</div>
-						<% } %>
+							</div>
+							<div class="field quick control">
+							</div>
+							<% } %>
 				  		<% } else {%>
 				  		<div class="field quick control">
 				  			<button class="ui button quick control" onclick="location.href='/menu/edit/<%= menu._id %>'">Edit Menu</button>
 				  		</div>
 				  		<% } %>	
 				  	</form>
-				  		
+				</div>
 			</div>
-
+		</div>
+	</div><!-- ui grid -->
 </div>
 	
   	<script>
