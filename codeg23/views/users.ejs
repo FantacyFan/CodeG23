@@ -12,7 +12,7 @@
 						<img src="/image/sample-portrait.jpg">
 					</div>
 					<div class="content">
-						<a class="header">Kelly Xie</a>
+						<a class="header"><%= target.firstname %> <%= target.lastname %></a>
 						<div class="meta">
 							<span class="date">Joined in 2014</span>
 						</div>
@@ -32,9 +32,27 @@
 					<div class="content">
 						<div class="header">About Me</div>
 						<div class="description">
-						<p>
-							This is the place for about me
-						</p>
+
+						<div class="left aligned ui list">
+							<div class="item">
+							    <div class="content">
+							      <a class="header">City</a>
+							      <div class="description"><%= target.city %></div>
+							    </div>
+							</div>
+							<div class="item">
+							    <div class="content">
+							      <a class="header">School</a>
+							      <div class="description"><%= target.school %></div>
+							    </div>
+							</div>
+							<div class="item">
+							    <div class="content">
+							      <a class="header">Work</a>
+							      <div class="description"><%= target.company%></div>
+							    </div>
+							</div>
+						</div>
 						</div>
 					</div>
 				</div>
@@ -42,7 +60,9 @@
 			<div class="left aligned ten wide column">
 				<h3 class="ui block top attached header"><div><i class="user icon"></i>Description</div></h3>
 				<div class="ui bottom attached secondary segment">
-					12312	
+					<p>
+						<%= target.bio %>
+					</p>	
 				</div>
 				<div class="ui secondary pointing menu">
 					<a class="active item" id="ashost">
