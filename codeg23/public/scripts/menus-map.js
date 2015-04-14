@@ -36,7 +36,7 @@ function createMap(position){
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-    var menuList = document.getElementsByClassName("list");
+    var menuList = document.getElementsByClassName("eight wide column list");
     for(i = 0; i < menuList.length; i++) {
         markers[menuList[i].id] = new google.maps.Marker({
             position : new google.maps.LatLng(menuList[i].getAttribute("lat"),menuList[i].getAttribute("lng")),

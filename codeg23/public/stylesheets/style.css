@@ -1,10 +1,12 @@
 
 html, body{
-overflow-x: hidden;
+/*overflow-x: hidden;*//*This line makes sticky element not work!!!*/ 
 margin: 0px;
 padding: 0px;
 height:100%;
 width:100%;
+background-color: #fff !important;
+
 }
 
 /*Index page*/
@@ -128,7 +130,6 @@ label.control-label span {
     height: 800px;
     background-color: #CCC;
     margin-top: 0px;
-    margin-left: 50px;
     margin-right: 0px;
 
 }
@@ -143,14 +144,14 @@ label.control-label span {
 
 
 /*menuList*/
-.menuList{
+#menuList{
 	position: relative;
-	overflow: scroll;
-	height:650px;
-	width: 660px;
+	height:658px;
 	overflow:scroll;
 	overflow-x:hidden;
 	overflow-y:scroll;
+	width: 106%;
+	margin-left: 0px;
 }
 
 .menuList ul{
@@ -160,14 +161,23 @@ label.control-label span {
 /*end of menuList*/
 
 /*list of menu*/
-.list{
-	height: 200px;
+.item{
 	border-bottom:1px solid #ddd;
+}
+
+.price{
+	position: absolute; 
+	color:white;
+	background-color: rgba(0,0,0,0.6);
+	padding: 12px;
+	bottom:100px;
+	left:0;
+
 }
 
 #menuImg{
 	width:250px;
-	height: 200px;
+	height: 220px;
 	padding: 5px;
 }
 /*end list of menu*/
@@ -225,31 +235,32 @@ label.control-label span {
 	position: relative;
 }
 .wrapper{
-	/*height: 95%;
 	position: relative;
-*/}
+}
 
-#footer{
+.footer{
 	clear: both;
     position: relative;
-    z-index: 10;
-    height: 50%;
-    margin-top: -3em;
+    z-index: 0;
+    height: 300px;
     background-color: black;
     color:white;
     text-align: center;
     bottom: 0;
-    top:95%;
+    top:0;
+    left: 0;
+    width: 100%;
+    margin-top: 100px;
 }
 
-.footer-list li{
+.footer ul li{
 	list-style-type: none;
-	padding-bottom: 3px;
+	padding-bottom:8px;
 }
 
-.footer-list li a{
-	text-decoration: none;
-	color: #eee;
+.footer ul li a{
+	color: white;
+	font-size: 15px; 
 }
 
 .copyright{
@@ -282,19 +293,19 @@ label.control-label span {
 
 
 /*add menu*/
-.add-menu{
+#add-menu{
 	width:100%;
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: 50px;
 }
 
-.addmenu-form-horizontal{
-	padding: 20px 300px;
+#add-menu h1{
+	text-align: center;
+}
+
+#add-menu-form-1{
 	width: 100%;
-}
-
-.addmenu-controls input{
-	width: 300px;
 }
 
 
@@ -333,7 +344,33 @@ label.control-label span {
 }
 /* End of css for profile pages */
 
+/* Event Page */
+.detail.row {
+	border-bottom: 0px !important;
+}
 
+.list-items {
+	margin: 1em;
+}
+.description-area {
+	margin: 1em;
+}
+.row.intro {
+	padding-left:15% !important;
+	padding-right:5% !important;
+}
+
+.ui.button.quick.control {
+	margin-bottom: 10px;
+	min-width: 100%;
+}
+.ui.input.quick.control {
+	min-width: 100%;
+}
+.ui.segment.event {
+	padding: 0px;
+	box-shadow: none;
+}
 
 
 

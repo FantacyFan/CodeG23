@@ -39,7 +39,7 @@ router.get('/pending/:id', function(req, res) {
 	RequestSchema.find({menu_id : _menuId},function(err,requests){
 		//for each request, create reqInfo json, return
 		var reqInfos = [];
-		for(var i = 0; i < requests.length; i ++){
+		for(var i = 0; i < requests.length; i++){
 
 			var reqInfo = {};
 			reqInfo['_id'] = requests[i]['_id'];

@@ -1,0 +1,132 @@
+<html lang="en">
+<head>
+  	<% include  ../views/head %>
+</head>
+<body>
+	<% include ../views/nav %>
+	<div class="ui stackable grid" style="padding-top:80px;">
+		<div class="center aligned row">
+			<div class="six wide column">
+				<div class="ui card">
+					<div class="image">
+						<img src="/image/sample-portrait.jpg">
+					</div>
+					<div class="content">
+						<a class="header"><%= target.firstname %> <%= target.lastname %></a>
+						<div class="meta">
+							<span class="date">Joined in 2014</span>
+						</div>
+					</div>
+				</div>
+				<div class="ui card">
+					<div class="content">
+						<div class="header">Verification</div>
+						<div class="description">
+						<p>
+							This is the place for verification
+						</p>
+						</div>
+					</div>
+				</div>
+				<div class="ui card">
+					<div class="content">
+						<div class="header">About Me</div>
+						<div class="description">
+
+						<div class="left aligned ui list">
+							<div class="item">
+							    <div class="content">
+							      <a class="header">City</a>
+							      <div class="description"><%= target.city %></div>
+							    </div>
+							</div>
+							<div class="item">
+							    <div class="content">
+							      <a class="header">School</a>
+							      <div class="description"><%= target.school %></div>
+							    </div>
+							</div>
+							<div class="item">
+							    <div class="content">
+							      <a class="header">Work</a>
+							      <div class="description"><%= target.company%></div>
+							    </div>
+							</div>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="left aligned ten wide column">
+				<h3 class="ui block top attached header"><div><i class="user icon"></i>Description</div></h3>
+				<div class="ui bottom attached secondary segment">
+					<p>
+						<%= target.bio %>
+					</p>	
+				</div>
+				<div class="ui secondary pointing menu">
+					<a class="active item" id="ashost">
+					Reviews As Host
+					</a>
+					<a class="item" id="fromhost">
+					Reviews From Hosts
+					</a>
+					<a class="item" id="fromcom">
+					Reviews From Companions
+					</a>
+				</div>
+				<div class="ui comments">
+						<div id="reviewAsHost" style="display:block;">
+							<div class="comment">
+							<a class="avatar" >
+								<img class="ui circular image" src="/image/sample-portrait.jpg" style="height:auto;">
+							</a>
+							<div class="content">
+							<a class="author">Kelly</a>
+							<div class="metadata">
+								<span class="date">Today at 5:42PM</span>
+							</div>
+							<div class="text">
+								What a great event!
+							</div>
+						</div>
+						</div>
+						<div id="reviewFromHost" style="display:none;">
+						</div>
+						<div id="reviewFromCompanions" style="display:none;">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		var ashost =  document.getElementById("reviewAsHost");
+		var fromhost =  document.getElementById("reviewFromHost");
+		var fromcom = document.getElementById("reviewFromCompanions");
+		$("#ashost").click(function(){
+			ashost.setAttribute("style","display:block;");
+			fromhost.setAttribute("style","display:none;");
+			fromcom.setAttribute("style","display:none;");
+			document.getElementById("ashost").setAttribute("class","active item");
+			document.getElementById("fromhost").setAttribute("class","item");
+			document.getElementById("fromcom").setAttribute("class","item");
+		})
+		$("#fromhost").click(function(){
+			ashost.setAttribute("style","display:none;");
+			fromhost.setAttribute("style","display:block;");
+			fromcom.setAttribute("style","display:none;");
+			document.getElementById("ashost").setAttribute("class","item");
+			document.getElementById("fromhost").setAttribute("class","active item");
+			document.getElementById("fromcom").setAttribute("class","item");
+		})
+		$("#fromcom").click(function(){
+			ashost.setAttribute("style","display:none;");
+			fromhost.setAttribute("style","display:none;");
+			fromcom.setAttribute("style","display:block;");
+			document.getElementById("ashost").setAttribute("class","item");
+			document.getElementById("fromhost").setAttribute("class","item");
+			document.getElementById("fromcom").setAttribute("class","active item");
+		})
+	</script>
+</body>
