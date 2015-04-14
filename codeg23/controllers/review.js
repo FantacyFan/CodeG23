@@ -5,7 +5,7 @@ var MenuSchema = require('../models/menu');
 var moment = require('moment');
 var ObjectId = require('mongoose').Types.ObjectId;
 var ReviewSchema = require('../models/review');
-var UserSchema = require('../models/review');
+var UserSchema = require('../models/user');
 
 /*********************************
 Method: 	Get
