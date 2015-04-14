@@ -2,6 +2,7 @@
 // load the things we need
 var mongoose = require('mongoose');
 
+
 // define the schema for our user model
 var userSchema = mongoose.Schema({
 
@@ -15,6 +16,7 @@ var userSchema = mongoose.Schema({
 	birth_year: String,
 	languages: String,
 	nationality: String,
+	img_path: String,
 
 	/* Contact */
 	email: String,

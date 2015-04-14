@@ -10,6 +10,11 @@ var users = require('./controllers/users');
 var passport = require('passport');
 var session      = require('express-session');
 var conversationSocket = require('./controllers/conversation-socket');
+//var multer  = require('multer');
+
+var busboy = require('connect-busboy');
+
+
 
 var app = express();
 var http = require('http').Server(app);
@@ -31,6 +36,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(busboy()); 
 
 //Socket Io Controller for messages
 conversationSocket(io);
@@ -55,6 +61,7 @@ app.use(flash());
 var routes = require('./controllers/index')(passport);
 app.use('/', routes);
 app.use('/users', users);
+
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

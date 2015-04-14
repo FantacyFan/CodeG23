@@ -97,6 +97,10 @@ module.exports = function(passport){
 	/* Review controller */
 	router.use('/review', isAuthenticated, require('./review'));
 
+	/* foodgallery controller */
+	router.use('/foodgallery', isAuthenticated, require('./foodgallery'));
+
+
 	return router;
 }
 

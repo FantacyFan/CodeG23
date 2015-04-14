@@ -6,6 +6,10 @@ var RequestSchema = require('../models/request');
 var OrderSchema = require('../models/order');
 var ReviewSchema = require('../models/review');
 var nodemailer = require('nodemailer');
+
+var fs = require('fs');
+
+
 var transporter = nodemailer.createTransport({
 	service:'yahoo',
 	auth: {
@@ -83,8 +87,7 @@ router.get('/posts', function(req, res){
 /* Requests page */
 router.post('/posts', function(req, res){
 	var menuId = req.body.menuid;
-	console.log(menuId);
-	res.redirect('/profile/posts')
+	res.redirect('/profile/posts');
 })
 
 /* Requests page */
@@ -116,7 +119,22 @@ router.post('/edit', function(req, res){
 	var _birth_year = req.body.year;
 	var _languages = req.body.languages;
 	var _nationality = req.body.nationality;
-	console.log("1");
+
+	//check user portrait
+	var _img = req.body.portrait;
+
+	//console.log(JSON.stringify(req.files));
+	console.log(req.files);
+	if(_img != null){
+		//console.log(_img);
+		
+		//if defult img, create new folder, save the file
+		
+		//else, clear prevous one, save new one
+
+		//update user img path
+	}
+
 	/* Contact */
 	var _phone = req.body.phone;
 	var _address = req.body.address;
@@ -129,14 +147,10 @@ router.post('/edit', function(req, res){
 	/* Work and Education */
 	var _company = req.body.company;
 	var _school = req.body.school;
-	console.log("2");
 	/* Interests and Bio */
 	var _interests = req.body.interests;
-	console.log("3");
 	var _bio = req.body.bio;
-	console.log("4");
-	console.log(_bio);
-	console.log(req.user._id);
+
 	UserSchema.findOne({_id : req.user._id},function(err, doc){
 		doc.firstname = _firstname;
 		doc.lastname = _lastname;
@@ -164,7 +178,9 @@ router.post('/edit', function(req, res){
 		doc.interests = _interests;
 		doc.bio = _bio;
 		doc.save();
+
 		res.redirect('/profile/detail');
+
 	});
 })
 
