@@ -101,7 +101,7 @@ module.exports = function(passport){
 		req.render('help',{
 			user: res.user
 		});
-	})
+	});
 
 	/* User */
 	router.use('/users', require('./users'));

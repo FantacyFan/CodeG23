@@ -15,14 +15,14 @@
 			<div class="section">
 
 			<div class="ui secondary pointing menu">
-				<a class="active item" id="aboutyou">
-				Reviews About You
-				</a>
-				<a class="item" id="byyou">
+				<a class="active item" id="byyou">
 				Reviews By You
 				</a>
+				<a class="item" id="aboutyou">
+				Reviews About You
+				</a>
 			</div>
-			<div id="reviewAboutYou" style="display:block;">
+			<div id="reviewAboutYou" style="display:none;">
 				<h3 class="ui block top attached header">Past Reviews About You</h3>
 				<div class="ui bottom attached secondary segment">
 				<% reviewReceived.forEach(function(rr){%>
@@ -30,7 +30,27 @@
 				<% }) %>
 				</div>
 			</div>
-			<div id="reviewByYou" style="display:none;">
+			<div id="reviewByYou" style="display:block;">
+				<h3 class="ui block top attached header">Reviews to write</h3>
+				<div class="ui bottom attached secondary segment">
+				<form class="ui form" action="/review/add" method="post">
+					<div class="field">
+						<input name="receiverId" value="552c67a498335cbf01dde20f">
+					</div>
+					<div class="field">
+						<label class="ui huge label" for="reviewText">Review Text</label>
+						<textarea id="reviewText" name="text" placeholder="Write your review here."></textarea>
+					</div>
+					<div class="field">
+						<label class="ui huge label" for="reviewText">Rating</label>
+						<div class="ui huge star rating" data-rating="5" data-max-rating="5"></div>
+						<input type="hidden" value="5" id="rating" name="rating">
+					</div>
+					<div class="field">
+						<button class="ui button">Submit</button>
+					</div>
+				</form>
+				</div>
 				<h3 class="ui block top attached header">Past Reviews By You</h3>
 				<div class="ui bottom attached secondary segment">
 				<% reviewGiven.forEach(function(rg){%>
@@ -43,7 +63,8 @@
 	</div>
 
 	<script>
-		var byyou =  document.getElementById("reviewByYou");
+		var rate = 0;
+		var byyou = document.getElementById("reviewByYou");
 		var aboutyou = document.getElementById("reviewAboutYou");
 		$("#aboutyou").click(function(){
 			aboutyou.setAttribute("style","display:block;");
@@ -52,10 +73,24 @@
 			document.getElementById("byyou").setAttribute("class","item");
 		})
 		$("#byyou").click(function(){
+			alert(rate);
 			aboutyou.setAttribute("style","display:none;");
 			byyou.setAttribute("style","display:block;");
 			document.getElementById("aboutyou").setAttribute("class","item");
 			document.getElementById("byyou").setAttribute("class","active item");
 		})
+		$('.ui.rating')
+			.rating().click(function(){
+				var innerHtml = $('.ui.rating').html();
+				var pos = innerHtml.indexOf("<i class=\"icon\"");
+				switch(pos){
+					case -1: $("#rating").attr("value","5");break;
+					case 108: $("#rating").attr("value","4");break;
+					case 81: $("#rating").attr("value","3");break;
+					case 54: $("#rating").attr("value","2");break;
+					case 27: $("#rating").attr("value","1");break;
+					default: $("#rating").attr("value","5");
+				}
+			});
 	</script>
 </body>
