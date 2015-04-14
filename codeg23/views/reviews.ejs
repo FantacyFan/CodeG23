@@ -25,9 +25,24 @@
 			<div id="reviewAboutYou" style="display:none;">
 				<h3 class="ui block top attached header">Past Reviews About You</h3>
 				<div class="ui bottom attached secondary segment">
-				<% reviewReceived.forEach(function(rr){%>
-				<%= rr.text %>
-				<% }) %>
+					<div class="ui comments">
+						<% reviewReceived.forEach(function(rr){%>
+						<div class="comment">
+							<a class="avatar" >
+								<img class="ui circular image" src="/image/sample-portrait.jpg" style="height:auto;">
+							</a>
+							<div class="content">
+								<a class="author">Kelly</a>
+								<div class="metadata">
+									<span class="date">Today at 5:42PM</span>
+								</div>
+								<div class="text">
+									<%= rr.text %>
+								</div>
+							</div>
+						</div>
+						<% }) %>
+					</div>
 				</div>
 			</div>
 			<div id="reviewByYou" style="display:block;">
@@ -35,7 +50,7 @@
 				<div class="ui bottom attached secondary segment">
 				<form class="ui form" action="/review/add" method="post">
 					<div class="field">
-						<input name="receiverId" value="552c67a498335cbf01dde20f">
+						<input name="receiverId" value="552d56ce8874fa1202fe55a6">
 					</div>
 					<div class="field">
 						<label class="ui huge label" for="reviewText">Review Text</label>
@@ -53,9 +68,24 @@
 				</div>
 				<h3 class="ui block top attached header">Past Reviews By You</h3>
 				<div class="ui bottom attached secondary segment">
-				<% reviewGiven.forEach(function(rg){%>
-				<%= rg.text %>
-				<% }) %>
+					<div class="ui comments">
+						<% reviewGiven.forEach(function(rg){%>
+						<div class="comment">
+							<a class="avatar" >
+								<img class="ui circular image" src="/image/sample-portrait.jpg" style="height:auto;">
+							</a>
+							<div class="content">
+								<a class="author">Kelly</a>
+								<div class="metadata">
+									<span class="date">Today at 5:42PM</span>
+								</div>
+								<div class="text">
+									<%= rg.text %>
+								</div>
+							</div>
+						</div>
+						<% }) %>
+					</div>
 				</div>
 			</div>
 		  </div>

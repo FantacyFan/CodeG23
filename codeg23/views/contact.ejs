@@ -1,1 +1,52 @@
-contact.ejs
+<html lang="en">
+<head>
+  	<% include  ../views/head %>
+</head>
+<body>
+	<% include ../views/nav %>
+
+	<div class="ui grid" style="margin-top:80px;">
+		<div class="three wide column">
+		</div>
+		<div class="center aligned ten wide column">
+			<img src="/image/ithaca_map.jpg" class="ui huge image">
+			<% if(success == true) {%>
+			<div class="ui positive message">
+				<i class="close icon"></i>
+				<div class="header">
+				Thank you for contacting us! We'll reach out to you ASAP.
+				</div>
+			</div>
+			<% } %>
+			<h3 class="ui header">Contact Us</h3>
+			<form class="ui form" action="/contact/" method="post">
+				<div class="field">
+					<label class="ui label">Your Name</label>
+					<div class="ui input">
+						<input name="contactName" value="<%= user.firstname %> <%= user.lastname %>"/>
+					</div>
+				</div>
+				<div class="field">
+					<label class="ui label">Your Email</label>
+					<div class="ui input">
+						<input name="contactEmail" value="<%= user.email %>"/>
+					</div>
+				</div>
+				<div class="field">
+					<label class="ui label">Message</label>
+					<textarea name="contactMessage"></textarea>
+				</div>
+				<div class="field">
+					<button class="ui button" type="submit">Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script>
+	<% if(success == true) {%>
+		$('.message .close').on('click', function() {
+	  		$(this).closest('.message').fadeOut();
+		});
+	<% } %>
+	</script>
+</body>
