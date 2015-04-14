@@ -7,9 +7,9 @@ var OrderSchema = require('../models/order');
 var ReviewSchema = require('../models/review');
 var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport({
-	service:'yahoo',
+	service:'gmail',
 	auth: {
-		user:'cornell.gatesg23@yahoo.com',
+		user:'cornell.codeg23@gmail.com',
 		pass:'2015codeg23'
 	}
 });
