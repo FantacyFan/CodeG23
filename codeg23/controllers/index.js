@@ -97,6 +97,9 @@ module.exports = function(passport){
 	/* Review controller */
 	router.use('/review', isAuthenticated, require('./review'));
 
+	/* foodgallery controller */
+	router.use('/foodgallery', isAuthenticated, require('./foodgallery'));
+
 	router.get('/help', function(res, req){
 		req.render('help',{
 			user: res.user
@@ -105,6 +108,7 @@ module.exports = function(passport){
 
 	/* User */
 	router.use('/users', require('./users'));
+
 
 	return router;
 }
