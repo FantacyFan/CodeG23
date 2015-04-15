@@ -32,9 +32,9 @@ router.post('/',function(req, res) {
 	console.log(guest);
 	console.log(category);
 	var query = {};
-	if(!(typeof university === "undefined" || university==="")
+	if(!(typeof university === "undefined" || university === "")
 		&& today.isValid()
-		&& !(typeof guest === "undefined" || guest==="")
+		&& !(typeof guest === "undefined" || guest ==="")
 		&& !(typeof category === "undefined" || category==="")){
 		console.log("All");
 		query = {
