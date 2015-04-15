@@ -38,7 +38,7 @@ router.post('/',function(req, res) {
 		&& !(typeof category === "undefined" || category==="")){
 		console.log("All");
 		query = {
-			university:university,
+			university:new RegExp(university),
 			host_time:today.toDate(),
 			type: category,
 			quantity: guest
@@ -48,7 +48,7 @@ router.post('/',function(req, res) {
 		&& !(typeof guest === "undefined" || guest==="")){
 		console.log("Uni Dat Gus");
 		query = {
-			university:university,
+			university:new RegExp(university),
 			host_time:today.toDate(),
 			quantity: guest
 		}
@@ -57,7 +57,7 @@ router.post('/',function(req, res) {
 		&& !(typeof category === "undefined" || category==="")){
 		console.log("Uni Dat Cat");
 		query = {
-			university:university,
+			university:new RegExp(university),
 			host_time:today.toDate(),
 			type: category
 		}
@@ -66,7 +66,7 @@ router.post('/',function(req, res) {
 		&& !(typeof category === "undefined" || category==="")){
 		console.log("Uni Gus Cat");
 		query = {
-			university:university,
+			university:new RegExp(university),
 			type: category,
 			quantity: guest
 		}
@@ -74,27 +74,27 @@ router.post('/',function(req, res) {
 		&& today.isValid()){
 		console.log("Uni Dat");
 		query = {
-			university:university,
+			university:new RegExp(university),
 			host_time:today.toDate()
 		}
 	} else if(!(typeof university === "undefined" || university==="")
 		&& !(typeof guest === "undefined" || guest==="")){
 		console.log("Uni Gus");
 		query = {
-			university:university,
+			university:new RegExp(university),
 			quantity: guest
 		}
 	} else if(!(typeof university === "undefined" || university==="")
 		&& !(typeof category === "undefined" || category==="")){
 		console.log("Uni Cat");
 		query = {
-			university:university,
+			university:new RegExp(university),
 			type: category
 		}
 	} else if(!((typeof university === "undefined")||(university===""))){
 		console.log("Uni");
 		query = {
-			university:university
+			university:new RegExp(university)
 		}
 	} else {
 		university = "Cornell university";
