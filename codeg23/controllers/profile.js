@@ -122,6 +122,7 @@ router.post('/edit', function(req, res){
 
 	//check user portrait
 	var _img = req.files.portrait;
+	//var _img = req.files;
 
 	var userid = req.user._id;
 	var _portrait_path = req.user.portrait_path;
