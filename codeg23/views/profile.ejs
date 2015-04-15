@@ -29,10 +29,6 @@ function loadImageFile() {
         <!-- main area -->
         <div class="eleven wide column">
 	        <div class="section">
-<form id="uploadForm" enctype="multipart/form-data" action="/profile/edit" method="post">
-<input type="file" id="test" name="test" />
-<input type="submit" value="Upload Image" name="submit">
-</form>
 	        	<form class="ui form" action="/profile/edit" enctype="multipart/form-data" method="post" >
 					<h3 class="ui block top attached header"><div><i class="user icon"></i>Demographic<button class="ui black basic button profile" type="submit">Save</button></div></h3>
 					<div class="ui bottom attached secondary segment">
@@ -43,7 +39,7 @@ function loadImageFile() {
 										<div class="row">
 										
 										<div class="center aligned column">
-											<img id="uploadPreview" src="/image/sample-portrait.jpg" alt="photo" height="300" width="300">
+											<img id="uploadPreview" src="<%= user.portrait_path %>" alt="photo" height="300" width="300">
 										</div>
 										</div>
 										<div class="row">

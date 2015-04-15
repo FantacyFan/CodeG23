@@ -16,7 +16,7 @@ var userSchema = mongoose.Schema({
 	birth_year: String,
 	languages: String,
 	nationality: String,
-	img_path: String,
+	portrait_path: String,
 
 	/* Contact */
 	email: String,

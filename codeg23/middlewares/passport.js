@@ -137,6 +137,7 @@ module.exports = function(passport) {
                         newUser.password = createHash(password);
                         newUser.firstname = req.param('firstname');
                         newUser.lastname = req.param('lastname');
+                        newUser.portrait_path = '/image/sample-portrait.jpg';
                         // save the user
                         newUser.save(function(err) {
                             if (err){

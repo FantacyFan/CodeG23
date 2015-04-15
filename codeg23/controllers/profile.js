@@ -6,9 +6,9 @@ var RequestSchema = require('../models/request');
 var OrderSchema = require('../models/order');
 var ReviewSchema = require('../models/review');
 var nodemailer = require('nodemailer');
-
+//for file upload
+var multer  = require('multer');
 var fs = require('fs');
-
 
 var transporter = nodemailer.createTransport({
 	service:'gmail',
@@ -121,18 +121,19 @@ router.post('/edit', function(req, res){
 	var _nationality = req.body.nationality;
 
 	//check user portrait
-	var _img = req.body.portrait;
+	var _img = req.files.portrait;
 
-	//console.log(JSON.stringify(req.files));
-	console.log(req.files);
-	if(_img != null){
-		//console.log(_img);
-		
-		//if defult img, create new folder, save the file
-		
-		//else, clear prevous one, save new one
+	var userid = req.user._id;
+	var _portrait_path = req.user.portrait_path;
 
-		//update user img path
+	//path to store portrait img
+	var serverPath = __dirname + '/../public'+ req.user.portrait_path;
+	if(typeof _img != "undefined"){
+		//clear prevous one, save new one
+		if(req.user.portrait_path != '/image/sample-portrait.jpg'){
+			fs.unlinkSync(serverPath);
+		}
+		_portrait_path = '/uploads/' + req.files.portrait.name;
 	}
 
 	/* Contact */
@@ -160,7 +161,7 @@ router.post('/edit', function(req, res){
 		doc.birth_year  = _birth_year;
 		doc.languages = _languages;
 		doc.nationality = _nationality;
-
+		doc.portrait_path =  _portrait_path;
 		/* Contact */
 		doc.phone = _phone;
 		doc.address = _address;
