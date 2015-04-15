@@ -45,7 +45,11 @@ var userSchema = mongoose.Schema({
 	edu_verified: String,
 	edu_email: String,
 	edu_key: String,
-	facebook_id: String
+	facebook_id: String,
+
+	/* Stats */
+	reviews_received: Number,
+	rate_overall: Number
 
 });
 

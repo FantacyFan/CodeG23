@@ -109,6 +109,9 @@ module.exports = function(passport){
 	/* User */
 	router.use('/users', require('./users'));
 
+	/* Contact */
+	router.use('/contact', require('./contact'));
+
 
 	return router;
 }
