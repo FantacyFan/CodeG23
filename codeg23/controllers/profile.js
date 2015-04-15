@@ -7,7 +7,7 @@ var OrderSchema = require('../models/order');
 var ReviewSchema = require('../models/review');
 var nodemailer = require('nodemailer');
 //for file upload
-var multer  = require('multer');
+//var multer  = require('multer');
 var fs = require('fs');
 
 var transporter = nodemailer.createTransport({

@@ -10,8 +10,9 @@ var users = require('./controllers/users');
 var passport = require('passport');
 var session      = require('express-session');
 var conversationSocket = require('./controllers/conversation-socket');
-var multer  = require('multer');
 
+
+//var multer  = require('multer');
 
 
 var app = express();
@@ -25,6 +26,10 @@ require('./middlewares/passport')(passport); // pass passport for configuration
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+//app.use(multer({ dest: './public/uploads'}))
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -46,7 +51,6 @@ http.listen(3000, function(){
 var passport = require('passport');
 var expressSession = require('express-session');
 
-
 // TODO - Why Do we need this key ?
 app.use(expressSession({secret: 'amxogy9e7rygxm2978yg!@yg20789fd&89)daytx,g870927?v9p9(vh)fwmpvw97ihfdmpv'}));
 app.use(passport.initialize());
@@ -56,8 +60,6 @@ app.use(passport.session());
 // and displaying in templates
 var flash = require('connect-flash');
 app.use(flash());
-app.use(multer({ dest: './public/uploads'}))
-
 
 // Initialize Passport
 var routes = require('./controllers/index')(passport);
