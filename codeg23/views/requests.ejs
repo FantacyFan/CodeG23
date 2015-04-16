@@ -16,7 +16,7 @@
 				<ul style="padding-left:200px;">
 					<% requests.forEach(function(r) {%>
 				  	<li>
-				    	<form method="post">
+				    	<form enctype="multipart/form-data" method="post">
 				      		<input type="hidden" name="reqid" value="<%= r._id %>"/>
 				      		<p>Owner Name: <%= r.owner_id %> </p>
 				      		<p>Menu Title: <%= r.menu_id %> </p>

@@ -19,7 +19,7 @@
 					<% if(user.edu_verified=="Verified") {%>
 						<h3 class="ui header">Congratulation! You verified your edu email successfully!</h3>
 					<%} else {%>
-					<form method="post">
+					<form enctype="multipart/form-data" method="post">
 						<% if(typeof message !== 'undefined'){ %>
 						<label><%= message.content %></label><br/>
 						<% } %>

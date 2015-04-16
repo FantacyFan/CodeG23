@@ -6,7 +6,7 @@
 	<% include ../views/nav %>
 
 	<h1>Edit Menu</h1>
-	<form method="post">
+	<form enctype="multipart/form-data" method="post">
 		<label for="menuTitle">Menu Title: </label>
 		<input id="menuTitle" name="title" value="<%= menu.title %>"/>
 		<label for="menuDetail">Menu Detail: </label>

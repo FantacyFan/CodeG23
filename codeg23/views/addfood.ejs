@@ -1,0 +1,351 @@
+<html lang="en">
+<head>
+  <% include  ../views/head %>
+</head>
+<body>
+    <% include ../views/nav %>
+    <div class="ui stackable grid">
+      <div class="ui grid">
+        <div class="row" id="add-menu">
+          <h1>List Your Menu Here</h1>
+        </div>
+      </div>
+      <div class="ui grid">
+        <div class="row">
+        
+        
+          <div class="two wide column"></div>
+          <div class="twelve wide column">
+            <div class="ui form" action="/menu/add" method="post" id="add-menu-form-1">
+              <div class="row" id="addmenu-1">
+              <div class="three fields">
+                <div class="two wide field" style="text-align:center;">
+                  <h3 style="padding:15px 40px;">Food</h3>
+                </div>
+                <div class="one wide field"></div>
+                <div class="thirteen wide field">
+                  <div class="ui black basic button" style="border-radius:0px; padding:20px 40px; margin-right:1px;" name="breakfast">Breakfast&Brunch</div>
+              
+
+                  <div class="ui black basic button" style="border-radius:0px; padding:20px 40px; margin-right:1px;" name="lunch">Lunch</div>
+               
+               
+                  <div class="ui black basic button" style="border-radius:0px; padding:20px 40px; margin-right:1px;" name="dinner">Dinner</div>
+                
+                
+                  <div class="ui black basic button" style="border-radius:0px; padding:20px 40px; margin-right:1px;" name="party">Party</div>
+                </div>
+              </div>
+
+              <div class="four fields">
+                <div class="two wide field" style="text-align:center;">
+                  <h3 style="padding:15px 40px;">Category</h3>
+                </div>
+                <div class="one wide field"></div>
+                <div class="five wide field">
+                  <div class="ui fluid search selection dropdown" style="border-radius:0px; width:100%; box-shadow:0 0 0 1px rgba(39,41,43,.15)inset!important; height:54px;" >
+                    <input type="hidden" name="type">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Category</div>
+                    <div class="menu">
+                      <div class="item" data-value="American">American</div>
+                      <div class="item" data-value="Chinese">Chinese</div>
+                      <div class="item" data-value="Indian">Indian</div>
+                      <div class="item" data-value="Thai">Thai</div>
+                      <div class="item" data-value="Korean">Korean</div>
+                      <div class="item" data-value="Japanese">Japanese</div>
+                      <div class="item" data-value="Mexican">Mexican</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="eight wide field"></div>
+              </div>
+
+              <div class="four fields">
+                <div class="two wide field" style="text-align:center;">
+                  <h3 style="padding:15px 40px;">Invitation</h3>
+                </div>
+                <div class="one wide field"></div>
+                <div class="five wide field">
+                  <div class="ui selection dropdown" style="border-radius:0px; width:100%; height:54px; box-shadow:0 0 0 1px rgba(39,41,43,.15)inset!important;">
+                    <input type="hidden" name="quantity">
+                    <div class="default text" style="margin-right:0px;">Guest</div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                      <div class="item" data-value="1guest">1 Guest</div>
+                      <div class="item" data-value="2guests">2 Guests</div>
+                      <div class="item" data-value="3guests">3 Guests</div>
+                      <div class="item" data-value="4guests">4 Guests</div>
+                      <div class="item" data-value="5guests">5 Guests</div>
+                      <div class="item" data-value="6guests">6 Guests</div>
+                      <div class="item" data-value="6plusguests">6+ Guests</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="eight wide field"></div>
+              </div>
+
+              <div class="four fields">
+                <div class="two wide field" style="text-align:center;">
+                  <h3 style="padding:15px 40px;">University</h3>
+                </div>
+                <div class="one wide field"></div>
+                <div class="five wide field">
+                  <div class="ui fluid search selection dropdown" style="border-radius:0px; width:100%; box-shadow:0 0 0 1px rgba(39,41,43,.15)inset!important; height:54px;">
+                    <input type="hidden" name="university">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">University</div>
+                    <div class="menu">
+                      <div class="item" data-value="cornell">Cornell University</div>
+                      <div class="item" data-value="syracuse">Syracuse University</div>
+                      <div class="item" data-value="nyu">New York University</div>
+                      <div class="item" data-value="pennstate">Penn State University</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="eight wide field"></div>
+              </div>
+
+              <div class="field" style="height:54px;"></div>
+
+              <div class="two fields">
+                <div class="eleven wide field"></div>
+                <div class="five wide field" style="text-align:center;">
+                  <div class="ui teal button" style="border-radius:2px; padding:15px 40px;" name="continue" onclick="changeDiv1()">Continue</div>
+                </div>
+              </div>
+
+
+              </div>
+
+              <div class="row" id="addmenu-2" style="display:none;">
+                <div class="three fields">
+                  <div class="two wide field" style="text-align:center;">
+                    <h3 style="padding:15px 40px;">Date</h3>
+                  </div>
+                  <div class="one wide field"></div>
+                  <div class="thirteen wide field">
+                    <div class="ui black basic button" style="border-radius:0px; padding:20px 40px; margin-right:1px;" name="regular">Always</div>
+                
+
+                    <div class="ui black basic button" style="border-radius:0px; padding:20px 40px; margin-right:1px;" name="sometimes">Sometimes</div>
+                 
+                 
+                    <div class="ui black basic button" style="border-radius:0px; padding:20px 40px; margin-right:1px;" name="once">One Time</div>
+              
+                  </div>
+                </div>
+
+                <div class="four fields">
+                  <div class="two wide field" style="text-align:center;">
+                    <h3 style="padding:15px 40px;">Price</h3>
+                  </div>
+                  <div class="one wide field"></div>
+                  <div class="five wide field">
+                    <div class="ui selection dropdown" style="border-radius:0px; width:100%; height:54px; box-shadow:0 0 0 1px rgba(39,41,43,.15)inset!important;">
+                      <input type="hidden" name="quantity">
+                      <div class="default text" style="margin-right:0px;">Price Range ($)</div>
+                      <i class="dropdown icon"></i>
+                      <div class="menu">
+                        <div class="item" data-value="onetoten">$</div>
+                        <div class="item" data-value="tentotwenty">$$</div>
+                        <div class="item" data-value="twentytothirty">$$$</div>
+                        <div class="item" data-value="thirtytofourty">$$$$</div>
+                        <div class="item" data-value="fourtyplus">$$$$+</div>
+                        <div class="item" data-value="free">Free</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="eight wide field"></div>
+                </div>
+
+                <div class="five fields">
+                  <div class="two wide field" style="text-align:center;">
+                    <h3 style="padding:15px 40px;">Address</h3>
+                  </div>
+                  <div class="one wide field"></div>
+                  <div class="five wide field">
+                    <input type="text" name="first-name" placeholder="Address Line 1" style="height:54px; border-radius:0px; box-shadow:0 0 0 1px rgba(39,41,43,.15)inset!important;">
+                  </div>
+                  <div class="five wide field">
+                    <input type="text" name="first-name" placeholder="Address Line 2" style="height:54px; border-radius:0px; box-shadow:0 0 0 1px rgba(39,41,43,.15)inset!important;">
+                  </div>
+                  <div class="three wide field"></div>
+                </div>
+
+                <div class="four fields">
+                  <div class="two wide field" style="text-align:center;">
+                    <h3 style="padding:15px 40px;">Description</h3>
+                  </div>
+                  <div class="one wide field"></div>
+                  <div class="eight wide field">
+                    <input type="text" name="first-name" placeholder="Input your description for this event here" style="height:122px; border-radius:0px; box-shadow:0 0 0 1px rgba(39,41,43,.15)inset!important;">
+                  </div>
+                  <div class="five wide field"></div>
+                </div>
+
+                <div class="two fields">
+                  <div class="eleven wide field"></div>
+                  <div class="five wide field" style="text-align:center;">
+                    <div class="ui teal button" style="border-radius:2px; padding:15px 40px;" name="continue" onclick="changeDiv2()">Continue</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" id="addmenu-3" style="display:none;">
+                <div class="field" style="height:54px;"></div>
+
+                <div class="four fields">
+                  <div class="four wide field" style="text-align:center;">
+                    <h3 style="padding:15px 40px;">Title</h3>
+                  </div>
+                  <div class="one wide field"></div>
+                  <div class="five wide field">
+                    <input type="text" name="first-name" placeholder="Title for your event" style="height:54px; border-radius:0px; box-shadow:0 0 0 1px rgba(39,41,43,.15)inset!important;">
+                  </div>
+                  <div class="one wide field"></div>
+                </div>
+
+                <div class="field" style="height:54px;"></div>
+                <div class="five fields">
+                  <div class="four wide field" style="text-align:center;">
+                    <h3 style="padding:15px 40px;">Add Photo</h3>
+                  </div>
+
+                  <div class="one wide field"></div>
+                  <div class="four wide field">
+                    <div><h3>Add a photo from local!</h3></div>
+                  </div>
+
+                  <div class="four wide field">
+                    <div><h3>Add photos from your personal gallery!</h3></div>
+
+                    <div class="ui basic modal galleryModal" style="top:25% !important;">
+                      <i class="close icon"></i>
+
+                        <div class="header">
+                          Gallery
+                        </div>
+                        <div class="content">
+                          <div class="ui grid">
+                            <div class="two column row">
+
+                              <div class="column">
+                                <div class="ui checkbox" style="width:100% !important;">
+                                  <input type="checkbox" name="fun">
+                                  <label>
+                                    <div class="ui fluid image">
+                                      <img src="/image/test/placeholder1.jpg" alt="img" id="menuImg" style="width:100%; padding:10px !important;">  
+                                    </div>
+                                  </label>
+                                </div> 
+                              </div>
+
+                              <div class="column">
+                                <div class="ui checkbox" style="width:100% !important;">
+                                  <input type="checkbox" name="fun">
+                                  <label>
+                                    <div class="ui fluid image">
+                                      <img src="/image/test/placeholder1.jpg" alt="img" id="menuImg" style="width:100%; padding:10px !important;">  
+                                    </div>
+                                  </label>
+                                </div> 
+                              </div>
+
+                              <div class="column">
+                                <div class="ui checkbox" style="width:100% !important;">
+                                  <input type="checkbox" name="fun">
+                                  <label>
+                                    <div class="ui fluid image">
+                                      <img src="/image/test/placeholder1.jpg" alt="img" id="menuImg" style="width:100%; padding:10px !important;">  
+                                    </div>
+                                  </label>
+                                </div> 
+                              </div>
+
+                              <div class="column">
+                                <div class="ui checkbox" style="width:100% !important;">
+                                  <input type="checkbox" name="fun">
+                                  <label>
+                                    <div class="ui fluid image">
+                                      <img src="/image/test/placeholder1.jpg" alt="img" id="menuImg" style="width:100%; padding:10px !important;">  
+                                    </div>
+                                  </label>
+                                </div> 
+                              </div>
+
+                              <div class="column">
+                                <div class="ui checkbox" style="width:100% !important;">
+                                  <input type="checkbox" name="fun">
+                                  <label>
+                                    <div class="ui fluid image">
+                                      <img src="/image/test/placeholder1.jpg" alt="img" id="menuImg" style="width:100%; padding:10px !important;">  
+                                    </div>
+                                  </label>
+                                </div> 
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="actions">
+                          <div class="two fluid ui inverted buttons">
+                            <div class="ui red basic inverted button">
+                              <i class="remove icon"></i>
+                              No
+                            </div>
+                            <div class="ui green basic inverted button">
+                              <i class="checkmark icon"></i>
+                              Yes
+                            </div>
+                          </div>
+                        </div>
+
+                    </div>
+
+
+
+                  </div>
+
+                  <div class="three wide field"></div>
+                </div>
+
+
+                  <div class="five fields">
+                    <div class="four wide field" style="text-align:center;"></div>
+                    <div class="one wide field"></div>
+                    <div class="four wide field">
+                      <div class="ui red button" style="border-radius:2px; padding:15px 40px;" name="frompc" onclick="">Add Photos</div>
+                    </div>
+
+                  <div class="four wide field">
+                    <div class="ui red button" style="border-radius:2px; padding:15px 40px;" name="fromgallery" onclick="showGallery()">Search Gallery</div>
+                  </div>
+
+                  <div class="three wide field" style="height:70px;"></div>
+                </div>
+
+
+
+                <div class="two fields">
+                  <div class="eleven wide field"></div>
+                  <div class="five wide field" style="text-align:center;">
+                    <div class="ui teal button" style="border-radius:2px; padding:15px 40px;" name="submit" onclick="">Submit</div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+            <!-- end of form -->
+          </div>
+          <div class="two wide column"></div>
+
+        </div>
+      </div>
+
+    </div>
+</body>
+
+
