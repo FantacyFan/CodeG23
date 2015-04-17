@@ -168,7 +168,7 @@
       <div class="six wide column">
         <div class="ui sticky">
         <!-- Any arbitrary content !-->
-          <form method="post">
+          <form enctype="multipart/form-data" method="post">
             <% if(user._id != menu.user_id) {%>
             <div class="field quick control">
                 <button class="ui button quick control" type="submit" name="action" id="contact_button">

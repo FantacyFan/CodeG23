@@ -10,13 +10,23 @@ var extra = {
 }
 var geocoder = require('node-geocoder')('google','http',extra);
 
-/* Add Menu */
+/*********************************
+Method: 	Get
+Page: 		addmenu.ejs
+Function: 	Just used to render the adding menu Page          
+*********************************/
 router.get('/add',function(req, res){
 	res.render('addmenu',{
 		'user' : req.user
 	})
 })
 
+/*********************************
+Method: 	Post
+Page: 		menus.ejs
+Function: 	Handle the form from adding menu page. 
+			Redirect to menus page in the end.          
+*********************************/
 router.post('/add', function(req, res){
 	var action = req.body.action;
 	//console.log("add post");
@@ -75,7 +85,12 @@ router.post('/add', function(req, res){
 			break;
 	}
 })
-/* Get the menu edit page */
+
+/*********************************
+Method: 	Get
+Page: 		editmenu.ejs
+Function: 	Just used to render the edit menu Page          
+*********************************/
 router.get('/edit/:id',function(req, res){
 	MenuSchema.findOne({_id: req.params.id}, function(err,menu){
 		// authenticate request first
@@ -95,7 +110,11 @@ router.get('/edit/:id',function(req, res){
 	});
 });
 
-/* Handle edit page post */
+/*********************************
+Method: 	Post
+Page: 		menu.ejs
+Function: 	Handle the form from edit menu page.         
+*********************************/
 router.post('/edit/:id', function(req, res){
 	MenuSchema.findOne({_id: req.params.id}, function(err,menu){
 		if(menu.user_id!=req.user._id){

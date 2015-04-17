@@ -1,6 +1,22 @@
 <html lang="en">
+
 <head>
   	<% include  ../views/head %>
+<script type="text/javascript">
+oFReader = new FileReader(), rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
+
+oFReader.onload = function (oFREvent) {
+  document.getElementById("uploadPreview").src = oFREvent.target.result;
+};
+
+function loadImageFile() {
+  if (document.getElementById("uploadImage").files.length === 0) { return; }
+  var oFile = document.getElementById("uploadImage").files[0];
+  if (!rFilter.test(oFile.type)) { alert("You must select a valid image file!"); return; }
+  oFReader.readAsDataURL(oFile);
+}
+</script>
+
 </head>
 <body>
 	<% include ../views/nav %>
@@ -13,7 +29,7 @@
         <!-- main area -->
         <div class="eleven wide column">
 	        <div class="section">
-	        	<form class="ui form" action="/profile/edit" method="post">
+	        	<form class="ui form" action="/profile/edit" enctype="multipart/form-data" method="post" >
 					<h3 class="ui block top attached header"><div><i class="user icon"></i>Demographic<button class="ui black basic button profile" type="submit">Save</button></div></h3>
 					<div class="ui bottom attached secondary segment">
 						<div class="ui stackable grid">
@@ -21,8 +37,9 @@
 								<div class="eight wide column">
 									<div class="ui grid">
 										<div class="row">
+										
 										<div class="center aligned column">
-											<img src="/image/sample-portrait.jpg" alt="photo">
+											<img id="uploadPreview" src="<%= user.portrait_path %>" alt="photo" height="300" width="300">
 										</div>
 										</div>
 										<div class="row">
@@ -31,6 +48,9 @@
 													<i class="cloud upload icon"></i>
 													Upload New Portrait
 												</button>
+												<input class="ui button" id="uploadImage" type="file" name="portrait" onchange="loadImageFile();"/>
+
+
 											</div>
 										</div>
 									</div>

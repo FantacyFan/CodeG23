@@ -7,6 +7,7 @@ var config = require('../controllers//config');
 
 // load up the user model
 var User            = require('../models/user');
+var Foodgallery = require('../models/foodgallery');
 
 var bCrypt = require('bcrypt-nodejs');
 
@@ -37,7 +38,7 @@ module.exports = function(passport) {
         clientSecret:config.facebook_api_secret ,
         callbackURL: config.callback_url 
     }, function(accessToken, refreshToken, profile, done){
-        console.log(profile);
+        console.log("Req: "+req);
         User.findOne({'facebook_id':profile.id}, function(err, user){
             if(user==null){
                var newUser = new User();
@@ -137,14 +138,24 @@ module.exports = function(passport) {
                         newUser.password = createHash(password);
                         newUser.firstname = req.param('firstname');
                         newUser.lastname = req.param('lastname');
+                        newUser.portrait_path = '/image/sample-portrait.jpg';
                         // save the user
                         newUser.save(function(err) {
                             if (err){
                                 console.log('Error in Saving user: '+err);  
                                 throw err;  
                             }
-                            console.log('User Registration succesful');    
-                            return done(null, newUser);
+                            //create default gallery
+                            var newFoodgallery = new Foodgallery();
+                            newFoodgallery.user_id = newUser._id;
+                            newFoodgallery.save(function(err) {
+                                if (err){
+                                    console.log('Error in Saving fdgallery: '+err);  
+                                    throw err;  
+                                }
+                                console.log('User Registration succesful');    
+                                return done(null, newUser);
+                            });
                         });
                     }
                 });

@@ -14,7 +14,7 @@
 		<div class="twelve wide column">
 			<div class="section">
 				<h1>Edit Profile</h1>
-				<form method="post">
+				<form enctype="multipart/form-data" method="post">
 					<label for="profileAddress">Address: </label>
 					<input id="profileAddress" name="address" value="<%= user.address %>"/>
 					<label for="profileBio">Bio: </label>

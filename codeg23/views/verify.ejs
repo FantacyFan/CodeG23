@@ -19,7 +19,7 @@
 					<% if(user.edu_verified=="Verified") {%>
 						<h3 class="ui header">Congratulation! You verified your edu email successfully!</h3>
 					<%} else {%>
-					<form method="post">
+					<form enctype="multipart/form-data" method="post">
 						<% if(typeof message !== 'undefined'){ %>
 						<label><%= message.content %></label><br/>
 						<% } %>
@@ -32,6 +32,17 @@
 						</div>
 						<button class="ui button" type="submit">Verify Me!</button>
 					</form>
+					<% } %>
+				</div>
+				<h3 class="ui block top attached header"><i class="mail icon"></i>Facebook Verification</h3>
+				<div class="ui bottom attached secondary segment">
+					<% if(typeof user.facebook_id !== "undefined") {%>
+						<h3 class="ui header">Congratulation! You could login with Facebook next time!</h3>
+					<%} else {%>
+					<button type="button" onclick="location.href='/auth/facebook'" class="ui facebook button">
+					<i class="facebook icon"></i>
+					Connect with Facebook
+					</button>
 					<% } %>
 				</div>
 			</div>

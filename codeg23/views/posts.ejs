@@ -17,7 +17,7 @@
 					<% posts.forEach(function(p) {%>
 				  	<li>
 				    	<a href="/menu/detail/<%= p._id %>"><%= p.title %></a>
-				    	<form method="post">
+				    	<form enctype="multipart/form-data" method="post">
 				      		<input type="hidden" name="menuid" value=<%= p._id %>/>
 				      		<input type="submit" value="Delete"/>
 				      		<button type="button" onclick="location.href='/request/pending/<%= p._id %>'">View Requests</button>

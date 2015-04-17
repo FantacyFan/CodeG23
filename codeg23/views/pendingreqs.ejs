@@ -13,7 +13,7 @@
 
 	    	<% if(r.status == 'pending') {%>
 
-	    	<form action="/request/approve" method="post">
+	    	<form action="/request/approve" enctype="multipart/form-data" method="post">
 	      		<input type="hidden" name="owner_id" value="<%= r.owner_id %>"/>
 	      		<input type="hidden" name="customer_id" value="<%= r.customer_id %>"/>
 	      		<input type="hidden" name="menu_id" value="<%= r.menu_id %>"/>
@@ -21,7 +21,7 @@
 	      		<input type="submit" value="Approve"/>
  			</form>
 
- 			<form action="/request/decline" method="post">
+ 			<form action="/request/decline" enctype="multipart/form-data" method="post">
 	      		<input type="hidden" name="owner_id" value="<%= r.owner_id %>"/>
 	      		<input type="hidden" name="customer_id" value="<%= r.customer_id %>"/>
 	      		<input type="hidden" name="menu_id" value="<%= r.menu_id %>"/>

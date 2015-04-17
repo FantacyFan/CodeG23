@@ -6,6 +6,10 @@ var RequestSchema = require('../models/request');
 var OrderSchema = require('../models/order');
 var ReviewSchema = require('../models/review');
 var nodemailer = require('nodemailer');
+//for file upload
+//var multer  = require('multer');
+var fs = require('fs');
+
 var transporter = nodemailer.createTransport({
 	service:'gmail',
 	auth: {
@@ -83,8 +87,7 @@ router.get('/posts', function(req, res){
 /* Requests page */
 router.post('/posts', function(req, res){
 	var menuId = req.body.menuid;
-	console.log(menuId);
-	res.redirect('/profile/posts')
+	res.redirect('/profile/posts');
 })
 
 /* Requests page */
@@ -106,7 +109,6 @@ router.get('/edit',function(req, res){
 
 /* Handle edit page post */
 router.post('/edit', function(req, res){
-	console.log(req.body);
 	/* Demographic */
 	var _firstname = req.body.firstname;
 	var _lastname = req.body.lastname;
@@ -116,7 +118,24 @@ router.post('/edit', function(req, res){
 	var _birth_year = req.body.year;
 	var _languages = req.body.languages;
 	var _nationality = req.body.nationality;
-	console.log("1");
+
+	//check user portrait
+	var _img = req.files.portrait;
+	//var _img = req.files;
+
+	var userid = req.user._id;
+	var _portrait_path = req.user.portrait_path;
+
+	//path to store portrait img
+	var serverPath = __dirname + '/../public'+ req.user.portrait_path;
+	if(typeof _img != "undefined"){
+		//clear prevous one, save new one
+		if(req.user.portrait_path != '/image/sample-portrait.jpg'){
+			fs.unlinkSync(serverPath);
+		}
+		_portrait_path = '/uploads/' + req.files.portrait.name;
+	}
+
 	/* Contact */
 	var _phone = req.body.phone;
 	var _address = req.body.address;
@@ -129,14 +148,10 @@ router.post('/edit', function(req, res){
 	/* Work and Education */
 	var _company = req.body.company;
 	var _school = req.body.school;
-	console.log("2");
 	/* Interests and Bio */
 	var _interests = req.body.interests;
-	console.log("3");
 	var _bio = req.body.bio;
-	console.log("4");
-	console.log(_bio);
-	console.log(req.user._id);
+
 	UserSchema.findOne({_id : req.user._id},function(err, doc){
 		doc.firstname = _firstname;
 		doc.lastname = _lastname;
@@ -146,7 +161,7 @@ router.post('/edit', function(req, res){
 		doc.birth_year  = _birth_year;
 		doc.languages = _languages;
 		doc.nationality = _nationality;
-
+		doc.portrait_path =  _portrait_path;
 		/* Contact */
 		doc.phone = _phone;
 		doc.address = _address;
@@ -164,7 +179,9 @@ router.post('/edit', function(req, res){
 		doc.interests = _interests;
 		doc.bio = _bio;
 		doc.save();
+
 		res.redirect('/profile/detail');
+
 	});
 })
 

@@ -16,7 +16,7 @@
 			<h4><%= review.timestamp%></h4>
 		</div>
 	<% } else { %>
-		<form method='post' action='/review/add'>
+		<form method='post' enctype="multipart/form-data" action='/review/add'>
 			<input type='hidden' name='menuId' value="<%= menu._id %>"/>
 			<input type='hidden' name='orderId' value="<%= order._id %>"/>
 			<% if(user._id != menu.user_id) { %>
