@@ -7,6 +7,7 @@ var config = require('../controllers//config');
 
 // load up the user model
 var User            = require('../models/user');
+var Foodgallery = require('../models/foodgallery');
 
 var bCrypt = require('bcrypt-nodejs');
 
@@ -144,8 +145,17 @@ module.exports = function(passport) {
                                 console.log('Error in Saving user: '+err);  
                                 throw err;  
                             }
-                            console.log('User Registration succesful');    
-                            return done(null, newUser);
+                            //create default gallery
+                            var newFoodgallery = new Foodgallery();
+                            newFoodgallery.user_id = newUser._id;
+                            newFoodgallery.save(function(err) {
+                                if (err){
+                                    console.log('Error in Saving fdgallery: '+err);  
+                                    throw err;  
+                                }
+                                console.log('User Registration succesful');    
+                                return done(null, newUser);
+                            });
                         });
                     }
                 });

@@ -6,7 +6,7 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 // define the schema for our order model
 var foodSchema = mongoose.Schema({
 	user_id : String,
-//	foodgallery_id: String,
+	foodgallery_id: String,
 	name: String,
 	type: String,
 	description: String,

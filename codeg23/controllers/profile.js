@@ -109,7 +109,6 @@ router.get('/edit',function(req, res){
 
 /* Handle edit page post */
 router.post('/edit', function(req, res){
-	console.log(req.body);
 	/* Demographic */
 	var _firstname = req.body.firstname;
 	var _lastname = req.body.lastname;
