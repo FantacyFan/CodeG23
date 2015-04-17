@@ -230,61 +230,25 @@
                           <div class="ui grid">
                             <div class="two column row">
 
-                              <div class="column">
-                                <div class="ui checkbox" style="width:100% !important;">
-                                  <input type="checkbox" name="fun">
-                                  <label>
-                                    <div class="ui fluid image">
-                                      <img src="/image/test/placeholder1.jpg" alt="img" id="menuImg" style="width:100%; padding:10px !important;">  
-                                    </div>
-                                  </label>
-                                </div> 
-                              </div>
+                            <% foods.forEach(function(food) {%>
+                          <!--<li><%= food.name %></li>
+            <li><%= food.type %></li
+            <li><%= food.description %></li>
+            <li><%= food.create_time %></li>-->
+            
 
                               <div class="column">
                                 <div class="ui checkbox" style="width:100% !important;">
                                   <input type="checkbox" name="fun">
                                   <label>
                                     <div class="ui fluid image">
-                                      <img src="/image/test/placeholder1.jpg" alt="img" id="menuImg" style="width:100%; padding:10px !important;">  
+                                      <img src="<%= food.imgpath %>" alt="img" id="menuImg" style="width:100%; padding:10px !important;">  
                                     </div>
                                   </label>
                                 </div> 
                               </div>
 
-                              <div class="column">
-                                <div class="ui checkbox" style="width:100% !important;">
-                                  <input type="checkbox" name="fun">
-                                  <label>
-                                    <div class="ui fluid image">
-                                      <img src="/image/test/placeholder1.jpg" alt="img" id="menuImg" style="width:100%; padding:10px !important;">  
-                                    </div>
-                                  </label>
-                                </div> 
-                              </div>
-
-                              <div class="column">
-                                <div class="ui checkbox" style="width:100% !important;">
-                                  <input type="checkbox" name="fun">
-                                  <label>
-                                    <div class="ui fluid image">
-                                      <img src="/image/test/placeholder1.jpg" alt="img" id="menuImg" style="width:100%; padding:10px !important;">  
-                                    </div>
-                                  </label>
-                                </div> 
-                              </div>
-
-                              <div class="column">
-                                <div class="ui checkbox" style="width:100% !important;">
-                                  <input type="checkbox" name="fun">
-                                  <label>
-                                    <div class="ui fluid image">
-                                      <img src="/image/test/placeholder1.jpg" alt="img" id="menuImg" style="width:100%; padding:10px !important;">  
-                                    </div>
-                                  </label>
-                                </div> 
-                              </div>
-
+                              <% }) %>
                             </div>
                           </div>
                         </div>
