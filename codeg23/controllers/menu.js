@@ -34,57 +34,63 @@ Page: 		menus.ejs
 Function: 	Handle the form from adding menu page. 
 			Redirect to menus page in the end.          
 *********************************/
-
 router.post('/add', function(req, res){
-
-	var _title 				= req.body.title;
-	var _detail 			= req.body.detail;
-	var _type 				= req.body.type; 
-	var _address 			= req.body.address;
-	var _address2			= req.body.address2;
-	var _city				= req.body.city;
-	var _quantity			= req.body.quantity; 
-	var _price 				= req.body.price;
-	var _university			= req.body.university;
-	var _description		= req.body.description;
-	var _now				= moment().format();
-	var _date				= moment(req.body.date).format();
-	var geoinfo = geocoder.geocode(_address+" "+_address2+" "+_city, function(err, geo){
-		console.log(geo);
-		//create a new menu
-		var _menu = MenuSchema({
-			user_id: req.user._id,
-			title: _title,
-			type: _type,
-			quantity: _quantity,
-			detail: _detail,
-			price: _price,
-			create_time: _now,
-			address: _address,
-			address2: _address2,
-			city: _city,
-			host_time: _date,
-			university: _university,
-			lat: geo[0].latitude,
-			lng: geo[0].longitude,
-			other: 'none'
-		});
-		//save the new menu
-		_menu.save(function(err){
-			if(err) throw err;
-			//get all menus
-			MenuSchema.find({}, function(err,menus){
-				if(err) throw err;
-				console.log(menus);
-				res.render('menus',{
-					'user' : req.user,
-					'menus': menus
+	var action = req.body.action;
+	//console.log("add post");
+	switch(action){
+		case "Add":
+			console.log("Add Menu");
+			var _title 				= req.body.title;
+			var _detail 			= req.body.detail;
+			var _type 				= req.body.type; 
+			var _address 			= req.body.address;
+			var _city				= req.body.city;
+			var _quantity			= req.body.quantity; 
+			var _price 				= req.body.price;
+			var _university			= req.body.university;
+			var _now				= moment().format();
+			var _date				= moment(req.body.date).format();
+			var geoinfo = geocoder.geocode(_address+" "+_city, function(err, geo){
+				console.log(geo);
+				//create a new menu
+				var _menu = MenuSchema({
+					user_id: req.user._id,
+					title: _title,
+					type: _type,
+					quantity: _quantity,
+					detail: _detail,
+					price: _price,
+					create_time: _now,
+					address: _address,
+					city: _city,
+					host_time: _date,
+					university: _university,
+					lat: geo[0].latitude,
+					lng: geo[0].longitude,
+					other: 'none'
 				});
+				//save the new menu
+				_menu.save(function(err){
+					if(err) throw err;
+					//get all menus
+					MenuSchema.find({}, function(err,menus){
+						if(err) throw err;
+						console.log(menus);
+						res.render('menus',{
+							'user' : req.user,
+							'menus': menus
+						});
+					});
+				});
+				res.redirect('/menus');
 			});
-		});
-		res.redirect('/menus');
-	});
-	
+		break;
+
+		default:
+			console.log("default");
+			res.redirect('/menus');
+			break;
+	}
 })
 
 /*********************************
