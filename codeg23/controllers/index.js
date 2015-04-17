@@ -99,9 +99,17 @@ module.exports = function(passport){
 
 	/* foodgallery controller */
 	router.use('/foodgallery', isAuthenticated, require('./foodgallery'));
-
+	
+	/* Help controller */
 	router.get('/help', function(res, req){
 		req.render('help',{
+			user: res.user
+		});
+	});
+
+	/* Term&Privacy controller */
+	router.get('/privacy', function(res, req){
+		req.render('privacy',{
 			user: res.user
 		});
 	});

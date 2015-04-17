@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var MenuSchema = require('../models/menu');
+var FoodSchema = require('../models/food');
+var FoodgallerySchema = require('../models/foodgallery');
 var ConversationSchema = require('../models/conversation');
 var RequestSchema = require('../models/request');
 var moment = require('moment');
@@ -16,9 +18,14 @@ Page: 		addmenu.ejs
 Function: 	Just used to render the adding menu Page          
 *********************************/
 router.get('/add',function(req, res){
-	res.render('addmenu',{
-		'user' : req.user
-	})
+	FoodgallerySchema.findOne({user_id : req.user._id},function(err, gallery){
+		FoodSchema.find({foodgallery_id : gallery._id},function(err, _foods){
+			res.render('addmenu',{
+				user : req.user,
+				foods : _foods
+			});
+        });
+	});	
 })
 
 /*********************************
