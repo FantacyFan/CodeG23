@@ -54,8 +54,17 @@ module.exports = function(passport) {
                         console.log('Error in Saving user: '+err);  
                         throw err;  
                     }
-                    console.log('User Registration succesful');    
-                    return done(null, newUser);
+                    console.log('User Registration succesful');   
+                    var newFoodgallery = new Foodgallery();
+                    newFoodgallery.user_id = newUser._id;
+                    newFoodgallery.save(function(err) {
+                        if (err){
+                            console.log('Error in Saving fdgallery: '+err);  
+                            throw err;  
+                        }
+                        console.log('User Registration succesful');    
+                        return done(null, newUser);
+                    }); 
                 });
             } else {
                 done(null, user)

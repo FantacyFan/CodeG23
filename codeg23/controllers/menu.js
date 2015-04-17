@@ -93,9 +93,11 @@ Page: 		editmenu.ejs
 Function: 	Just used to render the edit menu Page          
 *********************************/
 router.get('/edit/:id',function(req, res){
+	console.log(req.params.id);
 	MenuSchema.findOne({_id: req.params.id}, function(err,menu){
+		console.log("Enter");
 		// authenticate request first
-		if(menu==null || menu.user_id!=req.user._id){
+		if(menu == null || menu.user_id!=req.user._id){
 			var err = new Error('Not Found');
     		err.status = 404;
 			res.render({
