@@ -7,6 +7,8 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 var menuSchema = mongoose.Schema({
 	user_id : String,
 	menu_id: String,
+	//breakfast, lunch...
+	meal: String,
 	title: String,
 	type: String,
 	quantity: String,
@@ -15,7 +17,9 @@ var menuSchema = mongoose.Schema({
 	create_time: Date,
 	host_time: Date,
 	address: String,
+	address2: String,
 	city: String,
+	description: String,
 	university: String,
 	other: String,
 	lat: String,
