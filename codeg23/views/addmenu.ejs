@@ -1,20 +1,6 @@
 <html lang="en">
 <head>
   <% include  ../views/head %>
-  <script type="text/javascript">
-      oFReader = new FileReader(), rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
-
-      oFReader.onload = function (oFREvent) {
-        document.getElementById("uploadPreview").src = oFREvent.target.result;
-      };
-
-      function loadImageFile() {
-        if (document.getElementById("uploadImage").files.length === 0) { return; }
-        var oFile = document.getElementById("uploadImage").files[0];
-        if (!rFilter.test(oFile.type)) { alert("You must select a valid image file!"); return; }
-        oFReader.readAsDataURL(oFile);
-      }
-    </script>
 </head>
 <body>
     <% include ../views/nav %>
@@ -238,50 +224,8 @@
                     <div><h3>Add a photo from local!</h3></div>
                   </div>
 
-                    <div class="ui basic modal addphotoModal" style="top:25% !important;">
-                      <i class="close icon"></i>
-                        <div class="content">
-                          <div class="ui grid">
-                            <div class="two column row">
-
-                              <div class="column">
-
-                                <div class="ui grid">
-                                  <div class="row" id="add-menu">
-                                    <h1>Add food</h1>
-                                  </div>
-                                </div>
-
-                                
-                                  
-                                  <img id="uploadPreview" src="" alt="new food" height="200" width="300">
-                                  <br/>
-                                  <input class="ui button" id="uploadImage" type="file" name="foodimg" onchange="loadImageFile();"/>
-                                  <br/>
-
-                              </div>
-
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="actions">
-                          <div class="two fluid ui inverted buttons">
-                            <div class="ui red basic inverted button">
-                              <i class="remove icon"></i>
-                              No
-                            </div>
-                            <div class="ui green basic inverted button">
-                              <i class="checkmark icon"></i>
-                              Yes
-                            </div>
-                          </div>
-                        </div>
-
-                    </div>
-
                   <div class="four wide field">
-                  <!--   <div><h3>Add photos from your personal gallery!</h3></div>
+                    <div><h3>Add photos from your personal gallery!</h3></div>
 
                     <div class="ui basic modal galleryModal" style="top:25% !important;">
                       <i class="close icon"></i>
@@ -293,14 +237,14 @@
                           <div class="ui grid">
                             <div class="two column row">
 
-                            <% foods.forEach(function(food) {%> -->
+                            <% foods.forEach(function(food) {%>
                           <!--<li><%= food.name %></li>
                           <li><%= food.type %></li>
                           <li><%= food.description %></li>
                           <li><%= food.create_time %></li>-->
             
 
-          <!--                     <div class="column">
+                              <div class="column">
                                 <div class="ui checkbox" style="width:100% !important;">
                                   <input type="checkbox" name="fun">
                                   <label>
@@ -329,7 +273,7 @@
                           </div>
                         </div>
 
-                    </div> -->
+                    </div>
 
 
 
@@ -343,13 +287,13 @@
                     <div class="four wide field" style="text-align:center;"></div>
                     <div class="one wide field"></div>
                     <div class="four wide field">
-                      <div class="ui red button" style="border-radius:2px; padding:15px 40px;" name="frompc" onclick="showAddphoto()">Add Photos</div>
+                      <div class="ui red button" style="border-radius:2px; padding:15px 40px;" name="frompc" onclick="">Add Photos</div>
                     </div>
 
-                 <!--  <div class="four wide field">
+                  <div class="four wide field">
                     <div class="ui red button" style="border-radius:2px; padding:15px 40px;" name="fromgallery" onclick="showGallery()">Search Gallery</div>
                   </div>
- -->
+
                   <div class="three wide field" style="height:70px;"></div>
                 </div>
 
@@ -382,10 +326,6 @@
       $('.ui.checkbox').checkbox();    
       $("#date-picker").datepicker();
     }); 
-
-    function showAddphoto() {
-      $('.addphotoModal').modal('show');
-    }
 
     function showGallery() {
         $('.galleryModal').modal('show');
