@@ -48,6 +48,7 @@ module.exports = function(passport) {
                 newUser.lastname = profile._json.last_name;
                 newUser.gender = profile.gender;
                 newUser.facebook_id = profile.id;
+                newUser.portrait_path = '/image/sample-portrait.jpg';
                 // save the user
                 newUser.save(function(err) {
                     if (err){

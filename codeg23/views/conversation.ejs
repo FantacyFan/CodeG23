@@ -4,28 +4,93 @@
 </head>
 <body>
 	<% include ../views/nav %>
-	<div class="menu-overview">
-	  	<h4>Menu: <%= menu.title %></h4>
-	  	<h4>Type: <%= menu.type %></h4>
+	<div class="ui stackable grid" style="margin-top:80px;">
+		<div class="row">
+			<div class="column" style="margin-left:10%;margin-right:10%;">
+			<div class="menu-overview">
+		  		<h4>Menu: <%= menu.title %></h4>
+		  		<h4>Type: <%= menu.type %></h4>
+			</div>
+		</div>
+		</div>
+		<div class="row">
+			<div class="column" style="margin-left:10%;margin-right:10%;">
+			<div class="ui input">
+				<input id="m" placeholder="Please input your message"/>
+			</div>
+			<button class="ui button" id="send" onclick="sendMsg(this)" name="<%= conversation._id %>" value="<%= user._id %>">
+				Send
+			</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column" style="margin-left:10%;margin-right:10%;">
+			<div id="msglist" hostid="<%= conversation.owner_id %>" guestid="<%= conversation.guest_id %>" gp="<%= guest.portrait_path%>" hp="<%= host.portrait_path%>">
+				<div class="ui comments">
+					<% messages.forEach(function(message){ %>
+					<div class="ui divider"></div>
+					<div class="comment">
+						<a class="avatar">
+							<% if(message.user_id==guest._id) {%>
+						  		<img src="<%= guest.portrait_path %>" style="height:auto;">
+						  	<% } else { %>
+						  		<img src="<%= host.portrait_path %>" style="height:auto;">
+						  	<% } %>
+						</a>
+						<div class="content">
+							<a class="author">
+							<% if(message.user_id==guest._id) {%>
+						  		<%= guest.firstname %>
+						  	<% } else { %>
+						  		<%= host.firstname %>
+						  	<% } %>
+							</a>
+							<div class="text">
+								<%= message.content %>
+							</div>
+						</div>
+					</div>
+					<% }) %>
+				</div>
+			</div>
+			</div>
+		</div>
 	</div>
-	<input id="m" placeholder="Please input your message"/><br/>
-	<button id="send" onclick="sendMsg(this)" name="<%= conversation._id %>" value="<%= user._id %>">Send</button>
-	<ul id="msglist">
-		<% messages.forEach(function(message){ %>
-	  	<li><%= message.content %></li>
-		<% }) %>
-	</ul>
 	<script>
 	  	var socket = io();
 	  	var conversation_id = document.getElementById("send").name;
 	  	var user_id = document.getElementById("send").value;
+	  	var guestid = $("#msglist").attr("guestid");
+	  	var hostid = $("#msglist").attr("hostid");
+	  	var guestpath = $("#msglist").attr("gp");
+	  	var hostpath = $("#msglist").attr("hp");	  	
 	  	function sendMsg(obj){
 	  		socket.emit('conversation', conversation_id+'_'+user_id+'_'+$('#m').val());
 	  		$('#m').val('');
 	  		return false;
 	  	};
 	  	socket.on('conversation-'+conversation_id, function(msg){
-	  		$('#msglist').append($('<li>').text(msg));
+	  		var msgSender = msg.substr(0,24);
+	  		var path;
+	  		var name;
+	  		if(msgSender == guestid){
+	  			name = "Guest";
+	  			path = guestpath;
+	  		} else {
+	  			name = "Host"
+	  			path = hostpath;
+	  		}
+	  		var html = '<a class="avatar"><img src="'
+	  		html = html + path;
+	  		html = html + '" style="height:auto;"></a><div class="content"><a class="author">'
+	  		html = html + name;
+	  		html = html + '</a><div class="text">'
+	  		html = html + msg.substring(24);
+	  		html = html + "</div></div>";
+			console.log(html);
+			$('.ui.comments').append($('<div class="ui divider">'));
+			$('.ui.comments').append($('<div class="comment">').html(html));
+
 	  	});
 	</script>
 </body>

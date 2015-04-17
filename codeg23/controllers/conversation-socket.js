@@ -6,6 +6,7 @@ var moment = require('moment');
 module.exports = function(io){
 	io.on('connection', function(socket){
 		socket.on('conversation', function(msg){
+			console.log("Socket!");
 			var now = moment();
 			var pieces = msg.split('_');
 			var conversationid = pieces[0];
@@ -21,7 +22,7 @@ module.exports = function(io){
 				if(err){
 					console.log(err);
 				}
-				io.emit('conversation-'+pieces[0],pieces[2]);
+				io.emit('conversation-'+pieces[0],pieces[1]+pieces[2]);
 			});
   		});
 	});

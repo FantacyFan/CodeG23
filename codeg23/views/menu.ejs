@@ -186,10 +186,10 @@
 				<div class="ui sticky">
 					<div style="min-height:80px;">
 					</div>
-					<form enctype="multipart/form-data" method="post" >
+					<form enctype="multipart/form-data" method="post" action="">
 						<% if(user._id != menu.user_id) {%>
 						<div class="field quick control">
-					    	<button class="ui button quick control" type="submit" name="action" id="contact_button">
+					    	<button class="ui button quick control" type="submit" name="action" id="contact_button" value="Contact">
 					    		Contact Host
 					    	</button>
 						</div>
