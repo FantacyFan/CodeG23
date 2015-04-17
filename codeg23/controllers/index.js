@@ -23,7 +23,8 @@ module.exports = function(passport){
 		passport.authenticate('facebook',{
 			successRedirect: '/',
 			failureRedirect: '/'
-		}));
+		})
+	);
 
 	/* GET Home Page */
 	router.get('/', function(req, res){

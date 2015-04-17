@@ -38,7 +38,7 @@ module.exports = function(passport) {
         clientSecret:config.facebook_api_secret ,
         callbackURL: config.callback_url 
     }, function(accessToken, refreshToken, profile, done){
-        console.log("Req: "+req);
+        console.log("Req: ");
         User.findOne({'facebook_id':profile.id}, function(err, user){
             if(user==null){
                var newUser = new User();
