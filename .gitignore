@@ -1,0 +1,16 @@
+
+codeg23/data/codeg23.0
+
+codeg23/data/codeg23.ns
+
+codeg23/data/journal/j._0
+
+codeg23/data/journal/lsn
+
+codeg23/data/local.0
+
+codeg23/data/local.ns
+
+*.lock
+
+codeg23/data/mongod.lock

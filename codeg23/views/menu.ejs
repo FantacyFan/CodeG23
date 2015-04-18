@@ -43,7 +43,7 @@
 														<h4 class="ui header">Hosting Environment</h4>
 													</div>
 													<div class="five wide column">
-														<div class="list-items"><i class="users icon"></i> Seats: <b>6</b></div>
+														<div class="list-items"><i class="users icon"></i> Seats: <b><%= menu.quantity %></b></div>
 														<div class="list-items"><i class="food icon"></i> Tableware: <b>All</b></div>
 														<div class="list-items"><i class="desktop icon"></i> TV: <b>Yes</b></div>
 													</div>
@@ -66,7 +66,7 @@
 													<h4 class="ui header">Payment</h4>
 												</div>
 												<div class="five wide column">
-													<div class="list-items"><i class="payment icon"></i> Prices: <b>16$</b></div>
+													<div class="list-items"><i class="payment icon"></i> Prices: <b><%= menu.price %>$</b></div>
 												</div>
 												<div class="five wide column">
 													<div class="list-items"><i class="ban icon"></i> Cancellation: <b>No</b></div>
@@ -186,10 +186,10 @@
 				<div class="ui sticky">
 					<div style="min-height:80px;">
 					</div>
-					<form enctype="multipart/form-data" method="post" >
+					<form enctype="multipart/form-data" method="post" action="">
 						<% if(user._id != menu.user_id) {%>
 						<div class="field quick control">
-					    	<button class="ui button quick control" type="submit" name="action" id="contact_button">
+					    	<button class="ui button quick control" type="submit" name="action" id="contact_button" value="Contact">
 					    		Contact Host
 					    	</button>
 						</div>
@@ -216,7 +216,7 @@
 							<% } %>
 				  		<% } else {%>
 				  		<div class="field quick control">
-				  			<button class="ui button quick control" onclick="location.href='/menu/edit/<%= menu._id %>'">Edit Menu</button>
+				  			<button class="ui button quick control" type="button" onclick="location.href='/menu/edit/<%= menu._id %>'">Edit Menu</button>
 				  		</div>
 				  		<% } %>	
 				  	</form>

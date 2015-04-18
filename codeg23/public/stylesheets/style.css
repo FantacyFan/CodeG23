@@ -372,7 +372,10 @@ label.control-label span {
 	box-shadow: none;
 }
 
-
+/*Conversation*/
+.ui.message.conversation {
+	margin-top:15px;
+}
 
 
 

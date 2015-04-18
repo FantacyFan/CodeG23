@@ -48,14 +48,24 @@ module.exports = function(passport) {
                 newUser.lastname = profile._json.last_name;
                 newUser.gender = profile.gender;
                 newUser.facebook_id = profile.id;
+                newUser.portrait_path = '/image/sample-portrait.jpg';
                 // save the user
                 newUser.save(function(err) {
                     if (err){
                         console.log('Error in Saving user: '+err);  
                         throw err;  
                     }
-                    console.log('User Registration succesful');    
-                    return done(null, newUser);
+                    console.log('User Registration succesful');   
+                    var newFoodgallery = new Foodgallery();
+                    newFoodgallery.user_id = newUser._id;
+                    newFoodgallery.save(function(err) {
+                        if (err){
+                            console.log('Error in Saving fdgallery: '+err);  
+                            throw err;  
+                        }
+                        console.log('User Registration succesful');    
+                        return done(null, newUser);
+                    }); 
                 });
             } else {
                 done(null, user)
