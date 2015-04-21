@@ -25,7 +25,7 @@
 		</div>
 		<div class="row">
 			<div class="column" style="margin-left:10%;margin-right:10%;">
-			<div id="msglist" hostid="<%= conversation.owner_id %>" guestid="<%= conversation.guest_id %>" gp="<%= guest.portrait_path%>" hp="<%= host.portrait_path%>">
+			<div id="msglist" hostid="<%= conversation.owner_id %>" guestid="<%= conversation.customer_id %>" gp="<%= guest.portrait_path%>" hp="<%= host.portrait_path%>" gn="<%= guest.firstname%>" hn="<%= host.firstname%>">
 				<div class="ui comments">
 					<% messages.forEach(function(message){ %>
 					<div class="ui divider"></div>
@@ -63,7 +63,9 @@
 	  	var guestid = $("#msglist").attr("guestid");
 	  	var hostid = $("#msglist").attr("hostid");
 	  	var guestpath = $("#msglist").attr("gp");
-	  	var hostpath = $("#msglist").attr("hp");	  	
+	  	var hostpath = $("#msglist").attr("hp");
+	  	var guestname = $("#msglist").attr("gn");
+	  	var hostname = $("#msglist").attr("hn");  	
 	  	function sendMsg(obj){
 	  		socket.emit('conversation', conversation_id+'_'+user_id+'_'+$('#m').val());
 	  		$('#m').val('');
@@ -73,11 +75,13 @@
 	  		var msgSender = msg.substr(0,24);
 	  		var path;
 	  		var name;
+	  		console.log(msgSender);
+	  		console.log(guestid);
 	  		if(msgSender == guestid){
-	  			name = "Guest";
+	  			name = guestname;
 	  			path = guestpath;
 	  		} else {
-	  			name = "Host"
+	  			name = hostname;
 	  			path = hostpath;
 	  		}
 	  		var html = '<a class="avatar"><img src="'

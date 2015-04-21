@@ -14,3 +14,5 @@ codeg23/data/local.ns
 *.lock
 
 codeg23/data/mongod.lock
+
+codeg23/data/mongod.lock
