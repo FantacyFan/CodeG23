@@ -19,7 +19,80 @@ router.get('/', function(req, res){
 			//find pending reviews
 			var reviewInfos = [];
 			var menuIds = [];
+			OrderSchema.find({$or:[{customer_id:req.user._id},
+			{owner_id:req.user._id}]}, function(err, orders){
+				// //get orders with order id -> menu.host_time <= now()
+				// for(var i = 0; i < orders.length; i ++){
+				// 	menuIds.push(orders[i]['menu_id']);
+				// }
+				// MenuSchema.find({_id: {$in: menuIds}},function(err, menus){
+				for(var i = 0; i < orders.length; i ++){	
+					//get passed event
+					if(orders[i]["menu_host_time"].valueOf() < moment().valueOf()){
+						var reviewInfo = {};
+						reviewInfo["order"] = orders[i];
+						//find is host or guest	
+						if(orders[i]["owner_id"] == req.user._id){
+							reviewInfo["identity"] = "host";
+							reviewInfo["receiver_id"] = orders[i]["customer_id"];
+							reviewInfo["reviewer_id"] = req.user._id;
+							reviewInfo["order_id"] = orders[i]["_id"];
+						}
+						else{
+							reviewInfo["identity"] = "guest";
+							reviewInfo["receiver_id"] = orders[i]["owner_id"];
+							reviewInfo["reviewer_id"] = req.user._id;
+							reviewInfo["order_id"] = orders[i]["_id"];
+						}					
+						reviewInfos.push(reviewInfo);
+					}																
+				}
+				//check if database already exist reviews
+				var newInfos = [];
+				var done = 0;
+				for(var i = 0; i < reviewInfos.length; i ++){
+					console.log("user is " + req.user._id);
+					(function(i){ReviewSchema.findOne({receiver_id : reviewInfos[i]["receiver_id"],
+						reviewer_id : req.user._id, order_id : reviewInfos[i]["order_id"]},
+						function(err, review){
+							if(review == null){
+								console.log("not found " );
+								newInfos.push(reviewInfos[i]);
+							}else{
+								console.log("found " + review["reviewer_id"]);
+							}
+							done ++;
 
+							if(done == reviewInfos.length){
+								ReviewSchema.find({},function(err, rs){
+									console.log("All Infos")
+									console.log(reviewInfos);
+									console.log("All Reviews");
+									console.log(rs);
+									res.render("reviews", {
+									user : req.user,
+									reviewGiven:reviewGiven,
+									reviewReceived:reviewReceived,
+									reviewInfos: newInfos
+									})	
+								})
+								
+							}
+					})})(i);
+				}
+				//})
+			})
+		})
+	})
+})
+
+/*
+router.get('/', function(req, res){
+	ReviewSchema.find({reviewer_id:req.user._id}, function(err,reviewGiven){
+		ReviewSchema.find({receiver_id:req.user._id}, function(err,reviewReceived){
+			//find pending reviews
+			var reviewInfos = [];
+			var menuIds = [];
 			OrderSchema.find({$or:[{customer_id:req.user._id},
 			{owner_id:req.user._id}]}, function(err, orders){
 				//get orders with order id -> menu.host_time <= now()
@@ -46,6 +119,7 @@ router.get('/', function(req, res){
 										reviewInfo["receiver_id"] = orders[j]["owner_id"];
 										reviewInfo["reviewer_id"] = req.user._id;
 										reviewInfo["order_id"] = orders[j]["_id"];
+										console.log(j);
 									}
 								}
 							}
@@ -95,6 +169,8 @@ router.get('/', function(req, res){
 		})
 	})
 })
+
+*/
 
 /*********************************
 Method: 	Get

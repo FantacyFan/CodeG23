@@ -10,8 +10,16 @@ var orderSchema = mongoose.Schema({
 	customer_id : String,
 	menu_id : String,
 	timestamp : Date,
+	menu_host_time: Date,
+	menu_meal: String,
+	menu_title: String,
+	menu_type: String,
+	menu_quantity: String,
 	status : String
 });
+
+
+
 
 // create the model for users and expose it to our app
 module.exports = mongoose.model('Order', orderSchema);

@@ -4,6 +4,7 @@ var RequestSchema = require('../models/request');
 var UserSchema = require('../models/user');
 var OrderSchema = require('../models/order');
 var NotificationSchema = require('../models/notification');
+var MenuSchema = require('../models/menu');
 var moment = require('moment');
 
 
@@ -70,41 +71,49 @@ router.post('/approve', function(req, res){
 	var _request_id 		= req.body.request_id;
 	var _now				= moment();
 
-	var _order = OrderSchema({
-		owner_id : _owner_id,
-		customer_id : _customer_id,
-		menu_id : _menu_id,
-		request_id : _request_id,
-		timestamp : _now
-	});
+	MenuSchema.findOne({_id: _menu_id},function(err, menu){
 
-	_order.save(function(err){
-		if(err) throw err;
-	});
+		var _order = OrderSchema({
+			owner_id : _owner_id,
+			customer_id : _customer_id,
+			menu_id : _menu_id,
+			request_id : _request_id,
+			timestamp : _now,
+			menu_host_time : menu["host_time"],
+			menu_meal: menu["meal"],
+			menu_title: menu["title"],
+			menu_type: menu["type"],
+			menu_quantity: menu["quantity"]
+		});
 
-	//create new notification
-	var _noti = NotificationSchema({
-		user_id : _customer_id,
-		sender_id: _owner_id,
-		type : 'approved',
-		status : 'unread',
-		timestamp : _now,
-		content : 'your request has been approved!'
-	});
-
-	_noti.save(function(err){
-		if(err) throw err;
-	});
-
-	//change request status to approved
-	RequestSchema.findOne({_id: _request_id}, function(err,request){
-		request['status'] = 'approved';
-		request.save(function(err){
+		_order.save(function(err){
 			if(err) throw err;
-			res.redirect('/request/pending/' + _menu_id);
+		});
+
+		//create new notification
+		var _noti = NotificationSchema({
+			user_id : _customer_id,
+			sender_id: _owner_id,
+			type : 'approved',
+			status : 'unread',
+			timestamp : _now,
+			content : 'your request has been approved!'
+		});
+
+		_noti.save(function(err){
+			if(err) throw err;
+		});
+
+		//change request status to approved
+		RequestSchema.findOne({_id: _request_id}, function(err,request){
+			request['status'] = 'approved';
+			request.save(function(err){
+				if(err) throw err;
+				res.redirect('/request/pending/' + _menu_id);
+			});
 		});
 	});
-})
+});
 
 router.post('/decline', function(req, res){
 	//create new notification

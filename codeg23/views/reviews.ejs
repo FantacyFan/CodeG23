@@ -53,13 +53,13 @@
 							<div class="content">
 								<img alt="event img"/>
 								<div class="metadata">
-									<a href="/menu/detail/<%= info.menu._id %>" class="date" target="_blank"><%= info.menu.title %></a>
+									<a href="/menu/detail/<%= info.order.menu_id %>" class="date" target="_blank"><%= info.order.menu_title %></a>
 								</div>
 								<div class="metadata">
-									<span class="date"><%= info.menu.host_time %></span>
+									<span class="date"><%= info.order.menu_host_time %></span>
 								</div>
 								<div class="text">
-									I am a <b><%= info.identity %></b> of that event, I want to <a href="/review/add/<%= info.receiver_id %>/<%= info.menu._id %>/<%= info.order_id %>/<%= info.identity %>">make a review</a>
+									I am a <b><%= info.identity %></b> of that event, I want to <a href="/review/add/<%= info.receiver_id %>/<%= info.order.menu_id %>/<%= info.order._id %>/<%= info.identity %>">make a review</a>
 								</div>
 							</div>
 						</div>
