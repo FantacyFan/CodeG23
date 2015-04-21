@@ -10,19 +10,120 @@ var UserSchema = require('../models/user');
 /*********************************
 Method: 	Get
 Page: 		reviews.ejs
-Function: 	Just used to render the reviews Page          
+Function: 	Render the reviews Page          
 *********************************/
+
 router.get('/', function(req, res){
 	ReviewSchema.find({reviewer_id:req.user._id}, function(err,reviewGiven){
 		ReviewSchema.find({receiver_id:req.user._id}, function(err,reviewReceived){
-			res.render("reviews", {
-				user : req.user,
-				reviewGiven:reviewGiven,
-				reviewReceived:reviewReceived 
+			//find pending reviews
+			var reviewInfos = [];
+			var menuIds = [];
+
+			OrderSchema.find({$or:[{customer_id:req.user._id},
+			{owner_id:req.user._id}]}, function(err, orders){
+				//get orders with order id -> menu.host_time <= now()
+				for(var i = 0; i < orders.length; i ++){
+					menuIds.push(orders[i]['menu_id']);
+				}
+				MenuSchema.find({_id: {$in: menuIds}},function(err, menus){
+					for(var i = 0; i < menus.length; i ++){	
+						//get passed event
+						if(menus[i]["host_time"].valueOf() < moment().valueOf()){
+							var reviewInfo = {};
+							reviewInfo["menu"] = menus[i];
+							//find is host or guest
+							for(var j = 0; j < orders.length; j ++){
+								if (orders[j]["owner_id"] == menus[i]["user_id"]) {
+									if(orders[j]["owner_id"] == req.user._id){
+										reviewInfo["identity"] = "host";
+										reviewInfo["receiver_id"] = orders[j]["customer_id"];
+										reviewInfo["reviewer_id"] = req.user._id;
+										reviewInfo["order_id"] = orders[j]["_id"];
+									}
+									else{
+										reviewInfo["identity"] = "guest";
+										reviewInfo["receiver_id"] = orders[j]["owner_id"];
+										reviewInfo["reviewer_id"] = req.user._id;
+										reviewInfo["order_id"] = orders[j]["_id"];
+									}
+								}
+							}
+							reviewInfos.push(reviewInfo);
+						}																
+					}
+					//check if database already exist reviews
+					var newInfos = [];
+					var done = 0;
+					for(var i = 0; i < reviewInfos.length; i ++){
+						console.log("user is " + req.user._id);
+						(function(i){ReviewSchema.findOne({receiver_id : reviewInfos[i]["receiver_id"],
+							reviewer_id : req.user._id, order_id : reviewInfos[i]["order_id"]},
+							function(err, review){
+								if(review == null){
+									console.log("not found " );
+									newInfos.push(reviewInfos[i]);
+								}else{
+									console.log("found " + review["reviewer_id"]);
+								}
+								done ++;
+
+								if(done == reviewInfos.length){
+
+									//console.log(newInfos);
+									//console.log(reviewInfos);
+
+									ReviewSchema.find({},function(err, rs){
+										console.log("All Infos")
+										console.log(reviewInfos);
+										console.log("All Reviews");
+										console.log(rs);
+										res.render("reviews", {
+										user : req.user,
+										reviewGiven:reviewGiven,
+										reviewReceived:reviewReceived,
+										reviewInfos: newInfos
+										})	
+									})
+									
+								}
+						})})(i);
+
+					}
+				})
 			})
 		})
 	})
 })
+
+/*********************************
+Method: 	Get
+Page: 		review.ejs
+Function: 	render review add page           
+*********************************/
+router.get('/add/:receiver_id/:menu_id/:oredr_id/:type', function(req, res){	
+	var receiver_id = req.params.receiver_id;
+	var menu_id = req.params.menu_id;
+	var order_id = req.params.oredr_id;
+	var type = req.params.type;
+	if(type == 'guest'){
+		res.render("addreview", {
+			user : req.user,
+			receiver_id : receiver_id,
+			menu_id : menu_id,
+			order_id : order_id
+		})
+	}
+	else{
+		res.render("addreviewhost", {
+			user : req.user,
+			receiver_id : receiver_id,
+			menu_id : menu_id,
+			order_id : order_id
+		})
+	}
+})
+
 
 /*********************************
 Method: 	Post
@@ -33,14 +134,16 @@ Function: 	Handle the adding new reviewrequest.
 router.post('/add/', function(req, res){
 	var _text = req.body.text;
 	var _rate = req.body.rating;
-	var _menuId = req.body.menuId;
-	var _orderId = req.body.orderId;
-	var _receiverId = req.body.receiverId;
+	var _menuId = req.body.receiver_id;
+	var _orderId = req.body.order_id;
+	var _receiverId = req.body.receiver_id;
 	var _now = moment();
-	console.log(_rate);
-	console.log(_text);
-	console.log(_receiverId);
-	// res.redirect("/review/");
+	var _img = req.files.reviewimg;
+	var _imgpath = 'empty';
+	if(typeof _img != "undefined"){
+		_imgpath = '/uploads/' + req.files.reviewimg.name;
+	}
+	
 	/* Calculate the rating */
 	UserSchema.findOne({_id:_receiverId}, function(err, user){
 		if(user != null) {
@@ -70,7 +173,8 @@ router.post('/add/', function(req, res){
 						order_id : _orderId,
 						text : _text,
 						timestamp : _now,
-						rate : _rate
+						rate : _rate,
+						imgpath : _imgpath
 					});
 			/* Save the new record to db */
 			_review.save(function(err){

@@ -1,0 +1,69 @@
+<html lang="en">
+<head>
+    <% include  ../views/head %>
+<script type="text/javascript">
+oFReader = new FileReader(), rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
+
+  oFReader.onload = function (oFREvent) {
+    document.getElementById("uploadPreview").src = oFREvent.target.result;
+  };
+
+  function loadImageFile() {
+    if (document.getElementById("uploadImage").files.length === 0) { return; }
+    var oFile = document.getElementById("uploadImage").files[0];
+    if (!rFilter.test(oFile.type)) { alert("You must select a valid image file!"); return; }
+    oFReader.readAsDataURL(oFile);
+  }
+</script>
+</head>
+<body>
+
+  <% include ../views/nav %>
+    
+      <div class="ui grid">
+        <div class="row" id="add-menu">
+          <h1>Add Review</h1>
+        </div>
+      </div>
+
+   <h3 class="ui block top attached header">Reviews to write</h3>
+      <div class="ui bottom attached secondary segment">
+        <form class="ui form" enctype="multipart/form-data" action="/review/add" method="post">
+          <input type="hidden" name="receiver_id" value="<%= receiver_id %>"/>
+          <input type="hidden" name="menu_id" value="<%= menu_id %>"/>
+          <input type="hidden" name="order_id" value="<%= order_id %>"/>
+
+          <div class="field">
+            <label class="ui huge label" for="reviewText">Review Text</label>
+            <textarea id="reviewText" name="text" placeholder="Write your review here."></textarea>
+          </div>
+          <div class="field">
+            <label class="ui huge label" for="reviewText">Rating</label>
+            <div class="ui huge star rating" data-rating="5" data-max-rating="5"></div>
+            <input type="hidden" value="5" id="rating" name="rating">
+          </div>
+          <div class="field">
+            <input class="ui button" id="uploadImage" type="file" name="reviewimg" onchange="loadImageFile();"/>
+          </div>
+          <div class="field">
+            <button class="ui button">Submit</button>
+          </div>
+        </form>
+      </div>
+
+  <script>
+    $('.ui.rating')
+      .rating().click(function(){
+        var innerHtml = $('.ui.rating').html();
+        var pos = innerHtml.indexOf("<i class=\"icon\"");
+        switch(pos){
+          case -1: $("#rating").attr("value","5");break;
+          case 108: $("#rating").attr("value","4");break;
+          case 81: $("#rating").attr("value","3");break;
+          case 54: $("#rating").attr("value","2");break;
+          case 27: $("#rating").attr("value","1");break;
+          default: $("#rating").attr("value","5");
+        }
+      });
+  </script>
+</body>

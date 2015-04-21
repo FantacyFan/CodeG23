@@ -16,10 +16,10 @@
 
 			<div class="ui secondary pointing menu">
 				<a class="active item" id="byyou">
-				Reviews By You
+				Pending Reviews
 				</a>
 				<a class="item" id="aboutyou">
-				Reviews About You
+				My Reviews
 				</a>
 			</div>
 			<div id="reviewAboutYou" style="display:none;">
@@ -46,7 +46,27 @@
 				</div>
 			</div>
 			<div id="reviewByYou" style="display:block;">
-				<h3 class="ui block top attached header">Reviews to write</h3>
+				<div class="ui bottom attached secondary segment">
+					<div class="ui comments">
+						<% reviewInfos.forEach(function(info){%>
+						<div class="comment">
+							<div class="content">
+								<img alt="event img"/>
+								<div class="metadata">
+									<a href="/menu/detail/<%= info.menu._id %>" class="date" target="_blank"><%= info.menu.title %></a>
+								</div>
+								<div class="metadata">
+									<span class="date"><%= info.menu.host_time %></span>
+								</div>
+								<div class="text">
+									I am a <b><%= info.identity %></b> of that event, I want to <a href="/review/add/<%= info.receiver_id %>/<%= info.menu._id %>/<%= info.order_id %>/<%= info.identity %>">make a review</a>
+								</div>
+							</div>
+						</div>
+						<% }) %>
+					</div>
+				</div>
+				<!--<h3 class="ui block top attached header">Reviews to write</h3>
 				<div class="ui bottom attached secondary segment">
 				<form class="ui form" enctype="multipart/form-data" action="/review/add" method="post">
 					<div class="field">
@@ -66,7 +86,7 @@
 					</div>
 				</form>
 				</div>
-				<h3 class="ui block top attached header">Past Reviews By You</h3>
+				<!--<h3 class="ui block top attached header">Past Reviews By You</h3>
 				<div class="ui bottom attached secondary segment">
 					<div class="ui comments">
 						<% reviewGiven.forEach(function(rg){%>
@@ -86,7 +106,7 @@
 						</div>
 						<% }) %>
 					</div>
-				</div>
+				</div>-->
 			</div>
 		  </div>
 	  	</div>

@@ -10,6 +10,7 @@ var reviewSchema = mongoose.Schema({
 	order_id : String,
 	text : String,
 	timestamp : Date,
+	imgpath : String,
 	rate : String
 });
 
